@@ -1,7 +1,3 @@
 # MyPT
-# 카테고리
-  - HOME
-  - SHOPPING
-  - DIET
-  - BOARD
-  - MEMBER
+# index.html
+  - 카테고리에 Trainer를 Member로 수정 완료
