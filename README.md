@@ -1,5 +1,6 @@
 # index.html
-  - 카테고리에 Trainer를 Member로 수정 완료
+  - 카테고리의 Trainer를 Member로 수정 완료
+  - 카테고리의 class를 Shopping으로 수정 완료
 
 # DB.sql
  - SemiProject DB 파일 생성
