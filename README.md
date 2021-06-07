@@ -1,6 +1,8 @@
 # index.jsp
+  - html -> jsp 변환 최상단 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"  %> 인코딩 코드 추가 완료
   - 카테고리의 Trainer를 Member로 수정 완료
   - 카테고리의 class를 Shopping으로 수정 완료
+  - 
 
 # DB.sql
  - SemiProject DB 파일 생성
