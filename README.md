@@ -1,4 +1,4 @@
-# index.html
+# index.jsp
   - 카테고리의 Trainer를 Member로 수정 완료
   - 카테고리의 class를 Shopping으로 수정 완료
 
