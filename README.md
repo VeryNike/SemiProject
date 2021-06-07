@@ -1,5 +1,5 @@
 # index.jsp
-  - 인코딩 코드 최상단 추가 완료
+  - UTF-8 인코딩 코드 최상단 추가 완료
   - 카테고리의 Trainer를 Member로 수정 완료
   - 카테고리의 class를 Shopping으로 수정 완료
   - 
