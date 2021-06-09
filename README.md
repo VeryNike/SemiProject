@@ -8,6 +8,6 @@
  - SemiProject DB 파일 생성
  - USER_INFORMATION TABLE 포함 모든 카테고리 TABLE 생성
  - USER_INFORMATION TABLE - STATUS COLUMN 추가 (회원탈퇴여부)
-
+ - USER_INFORMATION TABEL 컬럼변경 -PHONE TYPE, GENDER, M_RATING
 # CSS, IMG, JS, LIB, MAIL
  - 템플릿에 필요한 폴더 업로드
