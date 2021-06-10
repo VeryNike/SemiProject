@@ -9,7 +9,7 @@
     
 <style>
 body {
-    background-color: #c1dff0;
+    background-color: #c1dff0;;
     font-family: 'Do Hyeon', sans-serif;
 	overflow: scroll;
 }
