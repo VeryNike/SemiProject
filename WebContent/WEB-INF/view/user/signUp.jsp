@@ -9,7 +9,7 @@
     
 <style>
 body {
-    background-color: #c1dff0;;
+    background-color: #c1dff0;
     font-family: 'Do Hyeon', sans-serif;
 	overflow: scroll;
 }
@@ -29,37 +29,32 @@ form {
 
 }
 #wrap{
-	width: 270px;
+	width: 330px;
 	height: 100%;
 	margin: 100px auto;
     text-align: center;
 }
 
-.naming{
-    color: #c1dff0;
-    font-size: 13px;
-
-}
 
 fieldset {
-    font-size: 16px;
+    font-size: 12px;
     border: 0;
     margin-bottom: 10px;
 }
 
 fieldset input:not([type="checkbox"]) {
-    width: 70px; height: 10px;
-    padding: 10px 15px ;
+    width: 10em; height: 2em;
+    padding: 5px 5px ;
     text-align: left;
-    font-size: 10px;
+    font-size: 12px;
     margin: 10px 0;
     border:white;
-    border-bottom-width: 1px blue;
+    border-radius: 10px;
 }
 fieldset label {
     text-align: left;
     font-size: 12px;
-    margin: 0px 10px ;
+    margin: 0px 5% ;
     border:white;
 }
 
@@ -69,39 +64,58 @@ fieldset label {
     text-align: center;
     font-weight: 700;
     width: 100px; 
-    border: 1px solid #89a9e4;
-    border-radius: 5px;
+    border: 2px solid #c1dff0;;
+    border-radius: 10px;
     
 }
 
-.Btn2 {
-    background-color: #c1dff0;
-    color: white;
-    text-align: center;
-    width: 10px; height: 10px;
-    border: 2px solid #4279df;
-    border-radius: 20px;
-    
+.naming{
+    text-align: left;
+    color: #c1dff0;
+    font-size: 11px;
+
 }
 
+select {
+    -moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
+	width: 130px; height:20px;
+	
+	font-size: 12px;
+	text-align: center;
+	color: #lightgray;
+	
+	border: 1px solid white;
+	border-radius: 0.5em;
+}
+
+span{
+	margin: -10;
+	height: 10px
+	line-height:0.5em
+	font-size:9px;
+	color: #f35c36;
+}
     
 </style>
 </head>
 <body>
     <div id="wrap">
-        <h1><span style="color:snow; font-size: 50px;"> &nbsp;&nbsp;&nbsp; JOIN</span></a></h1>
+        <h1><span style="color:snow; font-size: 50px;"> JOIN</span></a></h1>
         <form action="<%= request.getContextPath()%>/insert.me" method="post" id="joinForm" name="joinForm">
             <fieldset>
-                <label class="naming" >ID</label> 
-                <input type="text" id="userId" maxlength="12" placeholder="아이디 입력">
-                <input type="button" id="checkId" value="중복확인" class="Btn2">
-                <br>
+                <label class="naming" >ID &nbsp;</label>
+                <input type="text" id="userId" maxlength="12" placeholder="아이디 입력"><br>
+                <br><span id="idcheck" name="아이디중복체크">중복된 아이디 입니다.</span><br>
                 <label class="naming" >PW</label>
                 <input type="password" id="userPw" maxlength="15" placeholder="비밀번호 입력"><br>
-                <span id="pwdcheck" > check</span>
+                <label id="pwdcheck" > check</label>
                 <input type="password" id="userPw2" maxlength="15" placeholder="비밀번호 확인"><br>
+                <br><span id="pwdcheck" name="비밀번호중복체크">비밀번호가 일치하지 않습니다.</span><br>
                 <label class="naming" >NAME</label>
-                <input type="text" id="userName" maxlength="12" placeholder="NAME">
+                <input type="text" id="userName" maxlength="12" placeholder="NAME"><br>
+                <label class="naming" >NICK</label>
                 <input type="text" id="nickName" maxlength="12" placeholder="NICKNAME">
                 <br>
                 <label class="naming" >AGE</label>
