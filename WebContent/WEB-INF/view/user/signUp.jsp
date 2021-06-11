@@ -43,18 +43,18 @@ fieldset {
 }
 
 fieldset input:not([type="checkbox"]) {
-    width: 10em; height: 2em;
-    padding: 5px 5px ;
-    text-align: left;
+    width: 10em; height: 1.5em;
+    padding: 5px 15px 2px 2px;
+    text-align: center;
     font-size: 12px;
-    margin: 10px 0;
-    border:white;
+    margin: 10px 10px 1px 5px;
+    border:snow;
     border-radius: 10px;
 }
 fieldset label {
     text-align: left;
     font-size: 12px;
-    margin: 0px 5% ;
+    margin: 5% 3% 1% 5% ;
     border:white;
 }
 
@@ -64,7 +64,7 @@ fieldset label {
     text-align: center;
     font-weight: 700;
     width: 100px; 
-    border: 2px solid #c1dff0;;
+    border: 2px solid #c1dff0;
     border-radius: 10px;
     
 }
@@ -80,23 +80,16 @@ select {
     -moz-appearance: none;
 	-webkit-appearance: none;
 	appearance: none;
-	width: 130px; height:20px;
-	
+	width: 140px; height:25px;	
 	font-size: 12px;
-	text-align: center;
-	color: #lightgray;
-	
+	padding: 1px 1px 1px 20%;
+	color: #a4a4a5;
 	border: 1px solid white;
-	border-radius: 0.5em;
+	border-radius: 10px;
 }
 
-span{
-	margin: -10;
-	height: 10px
-	line-height:0.5em
-	font-size:9px;
-	color: #f35c36;
-}
+p{ size: 10px;
+	margin: 1px 0px -15px 15px;}
     
 </style>
 </head>
@@ -105,33 +98,40 @@ span{
         <h1><span style="color:snow; font-size: 50px;"> JOIN</span></a></h1>
         <form action="<%= request.getContextPath()%>/insert.me" method="post" id="joinForm" name="joinForm">
             <fieldset>
-                <label class="naming" >ID &nbsp;</label>
-                <input type="text" id="userId" maxlength="12" placeholder="아이디 입력"><br>
-                <br><span id="idcheck" name="아이디중복체크">중복된 아이디 입니다.</span><br>
+                <label class="naming" >ID </label>
+                	<input type="text" name="userId" id="userId" maxlength="12" placeholder="아이디 입력"><br>
+                <p id="message1"></p><br>
+                                
                 <label class="naming" >PW</label>
-                <input type="password" id="userPw" maxlength="15" placeholder="비밀번호 입력"><br>
-                <label id="pwdcheck" > check</label>
-                <input type="password" id="userPw2" maxlength="15" placeholder="비밀번호 확인"><br>
-                <br><span id="pwdcheck" name="비밀번호중복체크">비밀번호가 일치하지 않습니다.</span><br>
+                <input type="password" name="userPwd" id="pw1" maxlength="15" placeholder="비밀번호 입력"><br>
+                
+                <label id="pwdcheck" > PW</label>
+                <input type="password" name="userPwd2" id="pw2" maxlength="15" placeholder="비밀번호 확인"><br>
+                <p id="message2"></p><br>
+                
                 <label class="naming" >NAME</label>
-                <input type="text" id="userName" maxlength="12" placeholder="NAME"><br>
+                <input type="text" name="userName" maxlength="12" placeholder="이름 입력"><br>
+                
                 <label class="naming" >NICK</label>
-                <input type="text" id="nickName" maxlength="12" placeholder="NICKNAME">
-                <br>
+                <input type="text" name="nickName" maxlength="12" placeholder="닉네임 입력">
+                <p id="message3"></p><br>
+             
                 <label class="naming" >AGE</label>
-                <input type="text" id="age" size="10px;" placeholder="나이"><br>
+                <input type="text" name="age" size="10px;" placeholder="나이 입력"><br><br>
+                 <p id="message4"></p><br>
+                
                 <label class="naming" >GEN</label>
                 <select id="gender">
                     <option disabled selected>성별</option>
                     <option value="여">여자</option>
                     <option value="남">남자</option>
                 </select><br>
-                <label class="naming" >phone</label>
-                <input type="text" id="phone" placeholder="전화번호(-제외)"><br>
+                <label class="naming" >PHONE</label>
+                <input type="text" name="phone" placeholder="전화번호 입력(-제외)"><br>
                 <label class="naming" >EMAIL</label>
-                <input type="text" id="emaill" placeholder="이메일"><br>
+                <input type="text" name="emaill" placeholder="이메일 입력 "><br>
                 <label class="naming">ADDRESS</label>
-                <input type="text" id="address" placeholder="주소"><br>
+                <input type="text" name="address" placeholder="주소 입력 (선택사항)"><br>
 
                 <label>V 선호하는 식단 체크</label><br>
                 <input type="checkbox" id="chk1" name="chkGroup">
@@ -140,7 +140,7 @@ span{
                 <label for="chk">닭가슴살</label><br>
                 <input type="checkbox" id="chk3" name="chkGroup">
                 <label for="chk">단백질쉐이크</label>
-                <input type="checkbox" id="chk3" name="chkGroup">
+                <input type="checkbox" id="chk4" name="chkGroup">
                 <label for="chk">도시락</label>
                 <br>
             </fieldset>
@@ -151,17 +151,50 @@ span{
         <a href="#" style="color:gray";>로그인 화면</a>
     </div>
 
+
+
 	<script>
-		$('#checkId').on('click',function(){
-				window.open('checkIdForm.me','checkIdForm','width=300,height=200');
+	$(document).ready(function(){
+		$('#userId').keyup(function(){
+			
+			console.log("keyup test1..");
+			var Id = document.getElementById("userId").value();
+			if(Id.trim() == "" || Id ==null) return document.getElementById("#message").innerHTML = "이름을 입력하세요";
+			
+			$.ajax({
+				type: 'post',
+				async:false, //비동기 default=false
+				url:'http://localhost:9801/checkIdFormServlet',
+				dataType:'text',
+				data:{Id:Id},
+				success: function(data, textStatus){
+					if(data === 'usable'){
+						$('#message').text('Very Nice!')
+					}else{
+						$('#message').text('이미 사용중입니다.')
+					}
+				},
+				error:function(data, textStatus){
+					console.log('error');
+				}
+			}); //ajax
+		}); 
+		
+		
+		$("#pw2").keyup(function(){
+			console.log($(this).val());
+			console.log("keyup test2..");
+			if($("#pw1").val() == $("#pw2").val()){
+				$("#message2").text("비밀번호가 정확합니다");
+				$('p').css('color','skyblue');
+			}else{
+				$('#message2').text("비밀번호가 일치하지않습니다");
+				$('p').css('color','orangered');
+			}
 		});
-		
 	
-		
+	});
 	</script>
-	
-
-
 
 </body>
 </html>
