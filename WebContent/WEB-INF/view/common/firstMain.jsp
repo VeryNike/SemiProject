@@ -1,286 +1,259 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" 
-	pageEncoding="UTF-8"  import="user.model.vo.User"%>
-
-<% User loginUser = (User)session.getAttribute("loginUser"); %>   
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" %>
+ 
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/keyboard_login.css">
-    <script type="text/javascript" src="<%= request.getContextPath() %>/js/jquery-3.6.0.min.js"></script>
-    <title>Log_In</title>
+ 
+<meta charset="UTF-8">
+   <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <title>JoinUs</title>
     
 <style>
 body {
-    background-color: white;
-    font-family: 'Flaticon', sans-serif;
+    background-color: #c1dff0;
+    font-family: 'Do Hyeon', sans-serif;
 	overflow: scroll;
-}
-
-a {
-    color: inherit;
-    text-decoration: none;
 }
 
 
 form {
-    width: 250px;
+    width: 280px;
     padding: 30px;
-    /* margin: 100px auto; */
-
-    background-color: #a7d0f9c7;
+    background-color: snow;
     border-radius: 80px;
-
-    font-size: 12px;
     font-weight: 800;
-    color: white;
-    text-align: center;
+    color: #c1dff0;
+
 }
 #wrap{
-	width: 310px;
+	width: 330px;
 	height: 100%;
 	margin: 100px auto;
-	text-align: center;
+    text-align: center;
 }
 
-.pig {
-    width: 200px;
-    height: 200px;
-    background: url("../images/pig_body.png") center 30px no-repeat;
-    margin: 20px auto;
-    background-color: whitesmoke;
-    border-radius: 50%;
-    position: relative;
-    overflow: hidden;
-}
-
-.face {
-    position: absolute;
-    top: 70px;
-    left: 50px;
-}
-
-.left,.right {
-    width: 94px;
-    height: 158px;
-    position: absolute;
-    top: 100px;
-    left: -100px;
-    transform: rotate(45deg);
-    transition: all 0.5s ease;
-}
-
-.right {
-    left: 210px;
-    transform: rotate(-45deg);
-}
-
-.on .left {
-    top: 50px;
-    left: -10px;
-}
-
-.on .right {
-    top: 50px;
-    left: 120px;
-}
 
 fieldset {
+    font-size: 12px;
     border: 0;
-    padding: 0;
     margin-bottom: 10px;
 }
 
 fieldset input:not([type="checkbox"]) {
-    width: 100%;
-    padding: 10px 15px;
-    box-sizing: border-box;
+    width: 10em; height: 1.5em;
+    padding: 5px 15px 2px 2px;
     text-align: center;
-    margin: 10px 0;
-    border: 1px solid #7295d6;
-    border-radius: 15px;
+    font-size: 12px;
+    margin: 10px 10px 1px 5px;
+    border:snow;
+    border-radius: 10px;
+}
+fieldset label {
+    text-align: left;
+    font-size: 12px;
+    margin: 5% 3% 1% 5% ;
+    border:white;
 }
 
-nav{
-	width: 40px;
-	height: 210px;
-	position: fixed;
-	right: 0;
-	top: 0;
-	bottom: 0;
-	margin: auto;
-	z-index: 100;
-}
-
-#loginBtn {
-    background-color: #7295d6;
+#joinBtn {
+    background-color: #c1dff0;
     color: white;
+    text-align: center;
     font-weight: 700;
-}
+    width: 100px; 
+    border: 2px solid #c1dff0;
+    border-radius: 10px;
     
-#joinBtn{
-	text-decoration: none;
-	border:0;
-	width:200px;
-	background-color: #white;
-    color: #7295d6;
-    font-weight: 500;
-    border-radius: 15px;
 }
+
+#goMain {
+
+	border: 1px solid #c1dff0;
+	background: #c1dff0;
+	color: white;
+
+}
+
+select {
+    -moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
+	width: 140px; height:25px;	
+	font-size: 12px;
+	padding: 1px 1px 1px 20%;
+	color: #a4a4a5;
+	border: 1px solid white;
+	border-radius: 10px;
+}
+
+p{ size: 10px;
+	margin: 1px 0px -15px 15px;}
+
+
+    
 </style>
 </head>
-
-
 <body>
-    <div id="wrap">
-    <% if(loginUser == null){ %>
-    
-    
-        <h1><a href="#"><span id="logo" style="color:#7099e6; font-size: 50px;">MyPT</span></a></h1>     
-	
-        <form id="loginForm" action="<%= request.getContextPath() %>/login.me" method="post" onsubmit="return validate();">
-            <div class="pig">
-                <div class="face"><img src="../images/pig_face.png" alt="얼굴"></div>
-                <div class="left"><img src="../images/pig_left.png" alt="왼팔"></div>
-                <div class="right"><img src="../images/pig_right.png" alt="오른팔"></div>
-            </div>
-    
-            <fieldset>
-                <input type="text" id="userId" maxlength="12" placeholder="아이디">
-                <input type="password" id="userPw" placeholder="비밀번호">
-                <input type="checkbox" id="idMemory" name="memoryId">
-                <label for="chk">아이디 기억하기</label>
-                <input type="submit" value="LOG_IN" id="loginBtn">
-            </fieldset>
-    
-            <input type="button" id="joinBtn" value="회원가입"> <br>
-            <a href="#">아이디 ? 비밀번호 찾기</a>
-    
-        </form>
-        <a href="#" style="color:gray";>비회원 둘러보기</a>
-        
-		<% } else{ %>	
-			
-			<div id="userInfo" align="right">
-			<br>
-				<label> Welcome !</label>
-			<br>
-			</div>
-		
-    </div>
-    <% } %>
-  
-	
-    
-    
-    
-	<br clear="all">
 
-<Script>
-		function validate(){
-			var id = $('#userId');
-			var pwd = $('#userPw');
+    <div id="wrap">
+        <h1><span style="color:snow; font-size: 50px;"> JOIN</span></a></h1>
+        <form action="<%= request.getContextPath()%>/insert.me" method="post" id="joinForm" name="joinForm" onsubmit="return validate();" >
+            <fieldset>
+                <label >ID </label>
+                	<input type="text" name="userId" id="userId" maxlength="12" placeholder="아이디 입력"><br>
+                <p id="message1"></p><br>
+                                
+                <label >PW</label>
+                <input type="password" name="userPwd" id="pw1" maxlength="15" placeholder="비밀번호 입력"><br>
+                
+                <label > PW</label>
+                <input type="password" name="userPwd2" id="pw2" maxlength="15" placeholder="비밀번호 확인"><br>
+                <p id="message2"></p><br>
+                
+                <label >NAME</label>
+                <input type="text" name="userName" id="userName" maxlength="12" placeholder="이름 입력"><br>
+                
+                <label >NICK</label>
+                <input type="text" name="nickName" id="nickName" maxlength="12" placeholder="닉네임 입력">
+                <p id="message3"></p><br>
+             
+                <label >AGE</label>
+                <input type="text" name="age" id="age" size="10px;" placeholder="나이 입력"><br><br>
+                 <p id="message4"></p><br>
+                
+                <label >GEN</label>
+                <select id="gender">
+                    <option disabled selected>성별</option>
+                    <option value="여" id="female">여자</option>
+                    <option value="남" id="male">남자</option>
+                </select><br>
+                
+                <label >PHONE</label>
+                <input type="text" name="phone" id="phone" placeholder="전화번호 입력(-제외)"><br>
+                
+                <label >EMAIL</label>
+                <input type="text" name="email" id="email" placeholder="이메일 입력 "><br>
+                
+                <label >ADDRESS</label>
+                <input type="text" name="address" placeholder="주소 입력 (선택사항)"><br>
+
+                <label>V 선호하는 식단 체크</label><br>
+	                <input type="checkbox" id="chk1" name="chkGroup">
+	                <label for="chk">샐러드</label>
+	                <input type="checkbox" id="chk2" name="chkGroup">
+	                <label for="chk">닭가슴살</label><br>
+	                <input type="checkbox" id="chk3" name="chkGroup">
+	                <label for="chk">단백질쉐이크</label>
+	                <input type="checkbox" id="chk4" name="chkGroup">
+	                <label for="chk">도시락</label>
+                <br>
+            </fieldset>
+            
+            <input type="submit"  value="JOIN" id="joinBtn">
+        </form>
+	        <input type="button" id="goMain" onclick="history.back();" value="로그인화면">
+        
+        
+    </div>
+
+
+	<script>
+	function validate(){
+		var Id = $('#userId');
+		var pwd = $('#pw2');
+		var name = $('#userName');
+		var nick = $('#nickName');
+		var phone = $('#phone');
+		var email = $('#email');
+		
+		if(Id.val().trim().length == 0){
+			alert("아이디를 입력하세요");
+			id.focus();
 			
-			if(id.val().trim().length == 0){
-				alert("아이디를 입력하세요");
-				id.focus();
-				
-				return false;
-			}
+			return false;
+		}
+	
+		if(pwd.val().trim().length == 0){
+			alert("비밀번호를 확인하세요");
+			pwd.focus();
 			
-			if(pwd.val().trim().length == 0){
-				alert("비밀번호를 입력하세요");
-				pwd.focus();
-				
-				return false;
-			}
+			return false;
+		}
+		if(name.val().trim().length == 0){
+			alert("이름을 입력하세요");
+			name.focus();
 			
-			return true;
+			return false;
+		}
+	
+		if(nick.val().trim().length == 0){
+			alert("닉네임을 입력하세요");
+			nick.focus();
+			
+			return false;
+		}
+		if(phone.val().trim().length == 0){
+			alert("전화번호를 입력하세요");
+			phone.focus();
+			
+			return false;
+		}
+	
+		if(email.val().trim().length == 0){
+			alert("이메일을 입력하세요");
+			email.focus();
+			
+			return false;
 		}
 		
-	$('#joinBtn').on('click',function(){
-		location.href="<%= request.getContextPath()%>/signUpForm.me";
-	});
+		alert("회원가입성공! 로그인해주세요.");
+		return true;
+	}
+	
+	
+		$('#userId').keyup(function(){
+			var Id = $('#userId').val();			
+			$.ajax({
+				type: 'post',
+				async:false, //비동기 default=false
+				url:'http://localhost:9801/checkId.me',
+				dataType:'text',
+				data:{"Id": Id},
+				success: function(result, textStatus){
+						console.log(" success result:"+result)
+					if(result === 'usable'){
+						$('#message1').text('Very Nice!');
+						$('#message1').css('color','skyblue');
+						
+					}else{
+						$('#message1').text('이미 사용중입니다.');
+						$('#message1').css('color','orangered');
+					}
+				},
+				error:function(data, textStatus){
+					console.log('error');
+				}
+			}); //ajax
+		});
 		
+		
+		$("#pw2").keyup(function(){
+			console.log($(this).val());
+			console.log("keyup test2..");
+			if($("#pw1").val() == $("#pw2").val()){
+				$("#message2").text("비밀번호가 정확합니다");
+				$('#message2').css('color','skyblue');
+			}else{
+				$('#message2').text("비밀번호가 일치하지않습니다");
+				$('#message2').css('color','orangered');
+			}
+		});
+		
+	</script>
+	
 
 
-
-     $('nav ul a').click(function (e) {
-    
-        //클릭했을때 일어나는 페이지의 위치전환을 막아줌 (a태그의 anchor point)
-        e.preventDefault();
-    
-        $('html, body').stop().animate({
-            'scrollTop': $(this.hash).offset().top
-        }, 1000, "easeOutQuad");
-    
-        $(this).addClass('active');
-        $('nav ul a').not(this).removeClass('active');
-    
-    });
-    
-    $(function () {   //애니메이션 move
-
-        var faceX;
-        var faceY;
-        var txtLength;
-    
-        function faceMove(txtLength) {
-    
-            faceX = 50 + txtLength * 2;
-            faceY = 90;
-    
-            $('.face').stop().animate({
-                'top': faceY,
-                'left': faceX
-            }, 150);
-    
-        }
-    
-        $('#userId').focus(function () {
-    
-            $('.pig').removeClass('on');
-    
-            faceMove(txtLength);
-    
-        });
-    
-        $('#userId').keydown(function () {
-    
-            txtLength = $(this).val().length;
-    
-            faceMove(txtLength);
-    
-        });
-    
-        $('#userPw').focus(function () {
-            faceX = 50;
-            faceY = 70;
-    
-            $('.face').stop().animate({
-                'top': faceY,
-                'left': faceX
-            }, 150);
-    
-            $('.pig').addClass('on')
-        });
-    
-        $('#userId, #userPw').blur(function () {
-            faceX = 50;
-            faceY = 70;
-    
-            $('.pig').removeClass('on');
-    
-            $('.face').stop().animate({
-                'top': faceY,
-                'left': faceX
-            }, 150);
-        });
-    
-    });
-    
-</Script>
 
 </body>
 </html>

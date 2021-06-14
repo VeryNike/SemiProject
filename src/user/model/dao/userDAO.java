@@ -63,8 +63,9 @@ public class userDAO {
 										rset.getString("F_FOOD"),
 										rset.getString("SORTATION"),
 										rset.getString("STATUS"));
-				System.out.println("DAOUser:"+loginUser);
+				
 			}
+			System.out.println("DAOUser:"+user.getUserId());
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -91,13 +92,13 @@ public class userDAO {
 			
 			pstmt.setString(1, user.getUserId());
 			pstmt.setString(2, user.getUserPwd());
-			pstmt.setString(3, user.getUserName());
-			pstmt.setString(4, user.getNickName());
-			pstmt.setInt(5, user.getAge());
-			pstmt.setString(6, user.getGender());
+			pstmt.setString(3, user.getGender());
+			pstmt.setInt(4, user.getAge());
+			pstmt.setString(5, user.getUserName());
+			pstmt.setString(6, user.getNickName());
+			pstmt.setString(7, user.getAddress());
+			pstmt.setString(8, user.getEmail());
 			pstmt.setString(9, user.getPhone());
-			pstmt.setString(7, user.getEmail());
-			pstmt.setString(8, user.getAddress());
 			pstmt.setString(10, user.getFfood());
 					
 			result = pstmt.executeUpdate();
@@ -109,6 +110,40 @@ public class userDAO {
 			
 		}
 				
+		return result;
+	}
+
+
+
+	public int IdCheck(Connection conn, String inputId) {
+
+		System.out.println("inputid:"+inputId);
+		
+		String query = prop.getProperty("checkId");
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, inputId);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				result = rs.getInt(1);
+			}
+
+			System.out.println("result:"+result);
+	
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			close(pstmt);
+			close(rs);
+		}
+		
 		return result;
 	}
 

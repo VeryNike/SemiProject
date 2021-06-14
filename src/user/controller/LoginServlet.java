@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import common.Common;
 import user.model.service.userService;
 import user.model.vo.User;
 
@@ -41,9 +42,9 @@ public class LoginServlet extends HttpServlet {
 		User user = new User(userId, userPwd);
 		
 		User loginUser = new userService().loginUser(user);
-		System.out.println("servletUser:"+loginUser);
 		
 		if(loginUser != null) {
+			System.out.println("로그인성공 !=null");
 			HttpSession session = request.getSession();
 			session.setAttribute("loginUser", loginUser);
 			session.setMaxInactiveInterval(1200); 
@@ -51,8 +52,9 @@ public class LoginServlet extends HttpServlet {
 			response.sendRedirect("myCalendar.me");
 			
 		} else {
+			System.out.println("user:"+user.toString());
 			request.setAttribute("msg","로그인실패");
-			RequestDispatcher view = request.getRequestDispatcher("WEB-INF/view/common/errorPage.jsp");
+			RequestDispatcher view = request.getRequestDispatcher(Common.ERR_URL);
 			view.forward(request, response);
 			
 		}

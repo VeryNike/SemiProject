@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import common.Common;
 import user.model.service.userService;
 import user.model.vo.User;
-import user.model.service.userService;
 
 /**
  * Servlet implementation class JoinInsertServlet
@@ -34,8 +34,8 @@ public class JoinInsertServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		
-		String userId = request.getParameter("joinUserId");
-		String userPwd = request.getParameter("joinUserPwd");
+		String userId = request.getParameter("userId");
+		String userPwd = request.getParameter("userPwd");
 		String userName = request.getParameter("userName");
 		String nickName = request.getParameter("nickName");
 		String ages = request.getParameter("age");
@@ -44,6 +44,7 @@ public class JoinInsertServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String address = request.getParameter("address");
 		String frr[] = request.getParameterValues("ffood");
+		
 		String ffood= "";
 		
 		if(frr != null) {
@@ -59,13 +60,18 @@ public class JoinInsertServlet extends HttpServlet {
 		
 		User user = new User(userId, userPwd, userName, nickName, age, gender, phone, email, address, ffood);
 		
+		System.out.println("user:"+user);
+		
 		int result = new userService().insertUser(user);
 		
 		if(result>0) {
+
 			response.sendRedirect(request.getContextPath());
+			
+			
 		} else {
 			request.setAttribute("msg", "회원가입 실패");
-			RequestDispatcher view = request.getRequestDispatcher("WEB-INF/view/common/errorPage.jsp");
+			RequestDispatcher view = request.getRequestDispatcher(Common.ERR_URL);
 			view.forward(request,response);
 		}
 		

@@ -30,9 +30,15 @@ public class userService {
 		}else {
 			rollback(conn);
 		}
-		return 0;
+		return result;
 	}
 
-
+	public int IdCheck(String inputId) {
+		Connection conn = getConnection();
+		
+		int result = new userDAO().IdCheck(conn,inputId);
+		
+		return result;
+	}
 
 }
