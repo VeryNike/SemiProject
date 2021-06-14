@@ -1,10 +1,8 @@
 # 폴더 업로드
-  - src > board, common, user, query 생성
-  - WebContent > WEB-INF > view > common, user 생성 
-
+  -
 
 # src > user > controller
-- login.me) 로그인 성공시 -> calendar 로 임시 연결
+- login.me) 로그인 성공시 -> Home.jsp(calendar)로 연결
 - insert.me) 회원가입 성공시 -> 로그인 화면으로 연결
 
 
