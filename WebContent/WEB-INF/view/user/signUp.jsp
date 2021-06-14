@@ -123,7 +123,7 @@ p{ size: 10px;
                  <p id="message4"></p><br>
                 
                 <label >GEN</label>
-                <select id="gender">
+                <select id="gender" name="gender">
                     <option disabled selected>성별</option>
                     <option value="여" id="female">여자</option>
                     <option value="남" id="male">남자</option>
@@ -139,14 +139,14 @@ p{ size: 10px;
                 <input type="text" name="address" placeholder="주소 입력 (선택사항)"><br>
 
                 <label>V 선호하는 식단 체크</label><br>
-	                <input type="checkbox" id="chk1" name="chkGroup">
-	                <label for="chk">샐러드</label>
-	                <input type="checkbox" id="chk2" name="chkGroup">
-	                <label for="chk">닭가슴살</label><br>
-	                <input type="checkbox" id="chk3" name="chkGroup">
-	                <label for="chk">단백질쉐이크</label>
-	                <input type="checkbox" id="chk4" name="chkGroup">
-	                <label for="chk">도시락</label>
+	                <input type="checkbox" id="sal" name="ffood" value="샐러드">
+	                <label for="sal">샐러드</label>              
+	                <input type="checkbox" id="chiken" name="ffood" value="닭가슴살">
+	                <label for="chiken">닭가슴살</label><br>      
+	                <input type="checkbox" id="shake" name="ffood"  value="단백질쉐이크">
+	                <label for="shake">단백질쉐이크</label>         
+	                <input type="checkbox" id="dosirak" name="ffood" value="도시락" >
+	                <label for="dosirak">도시락</label>
                 <br>
             </fieldset>
             
