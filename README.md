@@ -1,8 +1,16 @@
 # 폴더 업로드
   - src > board, common, user, query 생성
   - WebContent > WEB-INF > view > common, user 생성 
-  - 회원가입폼 - ID중복체크, PWD비밀번호일치, NOT NULL 항목 미입력시 유효성검사 구현
-  - 회원가입 완료-> 로그인 화면으로 연결
+
+
+# src > user > controller
+- login.me) 로그인 성공시 -> calendar 로 임시 연결
+- insert.me) 회원가입 성공시 -> 로그인 화면으로 연결
+
+
+# WEB-INF > view > user
+- signUp : 회원가입폼 - ID중복체크, PWD비밀번호일치, NOT NULL 항목 미입력시 유효성검사 구현
+
 
 # index.jsp
   - UTF-8 인코딩 코드 최상단 추가 완료
