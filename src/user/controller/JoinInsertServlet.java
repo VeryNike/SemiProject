@@ -70,7 +70,7 @@ public class JoinInsertServlet extends HttpServlet {
 			
 			
 		} else {
-			request.setAttribute("msg", "íšŒì›ê°€ì… ì‹¤íŒ¨");
+			request.setAttribute("msg", "È¸¿ø°¡ÀÔ¿¡ ½ÇÆĞÇÏ¿´½À´Ï´Ù.");
 			RequestDispatcher view = request.getRequestDispatcher(Common.ERR_URL);
 			view.forward(request,response);
 		}
