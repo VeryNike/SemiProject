@@ -28,7 +28,7 @@ public class SignUpFormServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher view = request.getRequestDispatcher("WEB-INF/views/user/signUp.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("WEB-INF/view/user/signUp.jsp");
 		view.forward(request, response);
 		
 	}
