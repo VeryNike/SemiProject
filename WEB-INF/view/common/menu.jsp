@@ -40,25 +40,24 @@
 <body>
 	<!-- Top Bar Start -->
 	<div class="top-bar d-none d-md-block">
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-md-8">
-					<div class="top-bar-left">
-						<div class="text">
-							<i class="far fa-user-circle"></i>
-							<h2><%=loginUser.getUserName()%>님 환영합니다
-							</h2>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="top-bar-left">
+                        <% if(loginUser != null){ %>	
+                        <div class="text">
+                            <i class="far fa-user-circle"></i>
+                            <h2><%= loginUser.getUserName() %>님의 <a href="myPage.me"> My page</a></h2>
 							<p></p>
-						</div>
-						<div class="text">
-
-							<h2 id="logout">
-								<i class="fa fa-sign-out-alt">logout</i>
-							</h2>
-							<p></p>
-						</div>
-					</div>
-				</div>
+                        </div>
+                        <div class="text">
+                            <i class="fa fa-sign-out-alt"></i>
+                            <h2><a href=" # ">logout</a></h2>
+                            <p></p>
+                        </div>
+                        <% } %>
+                    </div>
+                </div>
 				<div class="col-md-4">
 					<div class="top-bar-right">
 						<div class="social">
@@ -87,9 +86,9 @@
 			<div class="collapse navbar-collapse justify-content-between"
 				id="navbarCollapse">
 				<div class="navbar-nav ml-auto">
-					<div class="nav-item nav-link menus" onclick="location.href='location.href='<%= request.getContextPath() %>/myCalendar.me'">Home</div>
+					<div class="nav-item nav-link menus" onclick="location.href='<%= request.getContextPath() %>/home.me'">Home</div>
 					<div class="nav-item nav-link menus">Shopping</div>
-					<div class="nav-item nav-link menus">Diet</div>
+					<div class="nav-item nav-link menus" onclick="location.href='<%= request.getContextPath() %>/Diet.me'">Diet</div>
 
 					<div class="nav-item dropdown menus">
 						<a href="#" class="nav-link dropdown-toggle"

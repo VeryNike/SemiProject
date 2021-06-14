@@ -49,7 +49,7 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("loginUser", loginUser);
 			session.setMaxInactiveInterval(1200); 
 			
-			response.sendRedirect("myCalendar.me");
+			response.sendRedirect("home.jsp");
 			
 		} else {
 			System.out.println("user:"+user.toString());

@@ -30,22 +30,24 @@
 </head>
 
 <body>
-    <!-- Top Bar Start -->
-    <div class="top-bar d-none d-md-block">
+    	<!-- Top Bar Start -->
+	<div class="top-bar d-none d-md-block">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-8">
                     <div class="top-bar-left">
+                        <% if(loginUser != null){ %>	
                         <div class="text">
                             <i class="far fa-user-circle"></i>
-                            <h2>~님 환영합니다</h2>
-                            <p></p>
+                            <h2><%= loginUser.getUserName() %>님의 <a href="myPage.me"> My page</a></h2>
+							<p></p>
                         </div>
                         <div class="text">
                             <i class="fa fa-sign-out-alt"></i>
-                            <h2>logout</h2>
+                            <h2><a href=" # ">logout</a></h2>
                             <p></p>
                         </div>
+                        <% } %>
                     </div>
                 </div>
                 <div class="col-md-4">

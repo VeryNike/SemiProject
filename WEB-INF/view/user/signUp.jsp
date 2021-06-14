@@ -97,7 +97,7 @@ p{ size: 10px;
 <body>
 
     <div id="wrap">
-        <h1><span style="color:snow; font-size: 50px;"> JOIN</span></h1>
+        <h1><span style="color:snow; font-size: 50px;"> JOIN</span></a></h1>
         <form action="<%= request.getContextPath()%>/insert.me" method="post" id="joinForm" name="joinForm" onsubmit="return validate();" >
             <fieldset>
                 <label >ID </label>
@@ -147,6 +147,7 @@ p{ size: 10px;
 	                <label for="shake">단백질쉐이크</label>         
 	                <input type="checkbox" id="dosirak" name="ffood" value="도시락" >
 	                <label for="dosirak">도시락</label>
+	               
                 <br>
             </fieldset>
             
@@ -212,7 +213,7 @@ p{ size: 10px;
 	}
 	
 	
-		$('#userId').keyup(function(){
+		$('#userId').blur(function(){
 			var Id = $('#userId').val();			
 			$.ajax({
 				type: 'post',
@@ -231,7 +232,7 @@ p{ size: 10px;
 						$('#message1').css('color','orangered');
 					}
 				},
-				error:function(data, textStatus){
+				error:function(result, textStatus){
 					console.log('error');
 				}
 			}); //ajax
