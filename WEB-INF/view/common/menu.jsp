@@ -87,7 +87,8 @@
 				id="navbarCollapse">
 				<div class="navbar-nav ml-auto">
 					<div class="nav-item nav-link menus" onclick="location.href='<%= request.getContextPath() %>/home.me'">Home</div>
-					<div class="nav-item nav-link menus">Shopping</div>
+					<a href = "<%=request.getContextPath() %>/shopping.me"><div class="nav-item nav-link menus">Shopping</div></a>
+					<!-- onclick 미작동으로 인해 a href 태그 사용 -->
 					<div class="nav-item nav-link menus" onclick="location.href='<%= request.getContextPath() %>/Diet.me'">Diet</div>
 
 					<div class="nav-item dropdown menus">
