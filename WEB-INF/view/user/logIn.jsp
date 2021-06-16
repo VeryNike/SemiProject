@@ -187,20 +187,7 @@ nav{
 		
 		return true;
 	};
-	
-/*      $('nav ul a').click(function (e) {
-    
-        //클릭했을때 일어나는 페이지의 위치전환을 막아줌 (a태그의 anchor point)
-        e.preventDefault();
-    
-        $('html, body').stop().animate({
-            'scrollTop': $(this.hash).offset().top
-        }, 1000, "easeOutQuad");
-    
-        $(this).addClass('active');
-        $('nav ul a').not(this).removeClass('active');
-    
- 		}); */
+
     
     $(function () {   //애니메이션 move
 
