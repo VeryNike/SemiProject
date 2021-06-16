@@ -147,13 +147,12 @@ nav{
             <fieldset>
                 <input type="text" name="userId" id="userId" maxlength="12" placeholder="아이디">
                 <input type="password" name="userPwd" id="userPwd" placeholder="비밀번호">
-                <input type="checkbox" id="idMemory" name="memoryId">
-                <label for="chk">아이디 기억하기</label>
+
                 <input type="submit" value="LOG_IN" id="loginBtn">
             </fieldset>
     
             <input type="button" id="joinBtn" value="회원가입"> <br>
-            <a href="#">아이디 ? 비밀번호 찾기</a>
+
     
         </form>
         <a href="#" style="color:gray">비회원 둘러보기</a>   
@@ -168,6 +167,27 @@ nav{
 	});
 		
 
+	function validate(){
+		var Id = $('#userId').val();
+		var pwd = $('#userPwd').val();
+		
+		if(Id.val().trim().length() == 0){
+			alert("아이디를 입력하세요");
+			id.focus();
+			
+			return false;
+		}
+		
+		if(pwd.val().trim().length() == 0){
+			alert("비밀번호를 확인하세요");
+			pwd.focus();
+			
+			return false;
+		}
+		
+		return true;
+	};
+	
 /*      $('nav ul a').click(function (e) {
     
         //클릭했을때 일어나는 페이지의 위치전환을 막아줌 (a태그의 anchor point)
@@ -178,9 +198,9 @@ nav{
         }, 1000, "easeOutQuad");
     
         $(this).addClass('active');
-        $('nav ul a').not(this).removeClass('active'); */
+        $('nav ul a').not(this).removeClass('active');
     
-  /*   }); */
+ 		}); */
     
     $(function () {   //애니메이션 move
 
@@ -243,26 +263,7 @@ nav{
     });
   
   
-	$(function validate(){
-		var Id = $('#userId');
-		var pwd = $('#userPwd');
-		
-		if(Id.val().trim().length() == 0){
-			alert("아이디를 입력하세요");
-			id.focus();
-			
-			return false;
-		}
-		
-		if(pwd.val().trim().length() == 0){
-			alert("비밀번호를 확인하세요");
-			pwd.focus();
-			
-			return false;
-		}
-		
-		return true;
-	});
+	
     
 </Script>
 
