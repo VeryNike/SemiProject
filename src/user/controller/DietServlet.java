@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/diet.me")
-public class CalendarServlet extends HttpServlet {
+public class DietServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public CalendarServlet() {
+	public DietServlet() {
 		super();
 
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("WEB-INF/view/home/home.jsp").forward(request, response);
+		request.getRequestDispatcher("WEB-INF/view/Diet/diet.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
