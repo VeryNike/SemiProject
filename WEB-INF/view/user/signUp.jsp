@@ -214,16 +214,17 @@ p{ size: 10px;
 	
 	
 		$('#userId').blur(function(){
-			var Id = $('#userId').val();			
+			var Id = $('#userId').val();	
+
 			$.ajax({
 				type: 'post',
-				async:false, //비동기 default=false
-				url:'http://localhost:9801/checkId.me',
+				async:false,
+				url: '<%= request.getContextPath()%>/checkId.me',
 				dataType:'text',
 				data:{"Id": Id},
 				success: function(result, textStatus){
 						console.log(" success result:"+result)
-					if(result === 'usable'){
+					if(result == 'usable'){
 						$('#message1').text('Very Nice!');
 						$('#message1').css('color','skyblue');
 						

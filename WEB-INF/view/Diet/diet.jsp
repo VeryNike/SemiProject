@@ -1,18 +1,59 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
 
-<link href="css/style_home.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<script src="lib/jquery-3.6.0.min.js"></script>
+
+<title>Diet</title>
+<Style>
+
+#date{
+   width:200px;
+}
+#imgbox{
+   width:300px; height:100px;
+}
+#selectD{
+   width:200px;
+}
+#tBox{
+   resize:none;
+   width: 200px;
+   height:200px;
+}
+
+
+#saveBtn{
+    background-color: #c1dff0;
+    color: white;
+    text-align: center;
+    font-weight: 700;
+    width: 200px; 
+    border: 2px solid #c1dff0;
+    border-radius: 10px;
+}
+#dTable{
+   width: 250px;
+   height:350px;
+   border:1px solid grey;
+}
+td{border-bottom: 1px solid grey;}
+
+#dList{
+   display: none;
+}    
+</Style>
+
 <script src="lib/jquery-3.6.0.min.js"></script>
 
 </head>
 <body>
 
-	<%@ include file="../common/menu.jsp"%>
+   <%@ include file="../common/menu.jsp"%>
 
        <!-- Service Start -->
        <div class="service">
@@ -27,28 +68,23 @@
                         <div class="service-icon">
                             <i class="flaticon-workout"></i>
                         </div>
-                        <h3>추천 식단</h3>
-                        <p>
-                            Season Menu Update! <br> 단백질, 탄수화물, 비타민 등의  밸런스를 고려해 추천드립니다.<br> 즐겨찾는 식단은 ▶을 클릭해서 넣어보세요.
-                        </p><br>
+                        <h3>추천 메뉴</h3>
+                        <p> Season Menu Updated! </p><br>
                         <div>
-                            <label style="color:#c1dff0">근육 탄탄한 몸매를 위해</label><br>
-                                <input type="text" class="tBox" value=" 닭가슴살"><button class="checkBtn">▶</button><br>
-                                <input type="text" class="tBox" value=" 소세지"><button class="checkBtn">▶</button><br>
-                                <input type="text" class="tBox" value=" 삶은 달걀"><button class="checkBtn">▶</button><br>
-                                <input type="text" class="tBox" value=" 단백질 쉐이크"><button class="checkBtn">▶</button><br><br>                        
-                              
-                            <label style="color:#c1dff0">통통 튀는 활력을 위해</label><br>
-                                <input type="text" class="tBox" value=" 시리얼 & 우유"><button class="checkBtn">▶</button><br>
-                                <input type="text" class="tBox" value=" 통곡물 식빵"><button class="checkBtn">▶</button><br>
-                                <input type="text" class="tBox" value=" 현미밥"><button class="checkBtn">▶</button><br>
-                                <input type="text" class="tBox" value=" 두부 스테이크"><button class="checkBtn">▶</button><br><br>
-                   
-                            <label style="color:#c1dff0">시원한 장운동을 위해</label><br>
-                                <input type="text" class="tBox" value=" 고구마"><button class="checkBtn">▶</button><br>
-                                <input type="text" class="tBox" value=" 쌈채소"><button class="checkBtn">▶</button><br>
-                                <input type="text" class="tBox" value=" 바나나"><button class="checkBtn">▶</button><br>
-                                <input type="text" class="tBox" value=" 플레인 요거트"><button class="checkBtn">▶</button><br><br>
+                            <label style="color:#c1dff0">든든하게 먹고 싶을 때</label><br>
+                                <img id="imgbox" src="<%= request.getContextPath() %>/images/s1.png"><br>          
+                                <img id="imgbox" src="<%= request.getContextPath() %>/images/s2.png"><br>          
+                                <img id="imgbox" src="<%= request.getContextPath() %>/images/s3.png"><br><br>          
+                                                                                         
+                            <label style="color:#c1dff0">하드하게 관리할 때</label><br>  
+                                <img id="imgbox" src="<%= request.getContextPath() %>/images/h1.png"><br>          
+                                <img id="imgbox" src="<%= request.getContextPath() %>/images/h2.png"><br>          
+                                <img id="imgbox" src="<%= request.getContextPath() %>/images/h3.png"><br><br>        
+                                                                                          
+                            <label style="color:#c1dff0"> 출출할 때</label><br>       
+                                <img id="imgbox" src="<%= request.getContextPath() %>/images/d1.png"><br>          
+                                <img id="imgbox" src="<%= request.getContextPath() %>/images/d2.png"><br>          
+                                <img id="imgbox" src="<%= request.getContextPath() %>/images/d3.png"><br>        
                 
 
 
@@ -59,86 +95,82 @@
                     <div class="service-item active">
                         <div class="service-icon">
                             <i class="flaticon-workout-1"></i>
-                        </div>
-                        <h3><span id="date">(Date)2021/05/27</span></h3>
+                        </div><br>
+                        
+                        <form>
                         <div>
-                            <label style="color:#c1dff0">BreakFast</label><br>
-                                <input  type="checkbox"><input type="text" class="tBox"><br>
-                                <input type="checkbox"><input type="text" class="tBox"><br>
-                                <input type="checkbox"><input type="text" class="tBox"><br>
-                                image upload &nbsp;<input class="fileBtn" type="file"><br><br>
-                              
-                            <label style="color:#c1dff0">Lunch</label><br>
-                                <input type="checkbox"><input type="text" class="tBox"><br>
-                                <input type="checkbox"><input type="text" class="tBox"><br>
-                                <input type="checkbox"><input type="text" class="tBox"><br>
-                                image upload &nbsp;<input class="fileBtn" type="file"><br><br>
+                         <label style="color:#c1dff0">날짜 선택</label><br>
+                         <input type="date" id="date"><br><br>
+                            <label style="color:#c1dff0">추천메뉴에서 고르기</label><br>
+                                <select id="selectD" name="selectD" >
+                                   <option selected> - - </option>
+                                   <option value="s1">든든 메뉴1</option>
+                                   <option value="s2">든든 메뉴2</option>
+                                   <option value="s3">든든 메뉴3</option>
+                                   <option value="h1">하드 메뉴1</option>
+                                   <option value="h2">하드 메뉴2</option>
+                                   <option value="h3">하드 메뉴3</option>
+                                   <option value="d1">간식 메뉴1</option>
+                                   <option value="d2">간식 메뉴2</option>
+                                   <option value="d3">간식 메뉴3</option>
+                                </select><br><br>
+                                
+                            <label style="color:#c1dff0">직접 기록하기</label><br>
+                                <textarea id="tBox" name="tBox"></textarea><br><br>
 
-                            <label style="color:#c1dff0">Dinner</label><br>
-                                <input type="checkbox"><input type="text" class="tBox"><br>
-                                <input type="checkbox"><input type="text" class="tBox"><br>
-                                <input type="checkbox"><input type="text" class="tBox"><br>
-                                image upload &nbsp;<input class="fileBtn" type="file"><br><br>
-                                <textarea id="fBox">self feedback</textarea><br>
-                                <input id="saveBtn" type="submit" value="Save">
-
+                            <label style="color:#c1dff0">사진 기록하기</label><br>
+                                <input id="fileBtn" type="file"><br><br>
+                               
+                                <input type="button" id="saveBtn" name="save" value="Save">
                         </div>
+                        </form>
                         
                     </div>
                 </div>
+                
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
                     <div class="service-item">
                         <div class="service-icon">
                             <i class="flaticon-workout-2"></i>
                         </div>
-                        <h3>일별 기록</h3>
-                        < 달력 >
-                        
-                        <p>
-                           <label>아침</label><br>
-                           a / b / c <br>
-                           <div class="imageUp"></div>
-                           <label>점심</label><br>
-                           a / b / c <br>
-                           <div class="imageUp"></div>
-                           <label>저녁</label><br>
-                           a / b / c <br>
-                           <div class="imageUp"></div>
-                           comment: 오늘 아침은 80% 허기가 채워짐. 점심은 배고파서 더먹음. 저녁은 외식.
+                        <label style="color:#c1dff0">날짜별 기록</label><br>
+
+                        <table id="dTable">
+                           <tr>
+                              <td>2021/06/10</td>
+                              <div id="dList">
+                              숨겨져있다가 내용으로 나올부분                              
+                              </div>
+                           </tr>
                            
-                        </p>
+                           <tr>
+                              <td>2021/06/11</td>
+                           </tr>
+                           <tr>
+                              <td>2021/06/12</td>
+                           </tr>
+                           <tr>
+                              <td>2021/06/13</td>
+                           </tr>
+                           <tr>
+                              <td>2021/06/14</td>
+                           </tr>
+                           <tr>
+                              <td>2021/06/15</td>
+                           </tr>
+                        </table>
+                        
+
                     </div>
                 </div>
-              
+                
             </div>
         </div>
     </div>
-
-
-    <!-- <Script>
-        function todayIs(){
-            var today = new Date();
-            var dd = today.getDate();
-            var mm = today.getMonth()+1;
-            var yy= today.getFullYear();
-
-            if(dd<10){
-                dd ="0"+dd;
-            }
-            if(mm<10){
-                mm="0"+mm;
-            }
-            today = yy+"년" +mm+"월"+dd+"일";
-            alert(today);
-            document.getElementById("date").innerHTML=today;
-            // $('#date').text(today);
-        }
-    </Script> -->
     <!-- Service End -->
-	
+   
 
-	<%@ include file="../common/footer.jsp"%>
-	<script src="js/script_home.js"></script>
+   <%@ include file="../common/footer.jsp"%>
 
 </body>
 

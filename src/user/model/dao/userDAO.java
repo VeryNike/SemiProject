@@ -147,4 +147,43 @@ public class userDAO {
 		return result;
 	}
 
+public User selectUser(Connection conn, String userId) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		User user = null;
+				
+		String query = prop.getProperty("myPage");
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, userId);
+			rs = pstmt.executeQuery();		
+			
+			if(rs.next()) {
+				user = new User(rs.getString("ID"),
+								rs.getString("PASSWORD"),
+								rs.getString("GENDER"),
+								rs.getInt("AGE"),
+								rs.getString("NAME"),
+								rs.getString("NICK_NAME"),
+								rs.getString("ADDRESS"),
+								rs.getString("EMAIL"),
+								rs.getString("PHONE"),
+								rs.getString("M_RATING"),
+								rs.getString("F_FOOD"),
+								rs.getString("SORTATION"),
+								rs.getString("STATUS"));
+							
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}	
+		return user;
+	}
+
+
+
+
 }

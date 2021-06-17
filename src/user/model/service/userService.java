@@ -41,4 +41,13 @@ public class userService {
 		return result;
 	}
 
+	
+	public User selectUser(String userId) {
+		Connection conn =getConnection();
+		User user = new userDAO().selectUser(conn,userId);
+		close(conn);
+		
+		return user;
+	}
+
 }
