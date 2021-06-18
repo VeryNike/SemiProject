@@ -3,11 +3,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+	<meta charset="UTF-8">
+	<link href="css/style.css" rel="stylesheet">
+	<script src="lib/jquery-3.6.0.min.js"></script>
+ 	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="Free Website Template" name="keywords">
+        <meta content="Free Website Template" name="description">
 
-<link href="css/style.css" rel="stylesheet">
-<script src="lib/jquery-3.6.0.min.js"></script>
+        <!-- Favicon -->
+        <link href="img/favicon.ico" rel="icon">
 
+        <!-- Google Font -->
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+        <!-- CSS Libraries -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+        <link href="lib/animate/animate.min.css" rel="stylesheet">
+        <link href="lib/flaticon/font/flaticon.css" rel="stylesheet"> 
+        <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+        <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+        <!-- Template Stylesheet -->
+        <link href="css/style.css" rel="stylesheet">
+        
 <title>Diet</title>
 <Style>
 
@@ -72,19 +90,19 @@ td{border-bottom: 1px solid grey;}
                         <p> Season Menu Updated! </p><br>
                         <div>
                             <label style="color:#c1dff0">든든하게 먹고 싶을 때</label><br>
-                                <img id="imgbox" src="<%= request.getContextPath() %>/images/s1.png"><br>          
-                                <img id="imgbox" src="<%= request.getContextPath() %>/images/s2.png"><br>          
-                                <img id="imgbox" src="<%= request.getContextPath() %>/images/s3.png"><br><br>          
-                                                                                         
-                            <label style="color:#c1dff0">하드하게 관리할 때</label><br>  
-                                <img id="imgbox" src="<%= request.getContextPath() %>/images/h1.png"><br>          
-                                <img id="imgbox" src="<%= request.getContextPath() %>/images/h2.png"><br>          
-                                <img id="imgbox" src="<%= request.getContextPath() %>/images/h3.png"><br><br>        
-                                                                                          
-                            <label style="color:#c1dff0"> 출출할 때</label><br>       
-                                <img id="imgbox" src="<%= request.getContextPath() %>/images/d1.png"><br>          
-                                <img id="imgbox" src="<%= request.getContextPath() %>/images/d2.png"><br>          
-                                <img id="imgbox" src="<%= request.getContextPath() %>/images/d3.png"><br>        
+                                <img id="imgbox" src="<%= request.getContextPath() %>/images/diet/s1.png"><br>          
+                                <img id="imgbox" src="<%= request.getContextPath() %>/images/diet/s2.png"><br>          
+                                <img id="imgbox" src="<%= request.getContextPath() %>/images/diet/s3.png"><br><br>          
+                                                                                            
+                            <label style="color:#c1dff0">하드하게 관리할 때</label><br>     
+                                <img id="imgbox" src="<%= request.getContextPath() %>/images/diet/h1.png"><br>          
+                                <img id="imgbox" src="<%= request.getContextPath() %>/images/diet/h2.png"><br>          
+                                <img id="imgbox" src="<%= request.getContextPath() %>/images/diet/h3.png"><br><br>        
+                                                                                            
+                            <label style="color:#c1dff0"> 출출할 때</label><br>             
+                                <img id="imgbox" src="<%= request.getContextPath() %>/images/diet/d1.png"><br>          
+                                <img id="imgbox" src="<%= request.getContextPath() %>/images/diet/d2.png"><br>          
+                                <img id="imgbox" src="<%= request.getContextPath() %>/images/diet/d3.png"><br>        
                 
 
 
@@ -139,7 +157,7 @@ td{border-bottom: 1px solid grey;}
                            <tr>
                               <td>2021/06/10</td>
                               <div id="dList">
-                              숨겨져있다가 내용으로 나올부분                              
+                            	  숨겨져있다가 내용으로 나올부분                              
                               </div>
                            </tr>
                            
