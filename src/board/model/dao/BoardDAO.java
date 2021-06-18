@@ -1,66 +1,72 @@
 package board.model.dao;
 
-import static common.JDBCTemplate.close;
-
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.Properties;
-
-import board.model.vo.Board;
-import board.model.vo.PageInfo;
 
 public class BoardDAO {
-	
-	private Properties prop = new Properties(); 
-	
+	private Connection conn;
+	private ResultSet rset;
 	
 	public BoardDAO() {
-		String fileName = BoardDAO.class.getResource("/sql/board/board-query.properties").getPath();
 		try {
-			prop.load(new FileReader(fileName));
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
+			String dbURL = "jdbc:oracle:thin:@localhost:1521:xe";
+			String dbID = "SEMI";
+			String dbPassword = "SEMI";
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-
-
-	public int getListCount(Connection conn) {
-		Statement stmt = null;
-		ResultSet rset = null;
-		int result = 0;
-		
-		String query = prop.getProperty("listCount");
+	
+	// 현재 시간을 가져오는 함수, 게시판의 글을 작성할 때 현재 서버의 시간을 넣어주는 역할
+	public String getDate() {
+		String SQL = "SELECT NOW()";
 		try {
-			stmt = conn.createStatement();
-			rset = stmt.executeQuery(query);
-			if(rset.next()) {
-				result = rset.getInt(1);
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			rset = pstmt.executeQuery();
+			if (rset.next()) {
+				return rset.getString(1);
 			}
-		} catch (SQLException e) {
-			
+		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
-			close(stmt);
-			close(rset);
 		}
-		
-		return result;
+		return ""; // 데이터베이스 오류
 	}
-
-
-	public ArrayList<Board> slectList(Connection conn, PageInfo pi) {
-		
-		return null;
+	
+	// 게시글 번호는 하나씩 늘어나므로 마지막에 쓰인 글을 가져와서 +1을 하면 다음 번호가 된다 
+	public int getNext() {
+		String SQL = "SELECT ID FROM BOARD1 ORDER BY ID DESC";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			rset = pstmt.executeQuery();
+			if (rset.next()) {
+				return rset.getInt(1) + 1;
+			}
+			return 1; // 첫 번째 게시물인 경우
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1; // 데이터베이스 오류
 	}
-
 	
-	
+	// 실제로 글을 작성하는 함수
+	public int write(String postTitle, String iD, String postContent) {
+		String SQL = "INSERT INTO BOARD1 VALUES (?, ?, ?, ?, ?, ?)";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, getNext());
+			pstmt.setString(2, postTitle);
+			pstmt.setString(3, iD);
+			pstmt.setString(4, getDate());
+			pstmt.setString(5, postContent);
+			pstmt.setInt(6, 1);
+			return pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1; // 데이터베이스 오류
+	}
 }
