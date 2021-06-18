@@ -2317,6 +2317,7 @@ a:focus {
   height: 200px;
   border: solid;
   border-color: whitesmoke;
+  text-align:center;
 }
 @media only screen and (min-width: 1024px) {
   .product-content div[class*="col-md-4"] {
