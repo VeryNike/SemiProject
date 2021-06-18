@@ -688,6 +688,8 @@ a:focus {
 
 .class .class-img {
   position: relative;
+  width: 400px;
+  height: 500px;
 }
 
 .class .class-img img {
