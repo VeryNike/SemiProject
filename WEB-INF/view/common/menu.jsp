@@ -35,6 +35,7 @@
 
 <!-- Template Stylesheet -->
 <link href="css/style.css" rel="stylesheet">
+<link href="css/style_home.css" rel="stylesheet">
 </head>
 
 <body>
@@ -45,15 +46,16 @@
 				<div class="col-md-8">
 					<div class="top-bar-left">
 						<div class="text">
-							<i class="far fa-user-circle"></i>
-							<h2><%=loginUser.getUserName()%>님 환영합니다
+							<h2 id="mypage">
+								<i class="far fa-user-circle"></i>
+								<%=loginUser.getUserName()%>님의 My page
 							</h2>
 							<p></p>
 						</div>
 						<div class="text">
 
 							<h2 id="logout">
-								<i class="fa fa-sign-out-alt">logout</i>
+								<i class="fa fa-sign-out-alt"></i> logout
 							</h2>
 							<p></p>
 						</div>
@@ -77,8 +79,9 @@
 	<!-- Nav Bar Start -->
 	<div class="navbar navbar-expand-lg bg-dark navbar-dark">
 		<div class="container-fluid">
-			<a href="<%=request.getContextPath()%>" class="navbar-brand"><img
-				src="img/logo.png"></a>
+			<a href="<%=request.getContextPath()%>/myCalendar.me"
+				class="navbar-brand"> <img src="images/logo.png">
+			</a>
 			<button type="button" class="navbar-toggler" data-toggle="collapse"
 				data-target="#navbarCollapse">
 				<span class="navbar-toggler-icon"></span>
@@ -87,11 +90,11 @@
 			<div class="collapse navbar-collapse justify-content-between"
 				id="navbarCollapse">
 				<div class="navbar-nav ml-auto">
-					<a href="index.html" class="nav-item nav-link">Home</a> <a
-						href="portfolio.html" class="nav-item nav-link">Shopping</a> <a
-						href="service.html" class="nav-item nav-link">Diet</a>
+					<div id="home" class="nav-item nav-link menus">Home</div>
+					<div id="diet" class="nav-item nav-link menus">Diet</div>
+					<div id="shopping" class="nav-item nav-link menus">Shopping</div>
 
-					<div class="nav-item dropdown">
+					<div class="nav-item dropdown menus">
 						<a href="#" class="nav-link dropdown-toggle"
 							data-toggle="dropdown">Board</a>
 						<div class="dropdown-menu">
@@ -99,26 +102,18 @@
 								href="single.html" class="dropdown-item">Board2</a>
 						</div>
 					</div>
-					<a href="team.html" class="nav-item nav-link">Trainer</a> <a
-						href="about.html" class="nav-item nav-link active">About Us</a>
+					<div class="nav-item nav-link menus">Team</div>
+					<div class="nav-item nav-link menus">About Us</div>
 				</div>
 			</div>
 		</div>
 	</div>
 	<!-- Nav Bar End -->
-	<script>
-	$('#logout').on('click', function(){
-		console.log('sdf');
-		location.href = "<%=request.getContextPath()%>/logout.me";
-		});
-	</script>
 
 
 
 
-
-	<!-- JavaScript Libraries -->
-	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
 	<script src="lib/easing/easing.min.js"></script>
@@ -127,12 +122,38 @@
 	<script src="lib/isotope/isotope.pkgd.min.js"></script>
 	<script src="lib/lightbox/js/lightbox.min.js"></script>
 
-	<!-- Contact Javascript File -->
+
 	<script src="mail/jqBootstrapValidation.min.js"></script>
 	<script src="mail/contact.js"></script>
 
-	<!-- Template Javascript -->
-	<script src="js/main.js"></script>
+	<script src="js/main.js"></script> -->
+
+	<script>
+	$('#mypage').on('click', function(){
+		<%-- location.href = "<%=request.getContextPath()%>/logout.me"; --%>
+	});
+	
+	$('#logout').on('click', function(){
+		location.href = "<%=request.getContextPath()%>/logout.me";
+	});
+	
+	
+	$('.menus').on('click', function(){
+		console.log('메뉴클릭');
+		$('.menus').not($(this)).removeClass('active');
+	});
+
+	$('#home').on('click', function(){
+		$(this).addClass('active');
+		location.href='<%= request.getContextPath() %>/home.me';
+		
+	});
+	
+	$('#diet').on('click', function(){
+		location.href='<%= request.getContextPath() %>/diet.me';
+		
+	});
+	</script>
 </body>
 
 </html>

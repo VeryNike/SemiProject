@@ -101,18 +101,18 @@ p{ size: 10px;
         <form action="<%= request.getContextPath()%>/insert.me" method="post" id="joinForm" name="joinForm" onsubmit="return validate();" >
             <fieldset>
                 <label >ID </label>
-                	<input type="text" name="userId" id="userId" maxlength="12" placeholder="아이디 입력"><br>
+                	<input type="text" name="userId" id="userId" minlength="4" maxlength="12" placeholder="아이디 입력"><br>
                 <p id="message1"></p><br>
                                 
                 <label >PW</label>
-                <input type="password" name="userPwd" id="pw1" maxlength="15" placeholder="비밀번호 입력"><br>
+                <input type="password" name="userPwd" id="pw1" minlength="4" maxlength="15" placeholder="비밀번호 입력"><br>
                 
                 <label > PW</label>
-                <input type="password" name="userPwd2" id="pw2" maxlength="15" placeholder="비밀번호 확인"><br>
+                <input type="password" name="userPwd2" id="pw2" minlength="4" maxlength="15" placeholder="비밀번호 확인"><br>
                 <p id="message2"></p><br>
                 
                 <label >NAME</label>
-                <input type="text" name="userName" id="userName" maxlength="12" placeholder="이름 입력"><br>
+                <input type="text" name="userName" id="userName" minlength="2" maxlength="12" placeholder="이름 입력"><br>
                 
                 <label >NICK</label>
                 <input type="text" name="nickName" id="nickName" maxlength="12" placeholder="닉네임 입력">
@@ -138,7 +138,7 @@ p{ size: 10px;
                 <label >ADDRESS</label>
                 <input type="text" name="address" placeholder="주소 입력 (선택사항)"><br>
 
-                <label>V 선호하는 식단 체크</label><br>
+                <label>V 선호하는 식단 체크(최대2개)</label><br>
 	                <input type="checkbox" id="sal" name="ffood" value="샐러드">
 	                <label for="sal">샐러드</label>              
 	                <input type="checkbox" id="chiken" name="ffood" value="닭가슴살">
@@ -147,6 +147,7 @@ p{ size: 10px;
 	                <label for="shake">단백질쉐이크</label>         
 	                <input type="checkbox" id="dosirak" name="ffood" value="도시락" >
 	                <label for="dosirak">도시락</label>
+	               
                 <br>
             </fieldset>
             
@@ -212,17 +213,18 @@ p{ size: 10px;
 	}
 	
 	
-		$('#userId').keyup(function(){
-			var Id = $('#userId').val();			
+		$('#userId').blur(function(){
+			var Id = $('#userId').val();	
+
 			$.ajax({
 				type: 'post',
-				async:false, //비동기 default=false
-				url:'http://localhost:9801/checkId.me',
+				async:false,
+				url: '<%= request.getContextPath()%>/checkId.me',
 				dataType:'text',
 				data:{"Id": Id},
 				success: function(result, textStatus){
 						console.log(" success result:"+result)
-					if(result === 'usable'){
+					if(result == 'usable'){
 						$('#message1').text('Very Nice!');
 						$('#message1').css('color','skyblue');
 						
@@ -231,7 +233,7 @@ p{ size: 10px;
 						$('#message1').css('color','orangered');
 					}
 				},
-				error:function(data, textStatus){
+				error:function(result, textStatus){
 					console.log('error');
 				}
 			}); //ajax
