@@ -236,7 +236,7 @@ $('.chk').append(ul);
 
 
 // 운동 추가
-$('.pt > ul li').click(function () {
+$('.pt ul li').click(function () {
     // active를 가지고 있는 td의 클래스
     var cnt = '<input type="number" class="count" min="1" max="9" value="1">';
     var dBtn = '<button type="button" class="del">×</button>';
@@ -296,8 +296,8 @@ $(document).on('click', function () {
         // console.log(chks);
         if (all > 0) {
             $('.progress-bar').css('width', chks / all * 100 + '%').text(Math.round(chks / all * 100) + '%')
-            $('#goalBar').css('width', chks / all * 100 + '%');
-            $('#goalBar').text(Math.round(chks / all * 100) + '%');
+//            $('#goalBar').css('width', chks / all * 100 + '%');
+//            $('#goalBar').text(Math.round(chks / all * 100) + '%');
         } else {
             $('#goalBar').css('width', 0 + '%');
             $('#goalBar').text('0%');
@@ -311,10 +311,13 @@ $(document).on('click', function () {
             } else if (ach > 0.5) {
                 $('.' + day).addClass('aa').css('background', '#bcbe228a');
             } else if (ach > 0.3) {
-                $('.' + day).addClass('aa').css('background', '#91591a8a');
-            } else {
-                $('.' + day).addClass('aa').css('background', '#af51518a');
-            }     // 배경이미지로
+            	$('.' + day).addClass('aa').css('background', '#af51518a');
+            } 
+            else {
+//            	$('.' + day).addClass('aa').css('background', '#91591a8a');
+            	$('.' + day).removeClass('aa').css('background', 'none');
+            }    
+            // 배경이미지로
             //0일떄 색 없애기
         }
     }
