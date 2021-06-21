@@ -1,0 +1,115 @@
+body {
+	background-color: white;
+	font-family: 'Flaticon', sans-serif;
+	overflow: scroll;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+form {
+	width: 250px;
+	padding: 30px;
+	/* margin: 100px auto; */
+	background-color: #a7d0f9c7;
+	border-radius: 80px;
+	font-size: 12px;
+	font-weight: 800;
+	color: white;
+	text-align: center;
+}
+
+#wrap {
+	width: 310px;
+	height: 100%;
+	margin: 100px auto;
+	text-align: center;
+}
+
+.pig {
+	width: 200px;
+	height: 200px;
+	background: url("../../images/pig/pig_body.png") center 30px no-repeat;
+	margin: 20px auto;
+	background-color: whitesmoke;
+	border-radius: 50%;
+	position: relative;
+	overflow: hidden;
+}
+
+.face {
+	position: absolute;
+	top: 70px;
+	left: 50px;
+}
+
+.left, .right {
+	width: 94px;
+	height: 158px;
+	position: absolute;
+	top: 100px;
+	left: -100px;
+	transform: rotate(45deg);
+	transition: all 0.5s ease;
+}
+
+.right {
+	left: 210px;
+	transform: rotate(-45deg);
+}
+
+.on .left {
+	top: 50px;
+	left: -10px;
+}
+
+.on .right {
+	top: 50px;
+	left: 120px;
+}
+
+fieldset {
+	border: 0;
+	padding: 0;
+	margin-bottom: 10px;
+}
+
+fieldset input:not([type="checkbox"]) {
+	width: 100%;
+	padding: 10px 15px;
+	box-sizing: border-box;
+	text-align: center;
+	margin: 10px 0;
+	border: 1px solid #7295d6;
+	border-radius: 15px;
+}
+
+nav {
+	width: 40px;
+	height: 210px;
+	position: fixed;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	z-index: 100;
+}
+
+#loginBtn {
+	background-color: #7295d6;
+	color: white;
+	font-weight: 700;
+}
+
+#joinBtn {
+	text-decoration: none;
+	border: none;
+	width: 200px;
+	background-color: #ffffff;
+	color: #7295d6;
+	font-weight: 500;
+	border-radius: 15px;
+	padding: 5px;
+}

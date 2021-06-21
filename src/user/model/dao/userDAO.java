@@ -12,7 +12,10 @@ import java.util.Properties;
 
 import user.model.vo.User;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> HY
 public class userDAO {
 
 	private Properties prop = new Properties();
@@ -148,6 +151,7 @@ public class userDAO {
 		return result;
 	}
 
+<<<<<<< HEAD
 
 
 	public User selectUser(Connection conn, String userId) {
@@ -246,4 +250,6 @@ public class userDAO {
 		
 
 
+=======
+>>>>>>> HY
 }

@@ -32,7 +32,11 @@ $(function () {
 
 	});
 
+<<<<<<< HEAD
 	$('#userPwd').focus(function () {
+=======
+	$('#userPw').focus(function () {
+>>>>>>> HY
 		faceX = 50;
 		faceY = 70;
 
@@ -44,7 +48,11 @@ $(function () {
 		$('.pig').addClass('on')
 	});
 
+<<<<<<< HEAD
 	$('#userId, #userPwd').blur(function () {
+=======
+	$('#userId, #userPw').blur(function () {
+>>>>>>> HY
 		faceX = 50;
 		faceY = 70;
 
