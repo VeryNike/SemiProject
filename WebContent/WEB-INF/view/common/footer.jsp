@@ -15,7 +15,7 @@
 		<div class="container-ffluid">
 			<div class="container">
 				<div class="footer-info">
-					<a href="<%=request.getContextPath()%>/myCalendar.me" class="footer-logo"><img src="images/logo.png">
+					<a href="<%=request.getContextPath()%>/home.me" class="footer-logo"><img src="images/logo.png">
 					</a>
 					<h3>123 Street, SEOUL, KOREA</h3>
 					<div class="footer-menu">
