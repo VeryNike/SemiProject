@@ -9,7 +9,11 @@
 </head>
 <body>
 
+<<<<<<< HEAD
 	<%@ include file="WEB-INF/view/common/firstMain.jsp" %>
+=======
+	<%@ include file="WEB-INF/view/user/logIn.jsp" %>
+>>>>>>> main
 	
 
 </body>

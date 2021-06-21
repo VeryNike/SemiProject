@@ -33,7 +33,10 @@ $(function () {
 	});
 
 	$('#userPwd').focus(function () {
+<<<<<<< HEAD
 		console.log("asdf");
+=======
+>>>>>>> main
 		faceX = 50;
 		faceY = 70;
 
@@ -45,7 +48,11 @@ $(function () {
 		$('.pig').addClass('on')
 	});
 
+<<<<<<< HEAD
 	$('#userId, #userPwd ').blur(function () {
+=======
+	$('#userId, #userPwd').blur(function () {
+>>>>>>> main
 		faceX = 50;
 		faceY = 70;
 

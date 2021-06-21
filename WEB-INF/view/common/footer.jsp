@@ -12,10 +12,17 @@
 
 	<!-- Footer Start -->
 	<div class="footer wow fadeIn" data-wow-delay="0.3s">
+<<<<<<< HEAD
 		<div class="container-ffluid">
 			<div class="container">
 				<div class="footer-info">
 					<a href="<%=request.getContextPath()%>/myCalendar.me" class="footer-logo"><img src="images/logo.png">
+=======
+		<div class="container-fluid">
+			<div class="container">
+				<div class="footer-info">
+					<a href="index.html" class="footer-logo">M<span>Y</span>PT
+>>>>>>> main
 					</a>
 					<h3>123 Street, SEOUL, KOREA</h3>
 					<div class="footer-menu">
@@ -23,11 +30,19 @@
 						<p>veryGood@verynike.com</p>
 					</div>
 					<div class="footer-social">
+<<<<<<< HEAD
 						<a href=""><i class="fab fa-twitter"></i></a> 
 						<a href=""><i class="fab fa-facebook-f"></i></a> 
 						<a href=""><i class="fab fa-youtube"></i></a> 
 						<a href=""><i class="fab fa-instagram"></i></a> 
 						<a href=""><i class="fab fa-linkedin-in"></i></a>
+=======
+						<a href=""><i class="fab fa-twitter"></i></a> <a href=""><i
+							class="fab fa-facebook-f"></i></a> <a href=""><i
+							class="fab fa-youtube"></i></a> <a href=""><i
+							class="fab fa-instagram"></i></a> <a href=""><i
+							class="fab fa-linkedin-in"></i></a>
+>>>>>>> main
 					</div>
 				</div>
 			</div>

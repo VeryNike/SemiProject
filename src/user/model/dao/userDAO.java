@@ -12,6 +12,10 @@ import java.util.Properties;
 
 import user.model.vo.User;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
 public class userDAO {
 
 	private Properties prop = new Properties();
@@ -147,4 +151,105 @@ public class userDAO {
 		return result;
 	}
 
+<<<<<<< HEAD
+=======
+
+
+	public User selectUser(Connection conn, String userId) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		User user = null;
+				
+		String query = prop.getProperty("myPage");
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, userId);
+			rs = pstmt.executeQuery();		
+			
+			if(rs.next()) {
+				user = new User(rs.getString("ID"),
+								rs.getString("PASSWORD"),
+								rs.getString("GENDER"),
+								rs.getInt("AGE"),
+								rs.getString("NAME"),
+								rs.getString("NICK_NAME"),
+								rs.getString("ADDRESS"),
+								rs.getString("EMAIL"),
+								rs.getString("PHONE"),
+								rs.getString("M_RATING"),
+								rs.getString("F_FOOD"),
+								rs.getString("SORTATION"),
+								rs.getString("STATUS"));
+							
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}	
+		return user;
+	}
+
+	public int updateUser(Connection conn, User myUser) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = prop.getProperty("updateUser");
+		
+			try {
+				pstmt = conn.prepareStatement(query);
+	
+				pstmt.setString(1, myUser.getUserPwd());
+				pstmt.setInt(2, myUser.getAge());
+				pstmt.setString(3, myUser.getUserName());
+				pstmt.setString(4, myUser.getNickName());
+				pstmt.setString(5, myUser.getAddress());
+				pstmt.setString(6, myUser.getEmail());
+				pstmt.setString(7, myUser.getPhone());
+				pstmt.setString(8, myUser.getFfood());
+				pstmt.setString(9, myUser.getUserId());
+				
+				result = pstmt.executeUpdate();
+				
+				System.out.println("result:"+result);
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally {
+				close(pstmt);
+			}
+			
+		return result;
+	}
+
+
+	public int deleteUser(Connection conn, String userId) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = prop.getProperty("deleteUser");
+		
+		try {
+			pstmt= conn.prepareStatement(query);
+			
+			pstmt.setString(1, userId);
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		
+		return result;
+	}
+
+
+
+		
+
+
+>>>>>>> main
 }

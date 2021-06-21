@@ -85,9 +85,15 @@ a:focus,
 }
 
 .top-bar .top-bar-right {
+<<<<<<< HEAD
     display: flex;
     align-items: center;
     justify-content: flex-end;
+=======
+	display: flex;
+	align-items: center;asdf
+	justify-content: flex-end;
+>>>>>>> main
 }
 
 .top-bar .text {
@@ -695,6 +701,7 @@ a:focus,
 }
 
 .class .class-img {
+<<<<<<< HEAD
     position: relative;
 }
 
@@ -703,7 +710,18 @@ a:focus,
     width: 100%; 
     height: 100%; 
     object-fit: cover;
+=======
+  position: relative;
 }
+
+.class .class-img img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+>>>>>>> main
+}
+
 
 .class .class-text {
     position: relative;
@@ -2010,3 +2028,12 @@ a:focus,
     }
 }
 
+<<<<<<< HEAD
+=======
+@media ( max-width : 767.98px) {
+	.footer .copyright p, .footer .copyright .col-md-6:last-child p {
+		margin: 5px 0;
+		text-align: center;
+	}
+}
+>>>>>>> main

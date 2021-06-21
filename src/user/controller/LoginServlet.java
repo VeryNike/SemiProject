@@ -14,17 +14,37 @@ import common.Common;
 import user.model.service.userService;
 import user.model.vo.User;
 
+<<<<<<< HEAD
 
+=======
+/**
+ * Servlet implementation class LoginServlet
+ */
+>>>>>>> main
 @WebServlet("/login.me")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+<<<<<<< HEAD
 
     public LoginServlet() {
         super();
     }
 
 
+=======
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public LoginServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+>>>>>>> main
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		request.setCharacterEncoding("UTF-8"); 
@@ -42,7 +62,11 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("loginUser", loginUser);
 			session.setMaxInactiveInterval(1200); 
 			
+<<<<<<< HEAD
 			response.sendRedirect("home.me");
+=======
+			response.sendRedirect("home.jsp");
+>>>>>>> main
 			
 		} else {
 			System.out.println("user:"+user.toString());

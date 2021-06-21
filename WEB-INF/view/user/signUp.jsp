@@ -97,7 +97,11 @@ p{ size: 10px;
 <body>
 
     <div id="wrap">
+<<<<<<< HEAD
         <h1><span style="color:snow; font-size: 50px;"> JOIN</span></h1>
+=======
+        <h1><span style="color:snow; font-size: 50px;"> JOIN</span></a></h1>
+>>>>>>> main
         <form action="<%= request.getContextPath()%>/insert.me" method="post" id="joinForm" name="joinForm" onsubmit="return validate();" >
             <fieldset>
                 <label >ID </label>
@@ -108,7 +112,11 @@ p{ size: 10px;
                 <input type="password" name="userPwd" id="pw1" minlength="4" maxlength="15" placeholder="비밀번호 입력"><br>
                 
                 <label > PW</label>
+<<<<<<< HEAD
                 <input type="password" name="userPwd2" id="pw2" minlength="4" maxlength="15" placeholder="비밀번호 확인"><br>
+=======
+                <input type="password" name="userPwd2" id="pw2" minlength=4" maxlength="15" placeholder="비밀번호 확인"><br>
+>>>>>>> main
                 <p id="message2"></p><br>
                 
                 <label >NAME</label>

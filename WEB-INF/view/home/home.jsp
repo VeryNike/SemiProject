@@ -1,7 +1,12 @@
+<<<<<<< HEAD
 <%@page import="home.model.vo.PT"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+=======
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+>>>>>>> main
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,9 +32,12 @@
 							intellectual activity.</p>
 					</div>
 				</div>
+<<<<<<< HEAD
 				<div class="col-sm-12 col-md-6">
 					<%@ include file="../weather/weather.jsp" %>
 				</div>
+=======
+>>>>>>> main
 			</div>
 		</div>
 	</div>
@@ -73,9 +81,15 @@
 									role="progressbar" aria-valuenow="0" aria-valuemin="0"
 									aria-valuemax="100"></div>
 							</div>
+<<<<<<< HEAD
 <!-- 							<div id="goal">
 								<div id="goalBar"></div>
 							</div> -->
+=======
+							<div id="goal">
+								<div id="goalBar"></div>
+							</div>
+>>>>>>> main
 						</div>
 						<div id="checkList" class="list">
 							<h4>Check-List</h4>
@@ -84,6 +98,11 @@
 						</div>
 					</div>
 
+<<<<<<< HEAD
+=======
+					<br>
+
+>>>>>>> main
 					<div class="about-text">
 						<div id="ptList" class="list">
 							<ul class="clearfix">
@@ -94,6 +113,7 @@
 								<li id="abs" class="cate">복근</li>
 								<li id="back" class="cate">등</li>
 							</ul>
+<<<<<<< HEAD
 							
 							<div id="allBox" class="pt">
                                 <ul>
@@ -156,10 +176,89 @@
 						</div>
 					</div>
 					
+=======
+							<div id="allBox" class="pt">
+								<ul>
+									<li><input type="button" value="+"> 버피 (Burpee)</li>
+									<li><input type="button" value="+"> 마운틴 클라이버(Moutain climber)</li>
+									<li><input type="button" value="+"> 플랭크 (Plank)</li>
+									<li><input type="button" value="+"> 푸쉬업(Push-up)</li>
+									<li><input type="button" value="+"> 스쿼드 점프(Squat jump)</li>
+									<li><input type="button" value="+"> 런지 (Lunge)</li>
+								</ul>
+							</div>
+							<div id="legBox" class="pt">
+								<ul>
+									<li><input type="button" value="+"> 스쿼트 (squat)</li>
+									<li><input type="button" value="+"> 레그프레스 (Leg press)</li>
+									<li><input type="button" value="+"> 레그 익스텐션 (Leg extension)</li>
+									<li><input type="button" value="+"> 레그 컬(Leg curl)</li>
+									<li><input type="button" value="+"> 데드리프트(Deadlift)</li>
+								</ul>
+							</div>
+							<div id="armBox" class="pt">
+								<ul>
+									<li><input type="button" value="+"> 덤벨 컬 (Dumbbell
+										– curl)</li>
+									<li><input type="button" value="+"> 바벨 컬 (Barbell
+										– curl)</li>
+									<li><input type="button" value="+"> 트라이 셉스 푸시다운
+										(Triceps Pushdown)</li>
+									<li><input type="button" value="+"> 트라이 셉스 익스텐션
+										(Triceps Extension)</li>
+									<li><input type="button" value="+"> 덤벨 시티드 오버헤드
+										프레스(Dumbbell seated overhead press)</li>
+								</ul>
+							</div>
+							<div id="chestBox" class="pt">
+								<ul>
+									<li><input type="button" value="+"> 벤치 프레스 (Bench
+										press)</li>
+									<li><input type="button" value="+"> 덤벨 플라이
+										(Dumbbell Fly)</li>
+									<li><input type="button" value="+"> 푸쉬 업 (Push-up)</li>
+									<li><input type="button" value="+"> 케이블 크로스 오버
+										(Cable Cross over)</li>
+									<li><input type="button" value="+"> 딥스 (Dips)</li>
+								</ul>
+							</div>
+							<div id="absBox" class="pt">
+								<ul>
+									<li><input type="button" value="+"> 시티드 니업 (Seated
+										Knee Up)</li>
+									<li><input type="button" value="+"> 브이 업 (V-up)</li>
+									<li><input type="button" value="+"> 러시안 트위스트
+										(Russian-twist)</li>
+									<li><input type="button" value="+"> 레그 레이즈 (Leg –
+										raise)</li>
+									<li><input type="button" value="+"> 크런치 (Crunch)</li>
+									<li><input type="button" value="+"> 푸쉬업 홀드
+										(Push-up hold)</li>
+								</ul>
+							</div>
+							<div id="backBox" class="pt">
+								<ul>
+									<li><input type="button" value="+"> 벤트 오버
+										바벨로우(Bent-over Barbell Row)</li>
+									<li><input type="button" value="+"> 렛풀다운 (Lat pull
+										down)</li>
+									<li><input type="button" value="+"> 풀업 (Pull-up)</li>
+									<li><input type="button" value="+"> 시티드 케이블 로우
+										(Seated cable row)</li>
+									<li><input type="button" value="+"> 티바 로우 (T-bar
+										Row)</li>
+								</ul>
+							</div>
+
+						</div>
+						<a class="btn" href="">Learn More</a>
+					</div>
+>>>>>>> main
 				</div>
 			</div>
 		</div>
 	</div>
+<<<<<<< HEAD
 	
 			<%-- <%@ include file="../weather/weather.jsp" %> --%>
 
@@ -206,6 +305,11 @@
 	});
 	</script> -->
 	
+=======
+
+	<%@ include file="../common/footer.jsp"%>
+	<script src="js/script_home.js"></script>
+>>>>>>> main
 
 </body>
 
