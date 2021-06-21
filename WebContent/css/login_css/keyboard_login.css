@@ -31,7 +31,7 @@ form {
 .pig {
 	width: 200px;
 	height: 200px;
-	background: url("../../img/pig/pig_body.png") center 30px no-repeat;
+	background: url("../../images/pig/pig_body.png") center 30px no-repeat;
 	margin: 20px auto;
 	background-color: whitesmoke;
 	border-radius: 50%;
