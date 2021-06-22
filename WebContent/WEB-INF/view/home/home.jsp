@@ -1,6 +1,10 @@
 <%@page import="home.model.vo.PT"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%
+	ArrayList<PT> list = (ArrayList) request.getAttribute("list");
+System.out.println(list);
+%>
 
 <!DOCTYPE html>
 <html>
@@ -28,7 +32,7 @@
 					</div>
 				</div>
 				<div class="col-sm-12 col-md-6">
-					<%@ include file="../weather/weather.jsp" %>
+					<%@ include file="../weather/weather.jsp"%>
 				</div>
 			</div>
 		</div>
@@ -64,6 +68,7 @@
 						</div>
 					</div>
 				</div>
+
 				<div class="col-lg-5 col-md-6">
 					<div class="section-header text-left">
 						<div id="goalList" class="list">
@@ -73,13 +78,12 @@
 									role="progressbar" aria-valuenow="0" aria-valuemin="0"
 									aria-valuemax="100"></div>
 							</div>
-<!-- 							<div id="goal">
-								<div id="goalBar"></div>
-							</div> -->
 						</div>
+
 						<div id="checkList" class="list">
 							<h4>Check-List</h4>
-							<h6 class="save">save</h6>
+							<input type="button" class="save" value="save">
+
 							<div class="chk"></div>
 						</div>
 					</div>
@@ -94,118 +98,110 @@
 								<li id="abs" class="cate">복근</li>
 								<li id="back" class="cate">등</li>
 							</ul>
-							
+
+							<%
+								if (!list.isEmpty()) {
+							%>
 							<div id="allBox" class="pt">
-                                <ul>
-                                    <li title="1set"><input type="button" value="+"> 버피 (Burpee)</li>
-                                    <li title="1set"><input type="button" value="+"> 마운틴 클라이버(Moutain climber)</li>
-                                    <li title="1set"><input type="button" value="+"> 플랭크 (Plank)</li>
-                                    <li title="1set"><input type="button" value="+"> 푸쉬업(Push-up)</li>
-                                    <li title="1set"><input type="button" value="+"> 스쿼드 점프(Squat jump)</li>
-                                    <li title="1set"><input type="button" value="+"> 런지 (Lunge)</li>
-                                </ul>
-                            </div>
-                            <div id="legBox" class="pt">
-                                <ul>
-                                    <li title="1set"><input type="button" value="+"> 스쿼트 (squat)</li>
-                                    <li title="1set"><input type="button" value="+"> 레그프레스 (Leg press)</li>
-                                    <li title="1set"><input type="button" value="+"> 레그 익스텐션 (Leg extension)</li>
-                                    <li title="1set"><input type="button" value="+"> 레그 컬(Leg curl)</li>
-                                    <li title="1set"><input type="button" value="+"> 데드리프트(Deadlift)</li>
-                                </ul>
-                            </div>
-                            <div id="armBox" class="pt">
-                                <ul>
-                                    <li title="1set"><input type="button" value="+"> 덤벨 컬 (Dumbbell – curl)</li>
-                                    <li title="1set"><input type="button" value="+"> 바벨 컬 (Barbell – curl)</li>
-                                    <li title="1set"><input type="button" value="+"> 트라이 셉스 푸시다운 (Triceps Pushdown)</li>
-                                    <li title="1set"><input type="button" value="+"> 트라이 셉스 익스텐션 (Triceps Extension)</li>
-                                    <li title="1set"><input type="button" value="+"> 덤벨 시티드 오버헤드 프레스(Dumbbell seated overhead
-                                            press)</li>
-                                </ul>
-                            </div>
-                            <div id="chestBox" class="pt">
-                                <ul>
-                                    <li title="1set"><input type="button" value="+"> 벤치 프레스 (Bench press)</li>
-                                    <li title="1set"><input type="button" value="+"> 덤벨 플라이 (Dumbbell Fly)</li>
-                                    <li title="1set"><input type="button" value="+"> 푸쉬 업 (Push-up)</li>
-                                    <li title="1set"><input type="button" value="+"> 케이블 크로스 오버 (Cable Cross over)</li>
-                                    <li title="1set"><input type="button" value="+"> 딥스 (Dips)</li>
-                                </ul>
-                            </div>
-                            <div id="absBox" class="pt">
-                                <ul>
-                                    <li title="1set"><input type="button" value="+"> 시티드 니업 (Seated Knee Up)</li>
-                                    <li title="1set"><input type="button" value="+"> 브이 업 (V-up)</li>
-                                    <li title="1set"><input type="button" value="+"> 러시안 트위스트 (Russian-twist)</li>
-                                    <li title="1set"><input type="button" value="+"> 레그 레이즈 (Leg – raise)</li>
-                                    <li title="1set"><input type="button" value="+"> 크런치 (Crunch)</li>
-                                    <li title="1set"><input type="button" value="+"> 푸쉬업 홀드 (Push-up hold)</li>
-                                </ul>
-                            </div>
-                            <div id="backBox" class="pt">
-                                <ul>
-                                    <li title="1set"><input type="button" value="+"> 벤트 오버 바벨로우(Bent-over Barbell Row)</li>
-                                    <li title="1set"><input type="button" value="+"> 렛풀다운 (Lat pull down)</li>
-                                    <li title="1set"><input type="button" value="+"> 풀업 (Pull-up)</li>
-                                    <li title="1set"><input type="button" value="+"> 시티드 케이블 로우 (Seated cable row)</li>
-                                    <li title="1set"><input type="button" value="+"> 티바 로우 (T-bar Row)</li>
-                                </ul>
-                            </div>
-				
+								<ul>
+									<%
+										for (PT p : list) {
+										if (p.getPtType().equals("전신")) {
+									%>
+									<li><input type="button" value="+"> <%=p.getPtName()%></li>
+									<%
+										}
+									}
+									%>
+								</ul>
+							</div>
+
+							<div id="legBox" class="pt">
+								<ul>
+									<%
+										for (PT p : list) {
+										if (p.getPtType().equals("하체")) {
+									%>
+									<li><input type="button" value="+"> <%=p.getPtName()%></li>
+									<%
+										}
+									}
+									%>
+								</ul>
+							</div>
+
+							<div id="armBox" class="pt">
+								<ul>
+									<%
+										for (PT p : list) {
+										if (p.getPtType().equals("팔")) {
+									%>
+									<li><input type="button" value="+"> <%=p.getPtName()%></li>
+									<%
+										}
+									}
+									%>
+								</ul>
+							</div>
+
+							<div id="chestBox" class="pt">
+								<ul>
+									<%
+										for (PT p : list) {
+										if (p.getPtType().equals("가슴")) {
+									%>
+									<li><input type="button" value="+"> <%=p.getPtName()%></li>
+									<%
+										}
+									}
+									%>
+								</ul>
+							</div>
+
+							<div id="absBox" class="pt">
+								<ul>
+									<%
+										for (PT p : list) {
+										if (p.getPtType().equals("복근")) {
+									%>
+									<li><input type="button" value="+"> <%=p.getPtName()%></li>
+									<%
+										}
+									}
+									%>
+								</ul>
+							</div>
+
+							<div id="backBox" class="pt">
+								<ul>
+									<%
+										for (PT p : list) {
+										if (p.getPtType().equals("등")) {
+									%>
+									<li><input type="button" value="+"> <%=p.getPtName()%></li>
+									<%
+										}
+									}
+									%>
+								</ul>
+							</div>
+							<%
+								}
+							%>
 						</div>
 					</div>
-					
+
 				</div>
 			</div>
 		</div>
 	</div>
-	
-			<%-- <%@ include file="../weather/weather.jsp" %> --%>
+
 
 	<%@ include file="../common/footer.jsp"%>
-	
+
+
+
 	<script src="js/script_home.js"></script>
-	<script>
-	$(function () {
-		$('.pt li').attr({'data-toggle':'tooltip', 'data-placement' : 'left'});
-		$('[data-toggle="tooltip"]').tooltip();
-	})
-	</script>
-	
-	<!-- <script>
-	$(function(){
-		$.ajax({
-			url:'ptList.me',
-			success:function(data){
-				console.log("ptlist : " + data);
-				
-				for(var i in data){
-					var p = data[i];
-					
-					var $li = $('<li>').html('<input type="button" value="+">' + p.name);
-					
-					if(p.type == "전신"){
-						$('#allBox ul').append($li);
-					} else if(p.type == "하체"){
-						$('#legBox ul').append($li);
-					} else if(p.type == "팔"){
-						$('#armBox ul').append($li);
-					} else if(p.type == "가슴"){
-						$('#chestBox ul').append($li);
-					}else if(p.type == "복근"){
-						$('#absBox ul').append($li);
-					} else if(p.type == "등"){
-						$('#backBox ul').append($li);
-					}
-				}
-			}
-			
-		});
-		
-	});
-	</script> -->
-	
 
 </body>
 
