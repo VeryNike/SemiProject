@@ -14,10 +14,10 @@ body{
 	background-color: #c1dff0;
 }
 #ui{
-	padding : 0 0 0 30%;
+	margin-left: 30%;
+	margin-right: 30%;
 	position: fixed;
 	text-align: center;
-
 }
 button{
 	text-decoration: none;
