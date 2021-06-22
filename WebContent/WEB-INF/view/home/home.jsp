@@ -3,7 +3,6 @@
 	pageEncoding="UTF-8"%>
 <%
 	ArrayList<PT> list = (ArrayList) request.getAttribute("list");
-System.out.println(list);
 %>
 
 <!DOCTYPE html>
