@@ -16,21 +16,14 @@
 <link href="img/favicon.ico" rel="icon">
 
 <!-- Google Font -->
-<link
-	href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
 <!-- CSS Libraries -->
-<link
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-	rel="stylesheet">
-<link
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
-	rel="stylesheet">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
 <link href="lib/animate/animate.min.css" rel="stylesheet">
 <link href="lib/flaticon/font/flaticon.css" rel="stylesheet">
-<link href="lib/owlcarousel/assets/owl.carousel.min.css"
-	rel="stylesheet">
+<link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
 
 <!-- Template Stylesheet -->
@@ -66,10 +59,10 @@
 				<div class="col-md-4">
 					<div class="top-bar-right">
 						<div class="social">
-							<a href=""><i class="fab fa-twitter"></i></a> <a href=""><i
-								class="fab fa-facebook-f"></i></a> <a href=""><i
-								class="fab fa-linkedin-in"></i></a> <a href=""><i
-								class="fab fa-instagram"></i></a>
+							<a href=""><i class="fab fa-twitter"></i></a> 
+							<a href=""><i class="fab fa-facebook-f"></i></a> 
+							<a href=""><i class="fab fa-linkedin-in"></i></a> 
+							<a href=""><i class="fab fa-instagram"></i></a>
 						</div>
 					</div>
 				</div>
@@ -95,17 +88,8 @@
 					<div id="home" class="nav-item nav-link menus">Home</div>
 					<div id="diet" class="nav-item nav-link menus">Diet</div>
 					<div id="shopping" class="nav-item nav-link menus">Shopping</div>
-
-					<div class="nav-item dropdown menus">
-						<a href="#" class="nav-link dropdown-toggle"
-							data-toggle="dropdown">Board</a>
-						<div class="dropdown-menu">
-							<a href="blog.html" class="dropdown-item">Board1</a> <a
-								href="single.html" class="dropdown-item">Board2</a>
-						</div>
-					</div>
+					<div id="board" class="nav-item nav-link menus">Board</div>
 					<div class="nav-item nav-link menus">Team</div>
-					<div class="nav-item nav-link menus">About Us</div>
 				</div>
 			</div>
 		</div>
@@ -123,11 +107,8 @@
 	<script src="lib/owlcarousel/owl.carousel.min.js"></script>
 	<script src="lib/isotope/isotope.pkgd.min.js"></script>
 	<script src="lib/lightbox/js/lightbox.min.js"></script>
-
-
 	<script src="mail/jqBootstrapValidation.min.js"></script>
 	<script src="mail/contact.js"></script>
-
 	<script src="js/main.js"></script> -->
 
 	<script>
@@ -144,7 +125,6 @@
 		console.log('메뉴클릭');
 		$('.menus').not($(this)).removeClass('active');
 	});
-
 	$('#home').on('click', function(){
 		$(this).addClass('active');
 		location.href='<%= request.getContextPath() %>/home.me';
@@ -152,8 +132,11 @@
 	});
 	
 	$('#diet').on('click', function(){
-		location.href='<%= request.getContextPath() %>/Diet.me';
-		
+		location.href='<%= request.getContextPath() %>/diet.me';
+	});
+	
+	$('#board').on('click', function(){
+		location.href='<%= request.getContextPath() %>/boardList.me';
 	});
 	</script>
 </body>
