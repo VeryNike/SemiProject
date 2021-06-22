@@ -46,11 +46,13 @@
 				<div class="col-md-8">
 					<div class="top-bar-left">
 						<div class="text">
-							<h2 id="mypage">
+							<h2>
 								<i class="far fa-user-circle"></i>
-								<%=loginUser.getUserName()%>님의 My page
+								<%=loginUser.getUserName()%>님의
 							</h2>
-							<p></p>
+							<h2>
+								<p id="mypage"> My Page </p> 
+							</h2>
 						</div>
 						<div class="text">
 
@@ -130,7 +132,7 @@
 
 	<script>
 	$('#mypage').on('click', function(){
-		<%-- location.href = "<%=request.getContextPath()%>/logout.me"; --%>
+		location.href = "<%=request.getContextPath()%>/mypage.me"; 
 	});
 	
 	$('#logout').on('click', function(){
