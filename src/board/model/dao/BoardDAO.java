@@ -77,10 +77,10 @@ public class BoardDAO {
 				Board b = new Board(rset.getInt("boardNo"),
 									rset.getString("postTitle"),
 									rset.getString("postContent"),
-									rset.getInt("numofview"),
+									rset.getInt("numofViews"),
 									rset.getString("id"),
 									rset.getDate("createDate"),
-									rset.getDate("modifyDate"),
+									rset.getInt("CommentNum"),
 									rset.getString("status"));
 				list.add(b);
 			}
