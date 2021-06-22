@@ -33,6 +33,7 @@
 - 상단 로그인 정보 보이기
 - 로그아웃 기능
 - shopping 탭 연결 태그 추가
+- board 탭 연결 
 
 # footer.jsp
 - 하단 footer부분
