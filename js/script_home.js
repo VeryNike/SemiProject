@@ -241,16 +241,17 @@ $('.pt ul li').click(function () {
     var cnt = '<input type="number" class="count" min="1" max="9" value="1">';
     var dBtn = '<button type="button" class="del">×</button>';
     var li = document.createElement('li');
-    li.innerHTML = '<input type="checkBox">' + '<span class="pl">' + $(this).text() + '</span> ' + cnt + dBtn;
+    li.innerHTML = '<input type="checkBox">' + '<span class="pl"> ' + $(this).text() + '</span> ' + cnt + dBtn;
 
     // 없으면 추가 있으면 리스트 카운트 + 1
     var ulChild = $('#' + clickday() + ' li');
     if (ulChild.length <= 0) {
         $('#' + clickday()).append(li);
     } else {
-        var bool = true;
+    	var bool = true;
         for (var i = 0; i < ulChild.length; i++) {
-            if ($(this).text() == ulChild.eq(i).children('.pl').text()) {
+        	/*console.log($(this).text().trim() + " : " + ulChild.eq(i).children('.pl').text().trim());*/
+            if ($(this).text().trim() == ulChild.eq(i).children('.pl').text().trim()) {
                 var num = Number(ulChild.eq(i).find('.count').val());
                 ulChild.eq(i).find('.count').val(num + 1);
                 bool = false;
@@ -259,7 +260,7 @@ $('.pt ul li').click(function () {
         }
 
         if (bool) {
-            $('#' + clickday()).append(li);
+            $('#' + clickday()).prepend(li);
         }
     }
 
@@ -293,11 +294,8 @@ $(document).on('click', function () {
     var ach = chks / all;
 
     if ($('.checks').css('display') == 'block') {
-        // console.log(chks);
         if (all > 0) {
             $('.progress-bar').css('width', chks / all * 100 + '%').text(Math.round(chks / all * 100) + '%')
-//            $('#goalBar').css('width', chks / all * 100 + '%');
-//            $('#goalBar').text(Math.round(chks / all * 100) + '%');
         } else {
             $('#goalBar').css('width', 0 + '%');
             $('#goalBar').text('0%');
@@ -317,8 +315,7 @@ $(document).on('click', function () {
 //            	$('.' + day).addClass('aa').css('background', '#91591a8a');
             	$('.' + day).removeClass('aa').css('background', 'none');
             }    
-            // 배경이미지로
-            //0일떄 색 없애기
+
         }
     }
 
@@ -332,5 +329,3 @@ $(document).on('click', function () {
     });
 
 });
-
-
