@@ -3,6 +3,7 @@ package board.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,12 +14,10 @@ import board.model.service.BoardService;
 import board.model.vo.Board;
 import board.model.vo.PageInfo;
 
-import common.Common.*;
-
 /**
  * Servlet implementation class BoardListServlet
  */
-@WebServlet("/list.bo")
+@WebServlet("/list.me")
 public class BoardListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -75,7 +74,8 @@ public class BoardListServlet extends HttpServlet {
 			
 		}
 		
-		request.setAttribute("msg", "게시판 조회에 실패하였습니다.");
+		RequestDispatcher view = request.getRequestDispatcher(page);
+		view.forward(request, response);
 	}
 
 	/**
