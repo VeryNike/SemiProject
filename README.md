@@ -42,3 +42,6 @@
 - controller, model 두 부분으로 나눔 
 - controller에 게시판 연결 서블릿(boardListServlet)추가 
 - model을 dao, service, vo로 나누고 vo 부분에 board(회원 정보), pageInfo(페이징 정보) 추가
+
+# WEB-INF > src > query
+- board폴더를 생성시켜 board-query 게시물 쿼리 파일을 추가 
