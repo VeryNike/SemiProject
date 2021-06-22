@@ -15,7 +15,6 @@ body{
 }
 #ui{
 	padding : 0 0 0 30%;
-	align: center;
 	position: fixed;
 	text-align: center;
 
