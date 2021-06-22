@@ -811,3 +811,5 @@ INSERT INTO PT VALUES(31, '등', '시티드 케이블 로우 (Seated cable row)'
 INSERT INTO PT VALUES(32, '등', '티바 로우 (T-bar Row)');
 
 commit;
+
+ALTER TABLE DIET ADD (STATUS VARCHAR2(20) DEFAULT 'N');

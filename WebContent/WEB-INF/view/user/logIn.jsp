@@ -9,15 +9,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-
-<title>Log_In</title>
-
 <link rel="stylesheet" href="css/login_css/keyboard_login.css">
-
 <script src="lib/jquery-3.6.0.min.js"></script>
 
+<title>Log_In</title>
 </head>
-
 <body>
     <div id="wrap"> 
     
