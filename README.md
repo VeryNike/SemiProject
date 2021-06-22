@@ -37,3 +37,8 @@
 
 # footer.jsp
 - 하단 footer부분
+
+# WEB-INF > src > board
+- controller, model 두 부분으로 나눔 
+- controller에 게시판 연결 서블릿(boardListServlet)추가 
+- model을 dao, service, vo로 나누고 vo 부분에 board(회원 정보), pageInfo(페이징 정보) 추가
