@@ -1,22 +1,29 @@
 package home.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import home.model.service.HomeService;
+import home.model.vo.PT;
+
 @WebServlet("/home.me")
-public class CalendarServlet extends HttpServlet {
+public class HomeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public CalendarServlet() {
+	public HomeServlet() {
 		super();
 
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		ArrayList<PT> list = new HomeService().selectPtList();
+		request.setAttribute("list", list);
 		request.getRequestDispatcher("WEB-INF/view/home/home.jsp").forward(request, response);
 	}
 
