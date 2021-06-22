@@ -28,6 +28,7 @@
 # CSS, IMG, JS, LIB, MAIL
  - 템플릿에 필요한 폴더 업로드
  - WEB-INF/css/shoppingcss/style.css (shopping tab css 추가)
+ - boardList.jsp에 있는 게시판 css 수정 
 
 # menu.jsp
 - 상단 로그인 정보 보이기
