@@ -57,7 +57,7 @@ public class MyUpdateServlet extends HttpServlet {
 	
 		if(result>0) {
 			System.out.println("회원정보수정 성공");
-			response.sendRedirect("home.me");
+			response.sendRedirect("mypage.me");
 		} else {
 			request.setAttribute("msg", "정보 수정에 실패하였습니다");
 			RequestDispatcher view = request.getRequestDispatcher(Common.ERR_URL);

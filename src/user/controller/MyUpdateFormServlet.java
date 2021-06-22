@@ -45,7 +45,7 @@ public class MyUpdateFormServelet extends HttpServlet {
 		
 		User myUser = new User(myId, myPwd, myGender, myAge, myName, myNickName,myAddress, myEmail, myPhone, null, myFfood,null,null );
 		request.setAttribute("myUser", myUser);
-		request.getRequestDispatcher("WEB-INF/view/user/myUpdateForm.jsp").forward(request, response);
+		request.getRequestDispatcher("WEB-INF/view/user/myUpdate.jsp").forward(request, response);
 	}
 
 	/**
