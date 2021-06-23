@@ -1,6 +1,7 @@
 package diet.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -40,16 +41,12 @@ public class dFormSaveServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		//response.setContentType("text/html; charset=utf-8");
 				
 		String date = request.getParameter("dateNo"); 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		try {
 			Date dDate = new Date(sdf.parse(date).getTime());
 			String memo = request.getParameter("dtext"); 
-			
-			System.out.println("DateNo:"+request.getParameter("dateNo"));
-			System.out.println("String Date:"+date);
 			
 			String userId = ((User)request.getSession().getAttribute("loginUser")).getUserId();
 			
@@ -69,9 +66,10 @@ public class dFormSaveServlet extends HttpServlet {
 			GsonBuilder gBuild = new GsonBuilder();
 			GsonBuilder dateGb = gBuild.setDateFormat("yyyy-mm-dd");
 			Gson gson = dateGb.create();
-			
+			//PrintWriter out = response.getWriter();
 			gson.toJson(list, response.getWriter());
 			
+			response.sendRedirect("Diet.me");
 			
 		} catch (ParseException e) {
 			e.printStackTrace();

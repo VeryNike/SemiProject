@@ -32,6 +32,33 @@ public class dDAO {
 		}
 	}
 
+	public ArrayList<Diet> listDiet(Connection conn, String userId) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<Diet> list = new ArrayList<Diet>();
+		String query = prop.getProperty("listD");
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, userId);
+			rset= pstmt.executeQuery();
+			while(rset.next()) {
+				list.add(new Diet(rset.getInt("d_code"),
+							      rset.getDate("d_date"),
+							      rset.getString("memo"),
+							      rset.getString("id"),
+							      rset.getString("status")));
+				System.out.println("dao에서의 list:"+list);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+	}
+	
 	public int insertDiet(Connection conn, Diet d) {
 		PreparedStatement pstmt = null;
 		int result = 0;
@@ -54,31 +81,6 @@ public class dDAO {
 		return result;
 	}
 	
-	public ArrayList<Diet> listDiet(Connection conn, Diet d) {
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		ArrayList<Diet> list = new ArrayList<Diet>();
-		String query = prop.getProperty("listD");
-		
-		try {
-			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, d.getUserId());
-			rset= pstmt.executeQuery();
-			while(rset.next()) {
-				list.add(new Diet(rset.getInt("d_code"),
-								  rset.getDate("d_date"),
-								  rset.getString("memo"),
-								  rset.getString("id"),
-								  rset.getString("status")));
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}finally {
-			close(rset);
-			close(pstmt);
-		}
-		return list;
-	}
 
 	public int deleteD(Connection conn) {
 		Statement stmt = null;

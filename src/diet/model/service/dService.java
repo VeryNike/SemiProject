@@ -7,13 +7,18 @@ import static common.JDBCTemplate.getConnection;
 
 import java.sql.Connection;
 import java.util.ArrayList;
-
-import board.model.dao.BoardDAO;
 import diet.model.dao.dDAO;
 import diet.model.vo.Diet;
 
 public class dService {
-
+	
+	public ArrayList<Diet> listDiet(String userId) {
+		Connection conn = getConnection();
+		ArrayList<Diet> list= new dDAO().listDiet(conn,userId);
+		close(conn);
+		return list;
+	}
+	
 	public ArrayList<Diet> insertDiet(Diet d) {
 		Connection conn = getConnection();
 		
@@ -24,7 +29,7 @@ public class dService {
 		
 		if(result>0) {
 			commit(conn);
-			list = dao.listDiet(conn, d);
+			list = dao.listDiet(conn, d.getUserId());
 			
 		}else {
 			rollback(conn);
@@ -34,15 +39,6 @@ public class dService {
 		return list;
 	}
 	
-	public ArrayList<Diet> listDiet(Diet d) {
-		Connection conn = getConnection();
-		
-		ArrayList<Diet> list= new dDAO().listDiet(conn,d);
-		
-		close(conn);
-		
-		return list;
-	}
 
 	public int deleteD() {
 		Connection conn = getConnection();
@@ -58,6 +54,8 @@ public class dService {
 
 		return result;
 	}
+
+
 
 	
 }

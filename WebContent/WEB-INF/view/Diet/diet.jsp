@@ -1,17 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8" import="user.model.vo.User, diet.model.vo.Diet, java.util.ArrayList"%>
+   
+<% Diet d = (Diet)request.getAttribute("diet"); %>
+<% ArrayList<Diet> list = (ArrayList)request.getAttribute("list"); %>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<meta content="Free Website Template" name="keywords">
+<meta content="Free WebsiAte Template" name="keywords">
 <meta content="Free Website Template" name="description">
 <script src="lib/jquery-3.6.0.min.js"></script>
 <link href="css/style.css" rel="stylesheet">
+   
 <title>Diet</title>
- 
-<style>
+
+<Style>
+
 ul{
    margin: 0;
    padding: 0;
@@ -40,9 +46,11 @@ ul{
    resize:none;
    width: 200px;
    height: 220px;
+   cols :60;
 }
 
-#saveBtn, #loadBtn{
+
+#saveBtn, #deleteBtn{
     background-color: #c1dff0;
     color: white;
     text-align: center;
@@ -53,11 +61,20 @@ ul{
 }
 
 #dTable{
-   width: 250px;
-   height:350px;
+   width: 300px;
+   height:400px;
+   overflow-y: scroll;
+   font-size:13px;
    border:1px solid grey;
 }
-td{border-bottom: 1px solid grey;}
+th{
+	border-bottom: 1px solid grey;
+	width: 40px;	
+}
+td{
+	border-bottom: 1px solid grey;
+	width: 260px;	
+}
 
 #dList{
    display: none;
@@ -80,14 +97,19 @@ label:hover {
     background: #ffffff;
 }
 
-#textcount{
+#tcount{
 	margin-left: 60%;
-	font-size: 10px;
+	font-size: 12px;
 	color:  #c1dff0;
 }
-</style>
+#tc{
+	font-size:12px;
+}
+</Style>
+
 </head>
 <body>
+
    <%@ include file="../common/menu.jsp"%>
    
    <div class="page-header">
@@ -150,7 +172,7 @@ label:hover {
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
                     <div class="service-item active">
                         <div class="service-icon">
                             <i class="flaticon-workout-1"></i>
@@ -163,11 +185,10 @@ label:hover {
 
                              <label>피드백 작성</label><br>
                                 <textarea id="tBox" name="dtext" placeholder="추천메뉴를 클릭하시거나 직접 기록하세요:)"></textarea>
-                                <span id="textcount">__/200</span><br><br>
+                                <span id="tcount">0</span><span id="tc">/100</span><br><br>
                          </div>
 	                         <input type="submit" id="saveBtn" name="save" value="Save">
                         </form>
-                        
                     </div>
                 </div>
                 
@@ -177,31 +198,20 @@ label:hover {
                             <i class="flaticon-workout-2"></i>
                         </div>
                         <h3 id="dLoad">나의 식단 일기</h3><br>
-						<div id="ttable">
 	                        <table id="dTable" style="margin-left: auto; margin-right: auto;">
-							    <thead>
+								<% if(list.isEmpty()){%>
 									<tr>
-										<th>기록 날짜별 내용</th>
-									</tr>
-								</thead>
-								<tbody>
-		                          <%--  <% if(list.isEmpty()){ %>
-										<tr>
-											<td>아직 작성된 기록이 없습니다.</td>
-										</tr>
-									<% } else{ %>
+										<td>작성한 기록이 없습니다.</td>
+									</tr> 
+								<%} else {%>
 										<% for(int i=0; i<list.size(); i++){ %>
 											<tr>
 												<th><%= list.get(i).getdDate()%></th>
-											</tr>
-											<tr>
 												<td><%= list.get(i).getMemo()%></td>
 											</tr>
 										<%} %>
-								   <%} %> --%>
-							   </tbody>
-	                        </table>
-                        </div><br>
+								<%} %>  
+	                        </table><br>
                         <input type="button" id="deleteBtn" name="delete" value="Clear All" onclick="deleteD();">
                     </div>
                 </div>
@@ -223,13 +233,27 @@ label:hover {
          $('#tBox').val($(this).attr('value'));
       });
       
+       $('#tBox').keyup(function(e){
+           var memo = $(this).val();
+           $('#tcount').html(memo.length);
+
+           if(memo.length>100){
+               alert("100자 이내로 입력해주세요!");
+               $(this).val(memo.substring(0,100));
+               $('#tcount').html('100');
+               $('#tcount').css('color','orangered');            
+           }else{
+        	   $('#tcount').css('color',' #c1dff0');  
+           }
+       });
+      
       function validate(){
   		var date = $('#date');
   		var memo = $('#tBox');
   		
   		if(date.val().trim().length== 0){
   			alert("날짜를 선택하세요");
-  			id.focus();
+  			date.focus();
   			return false;
   		}
   		
@@ -241,7 +265,6 @@ label:hover {
   		
   		return true;
   	}
-      
     
       $('#saveBtn').on('click',function(){
 			
@@ -256,24 +279,26 @@ label:hover {
 					 $('#tBox').text('');
   					 console.log("data:"+data);
 										
-					 var $tB = $('#dTable tbody');
+					 var $tB = $('#dTable');
 					 $tB.html('');
 					 
 					for(var i in data){
 						var d = data[i];
 						
 						var $tr = $('<tr>');
-						var $dateTd = $('<th>').text(d.dDate).css('width','200px');
-						var $memoTd = $('<td>').text(d.memo).css('width','200px');
+						var $dateTd = $('<th>').html(d.dDate);
+						var $memoTd = $('<td>').html(d.memo);
 					
 						$tr.append($dateTd);
 						$tr.append($memoTd);
 						$tB.append($tr);
-					}		
+
+					}
+					
 				}
 			});
 		});
-     
+      
 		function deleteD(){
 			var boo = confirm("정말 모두 삭제하시겠습니까?");
 			if(!boo){
@@ -292,6 +317,9 @@ label:hover {
 				return true;
 			}
 		}
+      
    </script>
+
 </body>
+
 </html>
