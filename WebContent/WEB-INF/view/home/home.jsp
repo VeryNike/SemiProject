@@ -1,8 +1,11 @@
+<%@page import="home.model.vo.CheckList"%>
 <%@page import="home.model.vo.PT"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
 	ArrayList<PT> list = (ArrayList) request.getAttribute("list");
+	ArrayList<CheckList> clist = (ArrayList) request.getAttribute("clist");
+
 %>
 
 <!DOCTYPE html>
@@ -83,7 +86,21 @@
 							<h4>Check-List</h4>
 							<input type="button" class="save" value="save">
 
-							<div class="chk"></div>
+							<div id="chk">
+							<% 
+							if(!clist.isEmpty()) {
+								for (CheckList c : clist) {
+							%>
+								<ul id="<%= c.getListDate()%>" class="checks">
+									<%=c.getListContent() %>
+								</ul>
+							
+							<% 
+							}
+							}
+							%>
+							
+							</div>
 						</div>
 					</div>
 
@@ -199,8 +216,8 @@
 	<%@ include file="../common/footer.jsp"%>
 
 
-
 	<script src="js/script_home.js"></script>
+	
 
 </body>
 
