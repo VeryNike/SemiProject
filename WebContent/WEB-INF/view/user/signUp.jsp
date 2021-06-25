@@ -160,11 +160,11 @@ function validate(){
 	var phones = $('#phone');
 	var email = $('#email');
 	
- 	var Acheck = RegExp(/[^0-9]$/);
-	var Pcheck = RegExp(/01[0126789]-[0-9]{3,4}-[0-9]{3,4}/);
+	var Acheck = RegExp(/[0-9]{2,3}$/);
+	var Pcheck = RegExp(/01[0126789]-[0-9]{3,4}-[0-9]{3,4}$/);
 	var Echeck = RegExp(/[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/);
-	if(Acheck.test(ages.val())){
-		$('#message3').text("숫자 형식으로 입력해주세요");
+	if(!Acheck.test(ages.val())){
+		$('#message3').text("현재 나이를 숫자 형식으로 입력해주세요");
 		$('#message3').css('color','orangered');
 		ages.focus();
 		return false;
