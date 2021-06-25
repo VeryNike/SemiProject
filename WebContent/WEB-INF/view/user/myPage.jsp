@@ -81,7 +81,7 @@ p{ size: 10px;
 <body>
 		
     <div id="wrap">
-        <h2><span style="color:snow; font-size: 50px;"> My page</span></a></h1>
+        <h1><span style="color:snow; font-size: 50px;"> My page</span></a></h1>
         
            	<form action="<%= request.getContextPath() %>/MyUpdateForm.me" method="post" id="myForm" name="myForm">
             <fieldset>
