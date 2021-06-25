@@ -37,6 +37,7 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-md-8">
+					<% if(loginUser != null){ %>
 					<div class="top-bar-left">
 						<div class="text">
 							<h2>
@@ -55,6 +56,7 @@
 							<p></p>
 						</div>
 					</div>
+					<%} %>
 				</div>
 				<div class="col-md-4">
 					<div class="top-bar-right">
@@ -138,7 +140,7 @@
 	$('#board').on('click', function(){
 		location.href='<%= request.getContextPath() %>/boardList.me';
 	});
-	
+
 	$('#team').on('click', function(){
 		location.href='<%= request.getContextPath() %>/team.me';
 	});
