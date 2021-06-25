@@ -180,6 +180,5 @@
 
    <%@ include file="../common/footer.jsp"%>
  
-   </script>
 </body>
 </html>

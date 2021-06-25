@@ -40,12 +40,9 @@
 					<% if(loginUser != null){ %>
 					<div class="top-bar-left">
 						<div class="text">
-							<h2>
+							<h2 id="mypage">
 								<i class="far fa-user-circle"></i>
-								<%=loginUser.getUserName()%>님의
-							</h2>
-							<h2>
-								<p id="mypage"> My Page </p> 
+								<%=loginUser.getUserName()%>님의 My page
 							</h2>
 						</div>
 						<div class="text">
@@ -53,7 +50,6 @@
 							<h2 id="logout">
 								<i class="fa fa-sign-out-alt"></i> logout
 							</h2>
-							<p></p>
 						</div>
 					</div>
 					<%} %>

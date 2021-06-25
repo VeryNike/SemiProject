@@ -107,7 +107,7 @@ p{ size: 10px;
 <body>
 	
 	 <div id="wrap">
-        <h1><span style="color:snow; font-size: 50px;"> 내 정보 수정</span></a></h1>
+        <h1><span style="color:snow; font-size: 50px;"> 내 정보 수정</span></h1>
         <form action="<%= request.getContextPath()%>/myupdate.me" method="post" id="MyupdateForm" name="MyupdateForm" onsubmit="return validate();" >
             <fieldset>
                 <label >ID </label>
@@ -158,7 +158,7 @@ p{ size: 10px;
         </form>
         	<input type="button" id="goMain" onclick="location.href='<%= request.getContextPath() %>/home.me'" value="메인화면">
 	
-	
+															       </div>
 	<script>
 	$("#pw2").keyup(function(){
 		console.log($(this).val());
