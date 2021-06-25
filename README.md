@@ -1,8 +1,11 @@
 # 폴더 업로드
   - WEB-INF> Team> team.jsp
   - src> Team > AboutUsServlet.java ( /team.me)
-  -
-  
+  - src/shopping 폴더 업로드
+  - src/query/shopping.properties 업로드
+  - WEB-INF/view/shopping 폴더 업로드
+  - WebContent/img 폴더 업로드
+
 # menu.jsp
 - 상단 로그인 정보 보이기
 - 로그아웃 기능
@@ -58,3 +61,11 @@
 
 # WEB-INF > src > query
 - board폴더를 생성시켜 board-query 게시물 쿼리 파일을 추가 
+
+# WebContent/css/shoppingcss
+  bootstrap css 전체 추가
+
+# src/common/Common.java
+메소드추가
+# src/common/JDBCTemplate.java
+메소드추가
