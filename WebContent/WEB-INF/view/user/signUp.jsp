@@ -16,7 +16,6 @@ body {
 	overflow: scroll;
 }
 
-
 form {
     width: 280px;
     padding: 30px;
@@ -32,7 +31,6 @@ form {
 	margin: 100px auto;
     text-align: center;
 }
-
 
 fieldset {
     font-size: 12px;
@@ -64,15 +62,6 @@ fieldset label {
     width: 100px; 
     border: 2px solid #c1dff0;
     border-radius: 10px;
-    
-}
-
-#goMain {
-
-	border: 1px solid #c1dff0;
-	background: #c1dff0;
-	color: white;
-
 }
 
 select {
@@ -86,19 +75,19 @@ select {
 	border: 1px solid white;
 	border-radius: 10px;
 }
-
-p{ size: 10px;
+p{ 	size: 10px;
 	margin: 1px 0px -15px 15px;}
-
-
-    
+a{ text-decoration:none;
+	color: white;
+	font-weight: bold;
+	font-size:15px;}   
 </style>
 </head>
 <body>
 
     <div id="wrap">
-        <h1><span style="color:snow; font-size: 50px;"> JOIN</span></h1>
-        <form action="<%= request.getContextPath()%>/insert.me" method="post" id="joinForm" name="joinForm" onsubmit="return validate();" >
+        <h1><span style="color:snow; font-size: 50px;"> JOIN</span></a></h1>
+        <form action="<%= request.getContextPath()%>/insert.me" method="post" id="joinForm" name="joinForm" onsubmit="return validate();">
             <fieldset>
                 <label >ID </label>
                 	<input type="text" name="userId" id="userId" minlength="4" maxlength="12" placeholder="아이디 입력"><br>
@@ -108,19 +97,18 @@ p{ size: 10px;
                 <input type="password" name="userPwd" id="pw1" minlength="4" maxlength="15" placeholder="비밀번호 입력"><br>
                 
                 <label > PW</label>
-                <input type="password" name="userPwd2" id="pw2" minlength="4" maxlength="15" placeholder="비밀번호 확인"><br>
+                <input type="password" name="userPwd2" id="pw2" minlength=4" maxlength="15" placeholder="비밀번호 확인"><br>
                 <p id="message2"></p><br>
                 
                 <label >NAME</label>
                 <input type="text" name="userName" id="userName" minlength="2" maxlength="12" placeholder="이름 입력"><br>
                 
                 <label >NICK</label>
-                <input type="text" name="nickName" id="nickName" maxlength="12" placeholder="닉네임 입력">
-                <p id="message3"></p><br>
-             
+                <input type="text" name="nickName" id="nickName" maxlength="12" placeholder="닉네임 입력"><br>
+                
                 <label >AGE</label>
-                <input type="text" name="age" id="age" size="10px;" placeholder="나이 입력"><br><br>
-                 <p id="message4"></p><br>
+                <input type="text" name="age" id="age" size="10px;" placeholder="나이 입력"><br>
+                <p id="message3"></p><br>
                 
                 <label >GEN</label>
                 <select id="gender" name="gender">
@@ -130,10 +118,12 @@ p{ size: 10px;
                 </select><br>
                 
                 <label >PHONE</label>
-                <input type="text" name="phone" id="phone" placeholder="전화번호 입력(-제외)"><br>
+                <input type="text" name="phone" id="phone" placeholder="(010-000-0000)"><br>
+                <p id="message4"></p><br>
                 
                 <label >EMAIL</label>
-                <input type="text" name="email" id="email" placeholder="이메일 입력 "><br>
+                <input type="text" name="email" id="email" placeholder="__@__.__"><br>
+                <p id="message5"></p><br>
                 
                 <label >ADDRESS</label>
                 <input type="text" name="address" placeholder="주소 입력 (선택사항)"><br>
@@ -150,112 +140,147 @@ p{ size: 10px;
 	               
                 <br>
             </fieldset>
-            
             <input type="submit"  value="JOIN" id="joinBtn">
         </form>
-	        <input type="button" id="goMain" onclick="history.back();" value="로그인화면">
-        
-        
+	        <a href="<%= request.getContextPath() %>">로그인화면</a>
     </div>
+</body>
+
+<script>
 
 
-	<script>
-	function validate(){
-		var Id = $('#userId');
-		var pwd = $('#pw2');
-		var name = $('#userName');
-		var nick = $('#nickName');
-		var phone = $('#phone');
-		var email = $('#email');
-		
-		if(Id.val().trim().length == 0){
-			alert("아이디를 입력하세요");
-			id.focus();
-			
-			return false;
-		}
+function validate(){
+	var Id = $('#userId');
+	var pwd1 = $('#pw1');
+	var pwd2 = $('#pw2');
+	var name = $('#userName');
+	var nick = $('#nickName');
+	var gen = $('#gender');
+	var ages = $('#age');
+	var phones = $('#phone');
+	var email = $('#email');
 	
-		if(pwd.val().trim().length == 0){
-			alert("비밀번호를 확인하세요");
-			pwd.focus();
-			
-			return false;
-		}
-		if(name.val().trim().length == 0){
-			alert("이름을 입력하세요");
-			name.focus();
-			
-			return false;
-		}
-	
-		if(nick.val().trim().length == 0){
-			alert("닉네임을 입력하세요");
-			nick.focus();
-			
-			return false;
-		}
-		if(phone.val().trim().length == 0){
-			alert("전화번호를 입력하세요");
-			phone.focus();
-			
-			return false;
-		}
-	
-		if(email.val().trim().length == 0){
-			alert("이메일을 입력하세요");
-			email.focus();
-			
-			return false;
-		}
-		
-		alert("회원가입성공! 로그인해주세요.");
-		return true;
+ 	var Acheck = RegExp(/[^0-9]$/);
+	var Pcheck = RegExp(/01[0126789]-[0-9]{3,4}-[0-9]{3,4}/);
+	var Echeck = RegExp(/[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/);
+	if(Acheck.test(ages.val())){
+		$('#message3').text("숫자 형식으로 입력해주세요");
+		$('#message3').css('color','orangered');
+		ages.focus();
+		return false;
+	}else{
+		$('#message3').hide();
 	}
 	
+	if(!Pcheck.test(phones.val())){
+		$('#message4').text("010-000-0000 형식으로 입력해주세요");
+		$('#message4').css('color', 'orangered');
+		phones.focus();
+		return false;
+	}else{
+		$('#message4').hide();
+	}
 	
-		$('#userId').blur(function(){
-			var Id = $('#userId').val();	
+	if(!Echeck.test(email.val())){
+		$('#message5').text("__@__.__ 형식으로 입력해주세요");
+		$('#message5').css('color', 'orangered');
+		email.focus();
+		return false;
+	}else{
+		$('#message5').hide();
+	}
+	
+	if(Id.val().trim().length == 0){
+		alert("아이디를 입력하세요");
+		id.focus();
+		return false;
+	}
 
-			$.ajax({
-				type: 'post',
-				async:false,
-				url: '<%= request.getContextPath()%>/checkId.me',
-				dataType:'text',
-				data:{"Id": Id},
-				success: function(result, textStatus){
-						console.log(" success result:"+result)
-					if(result == 'usable'){
-						$('#message1').text('Very Nice!');
-						$('#message1').css('color','skyblue');
-						
-					}else{
-						$('#message1').text('이미 사용중입니다.');
-						$('#message1').css('color','orangered');
-					}
-				},
-				error:function(result, textStatus){
-					console.log('error');
+	if(pwd1.val().trim().length == 0){
+		alert("비밀번호를 입력하세요");
+		pwd1.focus();
+		return false;
+	}
+
+	if(pwd1.val() != pwd2.val()){
+		alert("비밀번호를 확인하세요");
+		pwd2.focus();
+		return false;
+	}
+	if(name.val().trim().length == 0){
+		alert("이름을 입력하세요");
+		name.focus();
+		return false;
+	}
+
+	if(nick.val().trim().length == 0){
+		alert("닉네임을 입력하세요");
+		nick.focus();
+		return false;
+	}
+	if(ages.val().trim().length == 0){
+		alert("나이를 입력하세요");
+		ages.focus();
+		return false;
+	}
+
+	if(gen.val() == null){
+		alert("성별을 선택하세요");
+		gen.focus();
+		return false;
+	}
+	if(phones.val().trim().length == 0){
+		alert("전화번호를 입력하세요");
+		phones.focus();
+		return false;
+	}
+
+	if(email.val().trim().length == 0){
+		alert("이메일을 입력하세요");
+		email.focus();
+		return false;
+	}
+	
+	alert("회원가입성공! 로그인해주세요.");
+	return true;
+}
+
+	$('#userId').blur(function(){
+		var Id = $('#userId').val();	
+
+		$.ajax({
+			type: 'post',
+			async:false,
+			url: '<%= request.getContextPath()%>/checkId.me',
+			dataType:'text',
+			data:{"Id": Id},
+			success: function(result, textStatus){
+					console.log(" success result:"+result)
+				if(result == 'usable'){
+					$('#message1').text('Very Nice!');
+					$('#message1').css('color','skyblue');
+					
+				}else{
+					$('#message1').text('이미 사용중입니다.');
+					$('#message1').css('color','orangered');
 				}
-			}); //ajax
-		});
-		
-		
-		$("#pw2").keyup(function(){
-			console.log($(this).val());
-			console.log("keyup test2..");
-			if($("#pw1").val() == $("#pw2").val()){
-				$("#message2").text("비밀번호가 정확합니다");
-				$('#message2').css('color','skyblue');
-			}else{
-				$('#message2').text("비밀번호가 일치하지않습니다");
-				$('#message2').css('color','orangered');
+			},
+			error:function(result, textStatus){
+				console.log('error');
 			}
-		});
-		
-	</script>
+		}); //ajax
+	});
 	
-
-
-
-</body>
+	$("#pw2").keyup(function(){
+		console.log($(this).val());
+		if($("#pw1").val() == $("#pw2").val()){
+			$("#message2").text("비밀번호가 정확합니다");
+			$('#message2').css('color','skyblue');
+		}else{
+			$('#message2').text("비밀번호가 일치하지않습니다");
+			$('#message2').css('color','orangered');
+		}
+	});
+//});
+</script>
 </html>

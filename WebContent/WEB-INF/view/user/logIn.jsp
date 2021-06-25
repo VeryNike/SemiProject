@@ -40,7 +40,7 @@
             <br>
 
         </form>
-        <a href="<%= request.getContextPath()%>/aboutUs.me" style="color:gray">비회원 둘러보기</a>   
+        <a href="<%= request.getContextPath()%>/team.me" style="color:gray">비회원 둘러보기</a>      
     </div>
 	<br clear="all">
 	

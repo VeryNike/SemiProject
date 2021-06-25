@@ -49,7 +49,6 @@ ul{
    cols :60;
 }
 
-
 #saveBtn, #deleteBtn{
     background-color: #c1dff0;
     color: white;
