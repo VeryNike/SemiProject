@@ -93,7 +93,20 @@ public class JDBCTemplate {
 			e.printStackTrace();
 		}
 	}
-	
+	/////////////////////////////////////////////////////////////////////////////////////
+	public static void close(Connection conn, PreparedStatement pstmt, ResultSet rs) {
+		close(rs);
+		close(pstmt);
+		close(conn);
+	}
+
+	public static void close(Connection conn, PreparedStatement pstmt) {
+		close(conn, pstmt, null);
+	}
+
+	public static void close(PreparedStatement pstmt, ResultSet rs) {
+		close(null, pstmt, rs);
+	}
 	
 	
 	
