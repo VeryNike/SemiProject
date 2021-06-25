@@ -52,6 +52,17 @@
 							</h2>
 						</div>
 					</div>
+					<%} else {%>
+						<div class="top-bar-left">
+							<div class="text">
+								<h2></h2>
+							</div>
+							<div class="text">
+								<h2 id="logIn">
+									<i class="fa fa-sign-out-alt"></i> logIn
+								</h2>
+							</div>
+						</div>
 					<%} %>
 				</div>
 				<div class="col-md-4">
@@ -117,7 +128,10 @@
 	$('#logout').on('click', function(){
 		location.href = "<%=request.getContextPath()%>/logout.me";
 	});
-	
+		
+	$('#logIn').on('click', function(){
+		location.href = "<%=request.getContextPath()%>";
+	});
 	
 	$('.menus').on('click', function(){
 		console.log('메뉴클릭');
