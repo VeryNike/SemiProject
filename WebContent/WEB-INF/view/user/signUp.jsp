@@ -86,7 +86,7 @@ a{ text-decoration:none;
 <body>
 
     <div id="wrap">
-        <h1><span style="color:snow; font-size: 50px;"> JOIN</span></a></h1>
+        <h1><span style="color:snow; font-size: 50px;"> JOIN</span></h1>
         <form action="<%= request.getContextPath()%>/insert.me" method="post" id="joinForm" name="joinForm" onsubmit="return validate();">
             <fieldset>
                 <label >ID </label>
