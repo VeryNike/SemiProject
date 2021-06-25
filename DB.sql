@@ -810,3 +810,116 @@ INSERT INTO PT VALUES(32, '등', '티바 로우 (T-bar Row)');
 commit;
 
 ALTER TABLE DIET ADD (STATUS VARCHAR2(20) DEFAULT 'N');
+
+
+---------------------------------ITEM 테이블 데이터포함 쿼리-------------------------------------------
+
+----------------------------------------------------
+DROP TABLE ITEM CASCADE CONSTRAINTS;
+
+
+CREATE TABLE "ITEM" (
+	"ITEM_CODE"	VARCHAR2(1000)		NOT NULL,
+	"ITEM_NAME"	VARCHAR2(4000)		NOT NULL,
+	"ITEM_PRICE"	VARCHAR2(1000)		NOT NULL,
+	"ITEM_DESC"	VARCHAR2(4000)		NOT NULL,
+	"ITEM_IFM"	VARCHAR2(2000)		NOT NULL,
+	"ITEM_CATEGORY"	VARCHAR2(500)		NOT NULL,
+	"ITEM_DETAIL2"	VARCHAR2(500)		NOT NULL,
+	"ITEM_SIZE"	VARCHAR2(2000)		NOT NULL,
+	"ITEM_URL"	VARCHAR2(4000)		NOT NULL,
+	"ITEM_LOGO"	VARCHAR2(4000)		NOT NULL,
+	"ITEM_STOCK"	VARCHAR2(100)		NOT NULL
+);
+
+COMMENT ON COLUMN "ITEM"."ITEM_CODE" IS '상품 코드';
+
+COMMENT ON COLUMN "ITEM"."ITEM_NAME" IS '상품 이름';
+
+COMMENT ON COLUMN "ITEM"."ITEM_PRICE" IS '상품 가격';
+
+COMMENT ON COLUMN "ITEM"."ITEM_DESC" IS '상품 설명';
+
+COMMENT ON COLUMN "ITEM"."ITEM_IFM" IS '상품 정보';
+
+COMMENT ON COLUMN "ITEM"."ITEM_CATEGORY" IS '분류';
+
+COMMENT ON COLUMN "ITEM"."ITEM_DETAIL2" IS '컬러';
+
+COMMENT ON COLUMN "ITEM"."ITEM_SIZE" IS '사이즈';
+
+COMMENT ON COLUMN "ITEM"."ITEM_URL" IS '상품 이미지';
+
+COMMENT ON COLUMN "ITEM"."ITEM_LOGO" IS '상품 로고';
+
+COMMENT ON COLUMN "ITEM"."ITEM_STOCK" IS '상품 재고';
+
+ALTER TABLE ITEM ADD PRIMARY KEY (ITEM_CODE);
+
+--------------------------------------------------------------------------
+
+SET DEFINE OFF;
+
+Insert into ITEM (ITEM_CODE,ITEM_NAME,ITEM_PRICE,ITEM_DESC,ITEM_IFM,ITEM_CATEGORY,ITEM_DETAIL2,ITEM_SIZE,ITEM_URL,ITEM_LOGO,ITEM_STOCK) values 
+('1','Nike Sportswear T-shirt','55000','This T-shirt came out in the summer of 21, and it has good ventilation and excellent design during outdoor activities. Also, it is a product made for semi-project and not for sale. The size is limited and the number is limited. There is no way to purchase this. But you can buy it if you want. The unofficial price is 1,000 dollars. However, it is sold at this price during the unofficial sale period.
+','0.5KG','Style No. NKBQ5231','BLACK','S','NIKE-TEE.JPG','NIKE-LOGO.JPG','3');
+
+
+Insert into ITEM (ITEM_CODE,ITEM_NAME,ITEM_PRICE,ITEM_DESC,ITEM_IFM,ITEM_CATEGORY,ITEM_DETAIL2,ITEM_SIZE,ITEM_URL,ITEM_LOGO,ITEM_STOCK) values ('2','Nike Sports Graphic Shorts.','80000','CLASSIC COMFORT. BOLD STYLE.
+The Nike Sportswear Club Shorts blend classic comfort with a bold graphic for street-ready style. Crafted from soft fleece, they ve got you covered for all-day wear.
+Secure Fit
+Elastic waistband with drawcord offers a secure, personalised fit.
+Soft Comfort
+Brushed-back fabric is soft and comfortable.
+Product Details
+Standard fit for a relaxed, easy feel
+Body: 80% cotton/20% polyester. Side pocket knuckle side/back pocket: 100% cotton.
+Machine wash
+Imported
+Colour Shown: White/White
+Style: BV2721-100','1.1KG','Style No. NPWH9271','WHITE','M','NIKE-PANTS.JPG','NIKE-LOGO.JPG','3');
+
+
+Insert into ITEM (ITEM_CODE,ITEM_NAME,ITEM_PRICE,ITEM_DESC,ITEM_IFM,ITEM_CATEGORY,ITEM_DETAIL2,ITEM_SIZE,ITEM_URL,ITEM_LOGO,ITEM_STOCK) values ('3','Nike ZoomX Running Shoes','120000','Nike ZoomX foam and 5% Vaporfly for the ultimate energy return on your Nike run, plus more ZoomX for race day comfort.
+Pressure-reducing lacing system: The
+laces are engraved through the lightweight side rings, eliminating leg bands, reducing shoe weight and relieving pressure in the sturdy areas.
+Features: -
+Complete carbon plate on the midsole to prevent energy loss when the toe flexes.
+Wide toes with a wider fitting to better work the muscles in the front of the foot.
+Flexible grooves along the outsole increase multi-surface friction in a variety of weather conditions.
+Specification:
+10 grams (or 5%) weight reduction over Vaporfly 4% Flyknit. Shop from the comfort of your own home through our online store specializing in','1.2KG','Style No. CO062NS','CORAL','230~285','NIKE-SHOES.JPG','NIKE-LOGO.JPG','3');
+
+
+Insert into ITEM (ITEM_CODE,ITEM_NAME,ITEM_PRICE,ITEM_DESC,ITEM_IFM,ITEM_CATEGORY,ITEM_DETAIL2,ITEM_SIZE,ITEM_URL,ITEM_LOGO,ITEM_STOCK) values ('4','Bodyfit 10Kg Dumbbells','40000','Made From Solid Cast Iron With A 6-Sided Anti-Roll Design And Encased In Virgin Rubber
+This Dumbbell Is Stylish As It Is Durable It Resists Cracking And Fading While Protecting Floors
+Equipment Heads Are Securely Fastened With A Uniquely Designed Pin Mechanism That Means This Equipment Is About As Low-Maintenance As It Gets
+No Spinning Or Loosening. Dumbbells Sold In Pairs Price Shown Is For 1 Pair','10KG','ITEM No.B10KGDB','BLACK','FREE','DUMBELL.JPG','SPORT1.JPG','5');
+
+
+Insert into ITEM (ITEM_CODE,ITEM_NAME,ITEM_PRICE,ITEM_DESC,ITEM_IFM,ITEM_CATEGORY,ITEM_DETAIL2,ITEM_SIZE,ITEM_URL,ITEM_LOGO,ITEM_STOCK) values ('5','Pro Whey Protein','45000','Protein protein supplements, which help muscle synthesis and muscle fiber tissue grow, are close to 1L and vanilla flavor is very easy for users to consume without resistance.Its hard to imagine the explanation, but the semi-project is fun. Our team is good, too.
+','2KG','ITEM No.PROB1L','Vanilla Cream','935G','DRINK','DRINK.JPG','5');
+
+
+Insert into ITEM (ITEM_CODE,ITEM_NAME,ITEM_PRICE,ITEM_DESC,ITEM_IFM,ITEM_CATEGORY,ITEM_DETAIL2,ITEM_SIZE,ITEM_URL,ITEM_LOGO,ITEM_STOCK) values ('6','LE ONE-PER-DAY Vitamin','30000','I just put in the multivitamin. I dont know if its helpful for exercise, but its a necessary health supplement for modern people. Especially, modern people who work indoors, not outdoors, lack vitamin D, so I hope you eat well. But if I eat too much, its too much for my liver, so I dont eat much these days.
+','0.5KG','ITEM No.LEOVT60','FREE','FREE','VITAMIN1','NOW.JPG','10');
+
+
+Insert into ITEM (ITEM_CODE,ITEM_NAME,ITEM_PRICE,ITEM_DESC,ITEM_IFM,ITEM_CATEGORY,ITEM_DETAIL2,ITEM_SIZE,ITEM_URL,ITEM_LOGO,ITEM_STOCK) values ('7','Nike Training Gloves','38000','Gloves are very basic equipment as Nikes assistive equipment to help keep them from slipping during exercise. It is an auxiliary equipment that is easy to ventilate in the form of half gloves and helps to increase the intensity of exercise.
+
+','0.5KG','Style No.NG535LVS','BLACK','FREE','GLOVES.JPG','GLOVES1.JPG','3');
+
+
+Insert into ITEM (ITEM_CODE,ITEM_NAME,ITEM_PRICE,ITEM_DESC,ITEM_IFM,ITEM_CATEGORY,ITEM_DETAIL2,ITEM_SIZE,ITEM_URL,ITEM_LOGO,ITEM_STOCK) values ('8','Founder Insulated Bottle','20000','Designed by a very famous designer for water-bearing tumbler design and has excellent cooling and thermal insulation, it is very suitable for outdoor activities or gym use The tumbler color that won the design award is black
+','0.5KG','ITEM No.TB1LFL','BLACK','1L','TUMBLR.JPG','TUMBLR1.JPG','3');
+
+
+Insert into ITEM (ITEM_CODE,ITEM_NAME,ITEM_PRICE,ITEM_DESC,ITEM_IFM,ITEM_CATEGORY,ITEM_DETAIL2,ITEM_SIZE,ITEM_URL,ITEM_LOGO,ITEM_STOCK) values ('9','20kg KettleBell','38000','Kettle bells are easy to use at home, outdoors, or in the gym, and easy to carry. Compared to the small size, the weight of this product is 20kg and only one will be sent when purchasing. Be careful of injuries.
+','5KG','ITEM No.KB20KGBP','BLACK','FREE','KETTLEBELL.JPG','SPORT3.JPG','3');
+
+
+
+
+COMMIT;
+
+----------------------------------------------------------------ITEM 테이블 데이터포함 쿼리 끝-------------------------------------------------------------------------------------------------
