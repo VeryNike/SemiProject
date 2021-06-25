@@ -15,7 +15,7 @@ import diet.model.service.dService;
 import diet.model.vo.Diet;
 import user.model.vo.User;
 
-@WebServlet("/Diet.me")
+@WebServlet("/diet.me")
 public class DietServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
