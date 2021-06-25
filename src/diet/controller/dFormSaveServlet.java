@@ -69,7 +69,7 @@ public class dFormSaveServlet extends HttpServlet {
 			//PrintWriter out = response.getWriter();
 			gson.toJson(list, response.getWriter());
 			
-			response.sendRedirect("Diet.me");
+			response.sendRedirect("diet.me");
 			
 		} catch (ParseException e) {
 			e.printStackTrace();

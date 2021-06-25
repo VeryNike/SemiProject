@@ -49,8 +49,17 @@ ul{
    cols :60;
 }
 
-#saveBtn, #deleteBtn{
+#saveBtn{
     background-color: #c1dff0;
+    color: white;
+    text-align: center;
+    font-weight: 700;
+    width: 200px; 
+    border: 2px solid #c1dff0;
+    border-radius: 10px;
+}
+#deleteBtn{
+	background-color: #c1dff0;
     color: white;
     text-align: center;
     font-weight: 700;
@@ -76,8 +85,7 @@ td{
 }
 
 #dList{
-   display: none;
-   
+   display: none;   
 }   
 
 label {
@@ -101,11 +109,12 @@ label:hover {
 	font-size: 12px;
 	color:  #c1dff0;
 }
-#tc{
-	font-size:12px;
+
+.ch{
+	width:10px;
+	text-align:left;
 }
 </Style>
-
 </head>
 <body>
 
@@ -184,7 +193,7 @@ label:hover {
 
                              <label>피드백 작성</label><br>
                                 <textarea id="tBox" name="dtext" placeholder="추천메뉴를 클릭하시거나 직접 기록하세요:)"></textarea>
-                                <span id="tcount">0</span><span id="tc">/100</span><br><br>
+                                <span id="tcount">0</span><span style="font-size:12px;">/100</span><br><br>
                          </div>
 	                         <input type="submit" id="saveBtn" name="save" value="Save">
                         </form>
@@ -203,22 +212,27 @@ label:hover {
 										<td>작성한 기록이 없습니다.</td>
 									</tr> 
 								<%} else {%>
+									<tr height="10px;">
+										<th style="border-bottom: 1px solid white;"></th>
+										<td style="border-bottom: 1px solid white;"></td>
+										<td style="border-bottom: 1px solid white;"class="ch"><input type="checkbox" id="chall"></td>
+									</tr>
 										<% for(int i=0; i<list.size(); i++){ %>
 											<tr>
 												<th><%= list.get(i).getdDate()%></th>
 												<td><%= list.get(i).getMemo()%></td>
+												<td class="ch"><input type="checkbox" name="checkRow" value="<%= list.get(i).getdCode()%>"></td>
 											</tr>
 										<%} %>
 								<%} %>  
 	                        </table><br>
-                        <input type="button" id="deleteBtn" name="delete" value="Clear All" onclick="deleteD();">
+						<input type="button" id="deleteBtn" name="delete" value="select Delete">
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <!-- Service End -->
-   
 
    <%@ include file="../common/footer.jsp"%>
    
@@ -231,53 +245,31 @@ label:hover {
       $('#selectDiet ul li ul li').on('click', function(){
          $('#tBox').val($(this).attr('value'));
       });
-      
-       $('#tBox').keyup(function(e){
-           var memo = $(this).val();
-           $('#tcount').html(memo.length);
+     
+      $('#tBox').keyup(function(e){
+          var memo = $(this).val();
+          $('#tcount').html(memo.length);
 
-           if(memo.length>100){
-               alert("100자 이내로 입력해주세요!");
-               $(this).val(memo.substring(0,100));
-               $('#tcount').html('100');
-               $('#tcount').css('color','orangered');            
-           }else{
-        	   $('#tcount').css('color',' #c1dff0');  
-           }
-       });
-      
-      function validate(){
-  		var date = $('#date');
-  		var memo = $('#tBox');
-  		
-  		if(date.val().trim().length== 0){
-  			alert("날짜를 선택하세요");
-  			date.focus();
-  			return false;
-  		}
-  		
-  		if(memo.val().trim().length== 0){
-  			alert("추천 식단을 선택하거나 식단 내용을 작성해주세요");
-  			memo.focus();
-  			return false;
-  		}
-  		
-  		return true;
-  	}
+          if(memo.length>100){
+              alert("100자 이내로 입력해주세요!");
+              $(this).val(memo.substring(0,100));
+              $('#tcount').html('100');
+              $('#tcount').css('color','orangered');            
+          }else{
+       	   $('#tcount').css('color',' #c1dff0');  
+          }
+      });
     
       $('#saveBtn').on('click',function(){
-			
-			var dateNo = $('#date').val();			
-			var dtext = $('#tBox').val();			
-			var userId = '<%=loginUser.getUserId()%>';
+		var dateNo = $('#date').val();			
+		var dtext = $('#tBox').val();			
+		var userId = '<%=loginUser.getUserId()%>';
 			
 			$.ajax({
 				url: 'dForm.save',
 				data: {dateNo:dDate,  dtext:memo, userId:userId},
 				success: function(data){
 					 $('#tBox').text('');
-  					 console.log("data:"+data);
-										
 					 var $tB = $('#dTable');
 					 $tB.html('');
 					 
@@ -291,34 +283,65 @@ label:hover {
 						$tr.append($dateTd);
 						$tr.append($memoTd);
 						$tB.append($tr);
-
 					}
-					
 				}
 			});
 		});
       
-		function deleteD(){
-			var boo = confirm("정말 모두 삭제하시겠습니까?");
-			if(!boo){
-				return false;
-			}else{
-					$.ajax({
+     $('#chall').click(function(){
+          if($("#chall").prop("checked")){
+             $("input[type=checkbox]").prop("checked",true); 
+         }else{
+             $("input[type=checkbox]").prop("checked",false); 
+         }
+     });
+       
+ 	 $('#deleteBtn').on('click',function(){	
+           var charr = new Array();
+          	$("input[name=checkRow]:checked").each(function(i){	
+          		charr[i] = $(this).attr("value");
+          		console.log("charr[]:"+charr[i]);
+          	});
+ 
+           if(charr.length==0){
+         	  alert("삭제하려는 글을 체크하세요");
+           }else{
+				$.ajax({
 						url: 'dForm.delete',
-						success: function(data){
-							console.log("모두 삭제 성공");
-							location.reload();
+						data: {'charr':charr},
+						success: function(result){
+							if(result=='d.success'){
+								console.log("선택된 식단기록 삭제 성공");
+								location.reload();
+							}else{
+								console.log("선택된 식단기록 삭제 실패");
+							}
 						},
-						error: function(data){
-							console.log("모두 삭제 실패");
+						 error: function(result){
+							 console.lof("res:"+result)
+							 console.log("ajax 삭제 실패");
 						}
-					});
-				return true;
-			}
-		}
-      
+			    });
+				charr= new Array(); //초기화
+            }
+        });
+
+      function validate(){
+  		var date = $('#date');
+  		var memo = $('#tBox');
+  		
+  		if(date.val().trim().length== 0){
+  			alert("날짜를 선택하세요");
+  			date.focus();
+  			return false;
+  		}
+  		if(memo.val().trim().length== 0){
+  			alert("추천 식단을 선택하거나 식단 내용을 작성해주세요");
+  			memo.focus();
+  			return false;
+  		}
+  		return true;
+  	}
    </script>
-
 </body>
-
 </html>

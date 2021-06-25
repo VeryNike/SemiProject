@@ -42,16 +42,25 @@ public class dFormDeleteServlet extends HttpServlet {
 	 *      response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		request.setCharacterEncoding("utf-8");
+		
+		String[] charr = request.getParameterValues("charr[]");
+		int result = 0;
+		
+		for(int i=0; i<charr.length; i++) {
+			int ch = Integer.parseInt(charr[i]);
+			result = new dService().deleteD(ch);
 
-		int result = new dService().deleteD();
-	
-		PrintWriter out = response.getWriter();
-
-		if(result>0) {
-			out.print("delete success");
-		}else {
-			out.print("delete false");
+			System.out.println("삭제"+i);
 		}
+		PrintWriter out = response.getWriter();
+		if(result>0) {
+			out.print("d.success");
+		}else {
+			out.print("d.false");
+		}
+	
 		
 	}
 
