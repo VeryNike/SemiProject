@@ -922,4 +922,37 @@ Insert into ITEM (ITEM_CODE,ITEM_NAME,ITEM_PRICE,ITEM_DESC,ITEM_IFM,ITEM_CATEGOR
 
 COMMIT;
 
-----------------------------------------------------------------ITEM 테이블 데이터포함 쿼리 끝-------------------------------------------------------------------------------------------------
+----------------------------------------------------------------ITEM 테이블 데이터포함 쿼리 끝------------------------------------------------------------------------------------
+
+---------------------------------------------------------------ITEM_IMAGE 테이블 데이터포함 쿼리 시작-----------------------------------------------------------------------------
+
+CREATE TABLE "ITEM_IMAGE" (
+   "IMAGE_NUM"   NUMBER      NOT NULL,
+   "ITEM_CODE"   VARCHAR2(20)      NOT NULL,
+   "ORG_IMG_NM"   VARCHAR2(60)      NOT NULL,
+   "SAVE_IMG_NM"   VARCHAR2(60)      NOT NULL,
+   "IMG_SIZE"    NUMBER     NOT NULL,
+   "IMG_PATH"   VARCHAR2(100)      NULL,
+   "IMG_DESC"   VARCHAR2(200)      NULL,
+   "REG_DATE"   DATE      NOT NULL
+);
+
+SET DEFINE OFF;
+
+Insert into ITEM_IMAGE (IMAGE_NUM,ITEM_CODE,ORG_IMG_NM,SAVE_IMG_NM,IMG_SIZE,IMG_PATH,IMG_DESC,REG_DATE) values (1,'1','image1.jpg','image1.jpg',0,'img',null,to_date('21/06/22','RR/MM/DD'));
+Insert into ITEM_IMAGE (IMAGE_NUM,ITEM_CODE,ORG_IMG_NM,SAVE_IMG_NM,IMG_SIZE,IMG_PATH,IMG_DESC,REG_DATE) values (2,'2','image2.jpg','image2.jpg',0,'img',null,to_date('21/06/22','RR/MM/DD'));
+Insert into ITEM_IMAGE (IMAGE_NUM,ITEM_CODE,ORG_IMG_NM,SAVE_IMG_NM,IMG_SIZE,IMG_PATH,IMG_DESC,REG_DATE) values (3,'3','image3.jpg','image3.jpg',0,'img',null,to_date('21/06/22','RR/MM/DD'));
+Insert into ITEM_IMAGE (IMAGE_NUM,ITEM_CODE,ORG_IMG_NM,SAVE_IMG_NM,IMG_SIZE,IMG_PATH,IMG_DESC,REG_DATE) values (4,'4','image4.jpg','image4.jpg',0,'img',null,to_date('21/06/22','RR/MM/DD'));
+Insert into ITEM_IMAGE (IMAGE_NUM,ITEM_CODE,ORG_IMG_NM,SAVE_IMG_NM,IMG_SIZE,IMG_PATH,IMG_DESC,REG_DATE) values (5,'5','image5.jpg','image5.jpg',0,'img',null,to_date('21/06/22','RR/MM/DD'));
+Insert into ITEM_IMAGE (IMAGE_NUM,ITEM_CODE,ORG_IMG_NM,SAVE_IMG_NM,IMG_SIZE,IMG_PATH,IMG_DESC,REG_DATE) values (6,'6','image6.jpg','image6.jpg',0,'img',null,to_date('21/06/22','RR/MM/DD'));
+Insert into ITEM_IMAGE (IMAGE_NUM,ITEM_CODE,ORG_IMG_NM,SAVE_IMG_NM,IMG_SIZE,IMG_PATH,IMG_DESC,REG_DATE) values (7,'7','image7.jpg','image7.jpg',0,'img',null,to_date('21/06/22','RR/MM/DD'));
+Insert into ITEM_IMAGE (IMAGE_NUM,ITEM_CODE,ORG_IMG_NM,SAVE_IMG_NM,IMG_SIZE,IMG_PATH,IMG_DESC,REG_DATE) values (8,'8','image8.jpg','image8.jpg',0,'img',null,to_date('21/06/22','RR/MM/DD'));
+Insert into ITEM_IMAGE (IMAGE_NUM,ITEM_CODE,ORG_IMG_NM,SAVE_IMG_NM,IMG_SIZE,IMG_PATH,IMG_DESC,REG_DATE) values (9,'9','image9.jpg','image9.jpg',0,'img',null,to_date('21/06/22','RR/MM/DD'));
+
+ALTER TABLE ITEM_IMAGE ADD PRIMARY KEY (IMAGE_NUM);
+ALTER TABLE ITEM_IMAGE MODIFY (IMG_SIZE DEFAULT 0);
+ALTER TABLE ITEM_IMAGE MODIFY (REG_DATE DEFAULT SYSDATE);
+
+COMMIT;
+
+--ITEM_IMAGE 테이블 데이터포함 쿼리문 끝
