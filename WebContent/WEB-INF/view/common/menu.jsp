@@ -89,7 +89,7 @@
 					<div id="diet" class="nav-item nav-link menus">Diet</div>
 					<div id="shopping" class="nav-item nav-link menus">Shopping</div>
 					<div id="board" class="nav-item nav-link menus">Board</div>
-					<div class="nav-item nav-link menus">Team</div>
+					<div id="team" class="nav-item nav-link menus">Team</div>
 				</div>
 			</div>
 		</div>
@@ -137,6 +137,10 @@
 	
 	$('#board').on('click', function(){
 		location.href='<%= request.getContextPath() %>/boardList.me';
+	});
+	
+	$('#team').on('click', function(){
+		location.href='<%= request.getContextPath() %>/team.me';
 	});
 	</script>
 </body>
