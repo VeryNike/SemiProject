@@ -97,7 +97,7 @@ a{ text-decoration:none;
                 <input type="password" name="userPwd" id="pw1" minlength="4" maxlength="15" placeholder="비밀번호 입력"><br>
                 
                 <label > PW</label>
-                <input type="password" name="userPwd2" id="pw2" minlength=4" maxlength="15" placeholder="비밀번호 확인"><br>
+                <input type="password" name="userPwd2" id="pw2" minlength="4" maxlength="15" placeholder="비밀번호 확인"><br>
                 <p id="message2"></p><br>
                 
                 <label >NAME</label>
