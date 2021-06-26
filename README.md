@@ -64,6 +64,7 @@
 
 # WEB-INF > src > query
 - board폴더를 생성시켜 board-query 게시물 쿼리 파일을 추가 
+  shopping.properties 추가
 
 # WebContent/css/shoppingcss
   bootstrap css 전체 추가
