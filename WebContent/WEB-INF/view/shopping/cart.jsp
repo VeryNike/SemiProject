@@ -24,7 +24,48 @@
 		<script src="lib/jquery-3.6.0.min.js"></script>
 		
         <style>
-        
+button {
+  background: #ffffff;
+  color: rgb(0, 0, 0);
+  border: 1;
+  position: relative;
+  height: 60px;
+  font-size: 1.6em;
+  padding: 0 2em;
+  cursor: pointer;
+  transition: 800ms ease all;
+  outline: black;
+  font-weight: bold;
+}
+button:hover {
+  background: #ffffff;
+  color: #ff0000;
+}
+button:before,
+button:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 1px;
+  width: 0;
+  background: #ffffff;
+
+  font-weight: bold;
+  transition: 400ms ease all;
+}
+button:after {
+  right: inherit;
+  top: inherit;
+  left: 0;
+  bottom: 0;
+}
+button:hover:before,
+button:hover:after {
+  width: 100%;
+  transition: 800ms ease all;
+}
+		
 .wlsgod{
         
    margin-left: 50px;
