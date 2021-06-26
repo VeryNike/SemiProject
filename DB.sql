@@ -963,7 +963,8 @@ COMMIT;
 --ITEM_IMAGE 테이블 데이터포함 쿼리문 끝
 
 
------------------------------------------------------CATEGORY TABLE 추가 시작----------데이터 INSERT문 아직 없습니다-------------
+--------------데이터를 포함한 CATEGORY 테이블 추가 쿼리 시작-----------------
+
 
 CREATE TABLE "CATEGORY"(
    "CATE_NO"   VARCHAR2(20)     NOT NULL,
@@ -973,6 +974,16 @@ CREATE TABLE "CATEGORY"(
 COMMENT ON COLUMN "CATEGORY"."CATE_NO" IS '운동 번호';
 
 COMMENT ON COLUMN "CATEGORY"."CATE_NM" IS '테니스/등산/마라톤 등등';
+
+
+INSERT INTO CATEGORY VALUES('10','모두보기');
+INSERT INTO CATEGORY VALUES('20','filter-1');
+INSERT INTO CATEGORY VALUES('30','filter-2');
+INSERT INTO CATEGORY VALUES('40','filter-3');
+INSERT INTO CATEGORY VALUES('50','filter-4');
+INSERT INTO CATEGORY VALUES('60','filter-5');
+INSERT INTO CATEGORY VALUES('70','filter-6');
+
 
 ALTER TABLE CATEGORY ADD PRIMARY KEY (CATE_NO);
 
@@ -984,5 +995,4 @@ ADD CONSTRAINT CATE_NO foreign key (CATE_NO) references CATEGORY(CATE_NO);
 
 COMMIT;
 
-
----------------------------------------------------------CATEGORY TABLE 추가 끝----------데이터 INSERT문 아직 없습니다------------------
+--------------데이터를 포함한 CATEGORY 테이블 추가 쿼리 끝-----------------
