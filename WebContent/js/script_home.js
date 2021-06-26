@@ -64,7 +64,7 @@ function lastWeek() {
 }
 
 
-// 오늘 날짜 
+// 오늘 날짜
 function showMain() {
     todayis.innerHTML =
         today.getFullYear() +
@@ -228,47 +228,57 @@ function ptMenu() {
     });
 }
 
-var ul = document.createElement('ul');
-ul.setAttribute('id', cday);
-ul.setAttribute('value', cday);
-ul.setAttribute('class', 'checks');
-$('.chk').append(ul);
 
 
 // 운동 추가
 $('.pt ul li').click(function () {
+	
+	if($('#'+clickday()).length <= 0){
+		var ul = document.createElement('ul');
+		ul.setAttribute('id', clickday());
+		ul.setAttribute('class', 'checks');
+		$('#chk').append(ul);		
+	}
     // active를 가지고 있는 td의 클래스
     var cnt = '<input type="number" class="count" min="1" max="9" value="1">';
     var dBtn = '<button type="button" class="del">×</button>';
     var li = document.createElement('li');
-    li.innerHTML = '<input type="checkBox">' + '<span class="pl">' + $(this).text() + '</span> ' + cnt + dBtn;
+    li.innerHTML = '<input type="checkBox" class="isCheck" value="N">' + '<span class="pl"> ' + $(this).text() + '</span> ' + cnt + dBtn;
 
     // 없으면 추가 있으면 리스트 카운트 + 1
     var ulChild = $('#' + clickday() + ' li');
     if (ulChild.length <= 0) {
         $('#' + clickday()).append(li);
     } else {
-        var bool = true;
+    	var bool = true;
         for (var i = 0; i < ulChild.length; i++) {
-            if ($(this).text() == ulChild.eq(i).children('.pl').text()) {
+//        	console.log(ulChild.eq(i).children('.pl').text().trim());
+            if ($(this).text().trim() == ulChild.eq(i).children('.pl').text().trim()) {
                 var num = Number(ulChild.eq(i).find('.count').val());
                 ulChild.eq(i).find('.count').val(num + 1);
+                ulChild.eq(i).find('.count').attr('value', num +1);
                 bool = false;
                 break;
             }
         }
 
         if (bool) {
-            $('#' + clickday()).append(li);
+            $('#' + clickday()).prepend(li);
         }
     }
 
+});
+
+$('.count').on('click', function(){
+	$(this).attr("value", $(this).val());
 });
 
 
 $(document).on('click', '.del', function () {
     $(this).parent('li').remove();
 });
+
+$('#chk > ul').not('#' + cday).hide();
 
 
 // 체크리스트 추가, 목표 달성 현황
@@ -280,57 +290,113 @@ $(document).on('click', function () {
     ul.setAttribute('id', day);
     ul.setAttribute('value', day);
     ul.setAttribute('class', 'checks');
-    if ($('#' + clickday()).length <= 0) {
-        $('.chk').append(ul);
+    if ($('#' + day).length <= 0) {
+        $('#chk').append(ul);
     }
 
-    // 클릭한 날의  ul만 보이기
+    // 클릭한 날의 ul만 보이기
     $('#' + day).show();
-    $('.chk > ul').not('#' + day).hide();
-
-    var all = $('#' + day).children('li').length;
-    var chks = $('#' + day).find('input[type=checkbox]:checked').length;
-    var ach = chks / all;
-
-    if ($('.checks').css('display') == 'block') {
-        // console.log(chks);
-        if (all > 0) {
-            $('.progress-bar').css('width', chks / all * 100 + '%').text(Math.round(chks / all * 100) + '%')
-//            $('#goalBar').css('width', chks / all * 100 + '%');
-//            $('#goalBar').text(Math.round(chks / all * 100) + '%');
-        } else {
-            $('#goalBar').css('width', 0 + '%');
-            $('#goalBar').text('0%');
-        }
-    } else {
-        if (all > 0) {
-            if (ach > 0.9) {
-                $('.' + day).addClass('aa').css('background', '#17851c8a');
-            } else if (ach > 0.8) {
-                $('.' + day).addClass('aa').css('background', '#51af8b8a');
-            } else if (ach > 0.5) {
-                $('.' + day).addClass('aa').css('background', '#bcbe228a');
-            } else if (ach > 0.3) {
-            	$('.' + day).addClass('aa').css('background', '#af51518a');
-            } 
-            else {
-//            	$('.' + day).addClass('aa').css('background', '#91591a8a');
-            	$('.' + day).removeClass('aa').css('background', 'none');
-            }    
-            // 배경이미지로
-            //0일떄 색 없애기
-        }
-    }
-
-    // 체크한거 맨뒤로, 해제한거 맨 앞으로
-    $('#' + day).find('input[type=checkbox]').on('click', function () {
-        if ($(this).is(":checked")) {
-            $('#' + day).append($(this).parent());
-        } else {
-            $('#' + day).prepend($(this).parent());
-        }
+    $('#chk > ul').not('#' + day).hide();
+    
+    $('td').each(function(){
+    	var tdClass = $(this).attr("class");
+    	if($('#' + tdClass).length > 0){
+    		statusStamp(tdClass);
+    	}
+    	
     });
-
+    
+    statusStamp(day);
+    statusBar(day);
 });
+
+
+// 체크한거 맨뒤로, 해제한거 맨 앞으로
+$(document).on('click', '.isCheck', function () {
+	if($(this).is(":checked")){
+		$(this).parent().parent().append($(this).parent());
+		$(this).attr("value", "Y");
+	}else{
+		$(this).parent().parent().prepend($(this).parent());
+		$(this).attr("value", "N");
+	}
+	
+	
+});
+
+function statusBar(days){
+	var a = $('#' + days).find('.isCheck').length;
+	var c = $('#' + days).find('.isCheck:checked').length;
+	if (a > 0) {
+		$('.progress-bar').css('width',	c / a * 100 + '%').text(Math.round(c / a * 100) + '%');
+	}else {
+		$('.progress-bar').css('width', 0).text( 0 + '%');
+	}
+}
+
+function statusStamp(days){
+	
+	var a = $('#' + days).find('.isCheck').length;
+	var c = $('#' + days).find('.isCheck:checked').length;
+	var ac = c/a;
+	console.log(days);
+	console.log(ac);
+	
+	if(a != 0){
+		if (ac > 0.9) {
+	    	$('.' + days).removeClass('rr').addClass('awsome');
+	    } else if (ac > 0.7) {
+	    	$('.' + days).removeClass('rr').addClass('perfect');
+	    } else if (ac > 0.5) {
+	    	$('.' + days).removeClass('rr').addClass('good');
+	    } else if (ac > 0.3) {
+	    	$('.' + days).removeClass('rr').addClass('cheerup');
+	    } else if(c == 0) {
+	    	$('.' + days).removeClass('rr');
+	    }
+	}
+}
+
+$(document).ready(function(){ 
+	
+	$('.isCheck').each(function(){
+		if($(this).attr('value') == 'Y'){
+			$(this).prop("checked", true);
+		}else{
+			$(this).prop("checked", false);				
+		}
+	});
+	
+	statusBar(cday);
+	
+	
+	$('td').each(function(){
+		var tdClass = $(this).attr("class");
+		if($('#' + tdClass).length > 0){
+			statusStamp(tdClass);
+		}
+		
+	});
+		
+});
+
+
+
+$('.save').on('click', function(){
+	console.log("aAAAa");
+	$.ajax({
+		url:'checkList.me',
+		data:{
+			date: cday,
+			content:$('#' + cday).html()
+		}
+// success:function(data){
+// console.log(data);
+// }
+		
+	});
+	
+});
+
 
 
