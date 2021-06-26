@@ -74,3 +74,7 @@
 메소드추가
 # src/common/JDBCTemplate.java
 메소드추가
+  
+# shopping 장바구니 추가 삭제 기능 구현
+- WebContent/view/shopping/cart.jsp
+- src/shopping/controller/CartPageServlet
