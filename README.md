@@ -48,6 +48,7 @@
  - 템플릿에 필요한 폴더 업로드
  - WEB-INF/css/shoppingcss/style.css (shopping tab css 추가)
  - boardList.jsp에 있는 게시판 css 수정 
+ - WEB-INF/shopping/shopping.jsp 와 productdetail css 경로 주석처리 <head>태그에 <style>태그로 수정
 
 # footer.jsp
 - 하단 footer부분
