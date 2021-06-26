@@ -388,23 +388,22 @@ button:hover:after {
 
             <!--add to cart 버튼 시작-->
            <div class = "bcbutton">
-           
-                
              <div style="float: right; width: 100%;">
                 <!-- <a href="<%=request.getContextPath()%>/cart.me"><button>ADD TO CART</button></a> -->
                 <button>ADD TO CART</button>
             </div>
+		   
            </div>
             </div>
             <!--add to cart 버튼 끝-->
+		
            <div id="popup">
-					<h4>Added to Cart!</h4>
-					<span id="goBtn" class="popBtn">Go to Cart</span>
-					<span id="closeBtn" class="popBtn">continue</span>
-			 </div>
+		   <h4>Added to Cart!</h4>
+		   <span id="goBtn" class="popBtn">Go to Cart</span>
+		   <span id="closeBtn" class="popBtn">continue</span>
+		</div>
         
         
-
         </div>
     </div>
 
