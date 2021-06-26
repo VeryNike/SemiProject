@@ -40,9 +40,9 @@ public class dService {
 	}
 	
 
-	public int deleteD() {
+	public int deleteD(int ch) {
 		Connection conn = getConnection();
-		int result = new dDAO().deleteD(conn);
+		int result = new dDAO().deleteD(conn,ch);
 		
 		if(result>0) {
 			commit(conn);

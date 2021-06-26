@@ -48,7 +48,6 @@ public class dDAO {
 							      rset.getString("memo"),
 							      rset.getString("id"),
 							      rset.getString("status")));
-				System.out.println("dao에서의 list:"+list);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -82,19 +81,20 @@ public class dDAO {
 	}
 	
 
-	public int deleteD(Connection conn) {
-		Statement stmt = null;
+	public int deleteD(Connection conn, int ch) {
+		PreparedStatement pstmt = null;
 		int result = 0;
 		String query = prop.getProperty("deleteD");
 		
 		try {
-			stmt = conn.createStatement();
-			result = stmt.executeUpdate(query);
-
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, ch);
+			result = pstmt.executeUpdate();
+			System.out.println("delete dao result:"+result);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
-			close(stmt);
+			close(pstmt);
 		}
 		
 		return result;
