@@ -299,15 +299,7 @@
 
         <!-- Template Javascript -->
         <script src="js/main.js"></script>
-       <script>
-       $(document).on("click", "#main", function(e) {
-         location.href="<%=contextPath %>/main.me";
-      });
-       
-       $(document).on("click", "#logout", function(){
-          location.href = "<%=contextPath %>/logout.me";
-       });
-       </script>
+
        
        
        
