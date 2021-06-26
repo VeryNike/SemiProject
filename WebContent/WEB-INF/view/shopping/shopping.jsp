@@ -234,15 +234,19 @@
                     </div>
                 </div>
                 <div class="row class-container" style="position: relative; height: 734.3px;">
-<%				
-
+			<%
+				String filter = "";
 					for (Item item : list) {
+						if(item.getItemCode().equals("1") || item.getItemCode().equals("2") || item.getItemCode().equals("3")){
+							filter = "filter-1";
+						} else if(item.getItemCode().equals("4") || item.getItemCode().equals("5") || item.getItemCode().equals("6")){
+							filter = "filter-2";
+						} else if(item.getItemCode().equals("7") || item.getItemCode().equals("8") || item.getItemCode().equals("9")){
+							filter = "filter-3";
+						}
 					ItemImage img = item.getThumbnail();
-					
-					
-
-%>
-                    <div class="col-lg-4 col-md-6 col-sm-12 class-item filter-1 wow fadeInUp" data-wow-delay="0.0s" style="position: absolute; left: 0px; top: 0px; visibility: visible; animation-delay: 1s; animation-name: fadeInUp;">
+				%>
+                    <div class="col-lg-4 col-md-6 col-sm-12 class-item <%= filter%> wow fadeInUp" data-wow-delay="0.0s" style="position: absolute; left: 0px; top: 0px; visibility: visible; animation-delay: 1s; animation-name: fadeInUp;">
                         <div class="class-wrap">
                             <div class="class-img">
                              	<a href="<%=contextPath %>/productinfo.me?itemCode=<%=item.getItemCode() %>">
