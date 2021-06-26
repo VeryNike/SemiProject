@@ -1,18 +1,18 @@
 <%@page import="shopping.model.vo.ItemImage"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"   pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8" %>
 <%@ page import = "user.model.vo.User , java.util.ArrayList , shopping.model.vo.Item"%>
 <%
-   ArrayList<Item> list = (ArrayList)request.getAttribute("list");
-   
-   String contextPath = request.getServletContext().getContextPath();
+	ArrayList<Item> list = (ArrayList)request.getAttribute("list");
+	
+	String contextPath = request.getServletContext().getContextPath();
 %>
 
 <!DOCTYPE html>
 <html lang="ko">
-   <head>
-       <meta charset="UTF-8">
+	<head>
+    	<meta charset="UTF-8">
         <title>MyPT</title>
-         <meta content="width=device-width, initial-scale=1.0" name="viewport">
+      	<meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="Free Website Template" name="keywords">
         <meta content="Free Website Template" name="description">
 
@@ -189,12 +189,12 @@
          
          </style>
     </head>
-   
-   
-   <body>
-     
-     
-    <%@ include file="../common/menu.jsp"%>
+	
+	
+	<body>
+  	
+  	
+	 <%@ include file="../common/menu.jsp"%>
 
 
         <!-- 페이지 헤더 시작 -->
@@ -215,7 +215,7 @@
         </div>
         <!-- 페이지 헤더 끝 -->
 
-      <!-- 제품  시작 -->
+		<!-- 제품  시작 -->
          <div class="class">
             <div class="container">
                 <div class="section-header text-center wow zoomIn" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: zoomIn;">
@@ -234,24 +234,24 @@
                     </div>
                 </div>
                 <div class="row class-container" style="position: relative; height: 734.3px;">
-<%            
+<%				
 
-               for (Item item : list) {
-               ItemImage img = item.getThumbnail();
-               
-               
+					for (Item item : list) {
+					ItemImage img = item.getThumbnail();
+					
+					
 
 %>
                     <div class="col-lg-4 col-md-6 col-sm-12 class-item filter-1 wow fadeInUp" data-wow-delay="0.0s" style="position: absolute; left: 0px; top: 0px; visibility: visible; animation-delay: 1s; animation-name: fadeInUp;">
                         <div class="class-wrap">
                             <div class="class-img">
-                                <a href="<%=contextPath %>/productinfo.me?itemCode=<%=item.getItemCode() %>">
-                                   <img src="<%=contextPath %>/<%=img.getImgPath() %>/<%=img.getSaveImgNm() %>" alt="Image">
+                             	<a href="<%=contextPath %>/productinfo.me?itemCode=<%=item.getItemCode() %>">
+                                	<img src="<%=contextPath %>/<%=img.getImgPath() %>/<%=img.getSaveImgNm() %>" alt="Image">
                                 </a>
                             </div>
                             <div class="class-text">
                                 <div class="class-teacher">
-                                      <img src="<%=contextPath %>/<%=img.getImgPath() %>/<%=img.getSaveImgNm() %>" alt="Image">
+                                   	<img src="<%=contextPath %>/<%=img.getImgPath() %>/<%=img.getSaveImgNm() %>" alt="Image">
                                     <h3><%=item.getItemName() %></h3>
                                     <a href="">+</a>
                                 </div>
@@ -265,23 +265,24 @@
                             </div>
                         </div>
                     </div>
-<%            }
+<%				}
 %>
                    
                 </div>
             </div>
         </div>
-        <!-- 제품  끝 -->
+  		<!-- 제품  끝 -->
 
-
+		<br clear = "all">
+    
         <%@ include file="../common/footer.jsp"%>
 
-        <br clear = "all">
+        
     
         
-      
+		
         <!-- 하단 footer 끝 -->
-      
+		
         <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
         <!-- JavaScript Libraries -->
@@ -299,9 +300,8 @@
 
         <!-- Template Javascript -->
         <script src="js/main.js"></script>
-
-       
-       
+    
+    	
        
 
 <div id="lightboxOverlay" class="lightboxOverlay" style="display: none;"></div><div id="lightbox" class="lightbox" style="display: none;"><div class="lb-outerContainer"><div class="lb-container"><img class="lb-image" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="><div class="lb-nav"><a class="lb-prev" href=""></a><a class="lb-next" href=""></a></div><div class="lb-loader"><a class="lb-cancel"></a></div></div></div><div class="lb-dataContainer"><div class="lb-data"><div class="lb-details"><span class="lb-caption"></span><span class="lb-number"></span></div><div class="lb-closeContainer"><a class="lb-close"></a></div></div></div></div></body></html>
