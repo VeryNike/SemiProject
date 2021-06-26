@@ -402,8 +402,6 @@ button:hover:after {
 		   <span id="goBtn" class="popBtn">Go to Cart</span>
 		   <span id="closeBtn" class="popBtn">continue</span>
 		</div>
-        
-        
         </div>
     </div>
 
@@ -413,7 +411,9 @@ button:hover:after {
    <br clear = "all">
    <!-- /.container -->
      <%@ include file="../common/footer.jsp"%>
-
+	<form id="cartForm" method="post" action="<%=request.getContextPath() %>/cart.me">
+		<input type="hidden" name="itemCode" value="<%=item.getItemCode() %>" />
+	</form>
     
     <script>
    $('#main').on('click' , function(){
@@ -426,7 +426,8 @@ button:hover:after {
    });
    
    $('#goBtn').on('click', function(){
-	   location.href="<%=request.getContextPath()%>/cart.me";
+	   //location.href="<%=request.getContextPath()%>/cart.me";
+	   $("#cartForm").submit();
 	});
    $('#closeBtn').on('click', function(){
 	   $('#popup').hide();
