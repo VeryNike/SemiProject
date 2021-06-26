@@ -27,6 +27,7 @@
 
 # WEB-INF > view > board
 - boardList.jsp : 운동멤버 게시판 상세보기 화면
+- boardAdd.jsp : 운동멤버 게시판 글쓰기 화면
 
 # index.jsp
   - UTF-8 인코딩 코드 최상단 추가 완료
