@@ -3,11 +3,11 @@
 <%@ page import="shopping.model.vo.Item, shopping.model.vo.ItemImage"%>
 <%
 
-	Item item = (Item) request.getAttribute("item");
-	ItemImage itemImage = item.getThumbnail();
-	List<ItemImage> images = item.getImages();
-	
-	String contextPath = request.getServletContext().getContextPath();
+   Item item = (Item) request.getAttribute("item");
+   ItemImage itemImage = item.getThumbnail();
+   List<ItemImage> images = item.getImages();
+   
+   String contextPath = request.getServletContext().getContextPath();
 %>
 
 <!DOCTYPE html>
@@ -18,30 +18,181 @@
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="Free Website Template" name="keywords">
         <meta content="Free Website Template" name="description">
-		
-		<!-- 아이콘 -->
+      
+      <!-- 아이콘 -->
         <link href="img/favicon.ico" rel="icon">
         
         <!-- 구글 폰트 -->
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
         <!-- CSS 라이브러리 -->
-        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/shoppingcss/bootstrap.min.css" rel="stylesheet">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/shoppingcss/css/all.min.css" rel="stylesheet">
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
         <link href="lib/animate/animate.min.css" rel="stylesheet">
         <link href="lib/flaticon/font/flaticon.css" rel="stylesheet"> 
         <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
         <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
 
         <!-- 스타일시트 -->
-        <link href="css/shoppingcss/style.css" rel="stylesheet">
-        <script src="lib/jquery-3.6.0.min.js"></script>
+      <!--<link href="css/shoppingcss/style.css" rel="stylesheet">-->        
+       <script src="lib/jquery-3.6.0.min.js"></script>
         
+        
+ <style>
+        
+ .my-3 {
+  margin-left: 20px;
+  display:inline-block;
+  
+  
+}
+ 
+ 
+.itembox {
+  width: 500px;
+  height: 600px;
+  border: solid;
+  border-color: whitesmoke;
+}
+.imge-fluid {
+  margin-top: 50px;
+  width: 100%;
+  height: 100%;
+}
+.product-content div[class*="col-md-8"] {
+    padding: 0 13px 0 0;
+  }
+#ptitle {
+  font-weight: 900;
+  font-size: 40px;
+  
+}
+#productcolor {
+  margin-left: 24px;
+  font-size: 15px;
+}
+.classic-tabs {
+  width: 600px;
+  margin-right: -300px;
+}
+
+.clothes {
+  margin-left: 25px;
+}
+.rudfh {
+  background-color: white;
+}
+#description-tab {
+  margin-bottom: 20px;
+  margin-left: -100px;
+}
+#info-tab {
+  margin-right: 40px;
+}
+#pprice {
+  margin-left: 23px;
+  font-size: 30px;
+  font-style: italic;
+  font-weight: 40;
+}
+
+.col-md-4 {
+  display: inline-block;
+  position: sticky;
+  margin-top: -40px;
+  padding-bottom: 1500px;
+  top: 15px;
+  width: 100px;
+  height: 10px;
+}
+
+.select {
+  padding: 15px 10px;
+  margin-left: 18px;
+  margin-bottom: -20px;
+  margin-top: -25px;
+}
+.select input[type="radio"] {
+  display: none;
+}
+.select input[type="radio"] + label {
+  display: inline-block;
+  cursor: pointer;
+  height: 24px;
+  width: 70px;
+  border: 2px solid #333;
+  line-height: 24px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 13px;
+}
+.select input[type="radio"] + label {
+  background-color: #fff;
+  color: #333;
+}
+.select input[type="radio"]:checked + label {
+  background-color: #333;
+  color: #fff;
+}
+
+.bcbutton {
+  margin-top: 24px;
+  margin-left: -1px;
+}
+button {
+  background: #ffffff;
+  color: rgb(0, 0, 0);
+  border: 1;
+  position: relative;
+  height: 60px;
+  font-size: 1.6em;
+  padding: 0 2em;
+  cursor: pointer;
+  transition: 800ms ease all;
+  outline: black;
+  font-weight: bold;
+}
+button:hover {
+  background: #ffffff;
+  color: #ff0000;
+}
+button:before,
+button:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 1px;
+  width: 0;
+  background: #ffffff;
+
+  font-weight: bold;
+  transition: 400ms ease all;
+}
+button:after {
+  right: inherit;
+  top: inherit;
+  left: 0;
+  bottom: 0;
+}
+button:hover:before,
+button:hover:after {
+  width: 100%;
+  transition: 800ms ease all;
+}
+.column-labels {
+  margin-left: 800px;
+}
+
+#reviews {
+  font-size: 13px;
+}
+</style>
     </head>
 
     <body>
-    	
-   	  <%@ include file="../common/menu.jsp"%>
+       
+        <%@ include file="../common/menu.jsp"%>
 
         <!-- 페이지 헤더 시작 -->
         <div class="page-header">
@@ -89,12 +240,12 @@
         <img class="img-fluid" src="<%=contextPath %>/<%=itemImage.getImgPath() %>/<%=itemImage.getSaveImgNm() %>"  alt="<%=itemImage.getImgDesc() %>" />
     </div>
     <br>
-<%	for (ItemImage ii : images) { %>
+<%   for (ItemImage ii : images) { %>
     <div class = "itembox">
         <img class="img-fluid" src="<%=contextPath %>/<%=ii.getImgPath() %>/<%=ii.getSaveImgNm() %>" style="width:500px; height:600px;" alt="<%=ii.getImgDesc() %>" />
     </div>
-	<br>
-<%	}	 %>
+   <br>
+<%   }    %>
     </div>
     <!-- 제품 디테일 끝 -->
 
@@ -136,7 +287,7 @@
                    
                     
                     <p class="pt-1">
-                    	<%=item.getItemDesc() %>
+                       <%=item.getItemDesc() %>
                     </p>
                 </div>
                 <div class="tab-pane fade" id="info" role="tabpanel" aria-labelledby="info-tab">
@@ -193,9 +344,7 @@
                         <br>
                         <button type="submit" >submit </button>
                     </div>
-                    <div class="text-right pb-2">
-                        <button type="button" class="btn btn-primary">Add a review</button>
-                    </div>
+                   
                     
                     </div>
                 </div>
@@ -212,7 +361,7 @@
             <input type="radio" id="select2" name="shop"><label for="select2">M</label>
             <input type="radio" id="select3" name="shop"><label for="select3">L</label>
 
-            <!--구매, 카트 버튼 시작-->
+            <!--add to cart 버튼 시작-->
            <div class = "bcbutton">
            
                 
@@ -221,26 +370,27 @@
             </div>
            </div>
             </div>
-            <!--구매, 카트 버튼 끝-->
+            <!--add to cart 버튼 끝-->
         
         
 
         </div>
     </div>
 
-<!-- 리뷰 탭 끝 -->
-	</div>
+   <!-- 리뷰 탭 끝 -->
    </div>
-<!-- /.container -->
+   </div>
+   <br clear = "all">
+   <!-- /.container -->
      <%@ include file="../common/footer.jsp"%>
 
-     <br clear = "all">
+    
     <script>
-	$('#main').on('click' , function(){
-		location.href="<%= request.getContextPath() %>/main.me";
-		
-	});
-	</script>
+   $('#main').on('click' , function(){
+      location.href="<%= request.getContextPath() %>/main.me";
+      
+   });
+   </script>
         
         <!-- Footer End -->
 
@@ -261,19 +411,7 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
-    <script>
-	$('#main').on('click' , function(){
-		location.href="<%= request.getContextPath() %>/main.me";
-		
-	});
-	</script>
-	<script>
-    	$('#logout').on('click', function(){
-
-    		location.href = "<%=request.getContextPath()%>/logout.me";
-    	});
-    	
-    	</script>
+   
 
     
     
