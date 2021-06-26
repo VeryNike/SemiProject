@@ -16,8 +16,32 @@ ul {
 	/* color: #6f8ecf; */
 }
 
-.aa {
-	border-radius: 50%;
+.cheerup, .rr {
+	background-image: url(../images/status/cheerup.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+}
+
+.good, .rr {
+	background-image: url(../images/status/good.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+}
+
+.perfect, .rr {
+	background-image: url(../images/status/perfect.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+}
+
+.awsome, .rr {
+	background-image: url(../images/status/awsome.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
 }
 
 .bar {
@@ -126,7 +150,7 @@ ul {
 	color: #c1dff0;
 	background: #636363;
 	border-radius: 0;
-	border:none;
+	border: none;
 	transition: .3s;
 }
 
@@ -147,7 +171,6 @@ ul {
 	text-align: center;
 	line-height: 100%;
 	margin: 3px 0;
-
 }
 
 #ptList>ul {
