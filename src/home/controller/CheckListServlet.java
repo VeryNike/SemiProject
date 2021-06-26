@@ -31,7 +31,6 @@ public class CheckListServlet extends HttpServlet {
 		String content = request.getParameter("content");
 		
 		CheckList c = new CheckList(date, content, user);
-		System.out.println(c);
 		int result = new HomeService().saveCheckList(c);
 		
 		if (result > 0) {
