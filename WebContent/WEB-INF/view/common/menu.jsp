@@ -117,8 +117,7 @@
 					<div class="nav-item nav-link menus">Shopping</div>
 					<% } %>
 					<div id="board" class="nav-item nav-link menus">Board</div>
-					<div id="team" class="nav-item nav-link menus">Team</div>
-					<div class="nav-item nav-link menus">About Us</div>
+					<div id="team" class="nav-item nav-link menus">AboutUs</div>
 				</div>
 			</div>
 		</div>
