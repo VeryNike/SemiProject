@@ -187,6 +187,31 @@ button:hover:after {
 #reviews {
   font-size: 13px;
 }
+/* popup */
+#popup{
+	position: absolute;
+	margin-left: 18px;
+	display: none;
+	padding: 20px;
+	background: #ffffff;
+	border: 1px solid #333;
+	text-align: center;
+} 
+
+.popBtn{
+	padding: 5px;
+	margin: 7px;
+	border: 1px solid #333;
+	background: #333;
+	color: #ffffff;
+	font-weight:bold;
+}
+
+.popBtn:hover{
+	background: #ffffff;
+	color: #333;
+}
+    
 </style>
     </head>
 
@@ -366,11 +391,17 @@ button:hover:after {
            
                 
              <div style="float: right; width: 100%;">
-                <a href="<%=request.getContextPath()%>/cart.me"><button>ADD TO CART</button></a>
+                <!-- <a href="<%=request.getContextPath()%>/cart.me"><button>ADD TO CART</button></a> -->
+                <button>ADD TO CART</button>
             </div>
            </div>
             </div>
             <!--add to cart 버튼 끝-->
+           <div id="popup">
+					<h4>Added to Cart!</h4>
+					<span id="goBtn" class="popBtn">Go to Cart</span>
+					<span id="closeBtn" class="popBtn">continue</span>
+			 </div>
         
         
 
@@ -390,6 +421,17 @@ button:hover:after {
       location.href="<%= request.getContextPath() %>/main.me";
       
    });
+       
+    $('.bcbutton').on('click', function(){
+	   $('#popup').show();;
+   });
+   
+   $('#goBtn').on('click', function(){
+	   location.href="<%=request.getContextPath()%>/cart.me";
+	});
+   $('#closeBtn').on('click', function(){
+	   $('#popup').hide();
+	});
    </script>
         
         <!-- Footer End -->
