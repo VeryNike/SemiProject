@@ -139,7 +139,7 @@ select {
 				var $select = $('#city');
 				$select.find('option').remove();
 
-				$select.append($('<option>').text("----- 시 -----"));
+				$select.append($('<option>').text("----- 선택 -----"));
 				for ( var i in data) {
 					var city = data[i];
 					var $option = $('<option value="' +city.code + '">').text(city.value);
@@ -159,7 +159,7 @@ select {
 
 					var $select = $('#gun');
 					$select.find('option').remove();
-					$select.append($('<option>').text("----- 군 -----"));
+					$select.append($('<option>').text("----- 선택 -----"));
 					
 					for ( var i in data) {
 						var gun = data[i];
@@ -181,7 +181,7 @@ select {
 
 					var $select = $('#gu');
 					$select.find('option').remove();
-					$select.append($('<option>').text("----- 구 -----"));
+					$select.append($('<option>').text("----- 선택 -----"));
 
 					for ( var i in data) {
 						var gu = data[i];
