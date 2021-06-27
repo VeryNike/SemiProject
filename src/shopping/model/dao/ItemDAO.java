@@ -195,5 +195,50 @@ public class ItemDAO {
 		return item;
 	
 	}
-
+public ArrayList<Review> listReview(Connection conn, String Icode) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ArrayList<Review> reviews = new ArrayList<Review>();
+		String query = prop.getProperty("listReview");
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, Icode);
+			rs= pstmt.executeQuery();
+			while(rs.next()) {
+				reviews.add(new Review(rs.getString("item_code"),
+						rs.getString("name"),
+						rs.getString("content"),
+						rs.getDate("cdate"),
+						rs.getString("status")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		return reviews;
+	}
+	
+	public int insertReview(Connection conn, Review r) {
+		PreparedStatement pstmt = null;
+		int result =0;
+		
+		String query = prop.getProperty("insertReview");
+		
+		try {
+			pstmt= conn.prepareStatement(query);
+			pstmt.setString(1, r.getItemCode());
+			pstmt.setString(2, r.getName());
+			pstmt.setString(3, r.getContent());
+			
+			result=pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
 }

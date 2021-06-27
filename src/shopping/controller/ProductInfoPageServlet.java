@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import common.Common;
 import shopping.model.service.ItemService;
 import shopping.model.vo.Item;
+import shopping.model.vo.Review;
 
 @WebServlet("/productinfo.me")
 public class ProductInfoPageServlet extends HttpServlet {
@@ -22,9 +23,13 @@ public class ProductInfoPageServlet extends HttpServlet {
 		Item item = new ItemService().selectProductInfo(itemCode);
 		String page = null;
 
+		String Icode = request.getParameter("itemCode");
+		ArrayList<Review> reviews = new ItemService().listReview(Icode);
+		
 		if (item != null) {
 			page = "WEB-INF/view/shopping/productInfo.jsp";
 			request.setAttribute("item", item);
+			request.setAttribute("reviews", reviews);
 		} else {
 			page = "WEB-INF/view/common/errorPage.jsp";
 			request.setAttribute("msg", "상품 리스트 조회에 실패하였습니다.");
