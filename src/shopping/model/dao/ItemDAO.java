@@ -215,7 +215,8 @@ public class ItemDAO {
 										rs.getString("name"),
 										rs.getString("content"),
 										rs.getString("cdate"),
-										rs.getString("status")));
+										rs.getString("status"),
+										rs.getString("star")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -237,6 +238,7 @@ public class ItemDAO {
 			pstmt.setString(1, r.getItemCode());
 			pstmt.setString(2, r.getName());
 			pstmt.setString(3, r.getContent());
+			pstmt.setString(4, r.getstar());
 			
 			result=pstmt.executeUpdate();
 		} catch (SQLException e) {

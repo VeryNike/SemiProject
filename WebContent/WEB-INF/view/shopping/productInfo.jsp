@@ -378,6 +378,7 @@ button:hover:before,button:hover:after {
                               <div >
                                     <strong id="nblank"><%=reviews.get(i).getName() %></strong>님의 Review (
                                     <strong id="dblank" value="<%=reviews.get(i).getCdate()%>"><%=reviews.get(i).getCdate()%></strong>&nbsp;written)
+	                              	<div id="sblank"><%=reviews.get(i).getstar() %></div><br>
 	                              	<div class="mb-0" id="cblank">&nbsp;<%=reviews.get(i).getContent() %></div><br>
                              
                                <% if((reviews.get(i).getName()).equals(loginUser.getUserName())){ %>
@@ -399,15 +400,19 @@ button:hover:before,button:hover:after {
                 </div>
                 <hr>
                 <!-- 리뷰 작성 탭 -->
-                  <% if(reviews.contains("loginUser.getUserName()")) { %>
-                  		
-                  <% } else{ %>
 	                <p>Please your Review.</p>
+	                <select id="stars">
+	                	<option selected disabled>-- 평점 선택 --</option>
+	                	<option id="s1" name="star" value="★☆☆☆☆ 1.0">★☆☆☆☆</option>
+	                	<option id="s2" name="star" value="★★☆☆☆ 2.0">★★☆☆☆</option>
+	                	<option id="s3" name="star" value="★★★☆☆ 3.0">★★★☆☆</option>
+	                	<option id="s4" name="star" value="★★★★☆ 4.0">★★★★☆</option>
+	                	<option id="s5" name="star" value="★★★★★5.0">★★★★★</option>
+	                </select>
 	                <div class="md-form md-outline">
 	                      <textarea id="form76" name="content" class="md-textarea form-control pr-6" rows="4" placeholder="★★★★☆ 상품에 대한 평점 또는 후기를 남겨주세요. "></textarea><br>
 	                      <button type="submit" id="reviewInsert" >Write </button>
 	                </div>
-				  <% }%>
                 </div>
             </div>
       </div><br><br>      
@@ -472,22 +477,26 @@ button:hover:before,button:hover:after {
 		
 		var Icode = '<%=item.getItemCode() %>';
 		var name = '<%=loginUser.getUserName()%>';
-		var content= $('#form76').val();			
+		var content = $('#form76').val();	
+		var star = $('#stars option:selected').val();
+		console.log(star);
 		
 		$.ajax({
 			url: 'review.insert',
-			data: {'Icode':Icode, 'name':name, 'content':content},
+			data: {'Icode':Icode, 'name':name, 'content':content, 'star':star},
 			success: function(data){
 					$('#contentBox').val('');
 					
 					 var $nb = $('#nblank');
 					 var $db = $('#dblank');
 					 var $cb = $('#cblank');
+					 var $sb = $('#sblank');
 					 
 					for(var i in data){
 						$nb.text(data[i].name);
 						$db.text(data[i].cdate);
 						$cb.text(data[i].content);
+						$sb.html(data[i].star);
 					}
 					location.reload();
 			},

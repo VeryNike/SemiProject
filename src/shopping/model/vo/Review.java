@@ -7,10 +7,11 @@ public class Review {
 	private String content;
 	private String cdate;
 	private String status;
+	private String star;
 	
 	public Review() {}
 	
-	public Review(String itemCode, int rnum, String name, String content, String cdate, String status) {
+	public Review(String itemCode, int rnum, String name, String content, String cdate, String status, String star) {
 		super();
 		this.itemCode = itemCode;
 		this.rnum = rnum;
@@ -18,8 +19,8 @@ public class Review {
 		this.content = content;
 		this.cdate = cdate;
 		this.status = status;
+		this.star = star;
 	}
-
 
 	public String getItemCode() {
 		return itemCode;
@@ -60,11 +61,17 @@ public class Review {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	public String getstar() {
+		return star;
+	}
+	public void setstar(String star) {
+		this.star = star;
+	}
 
 	@Override
 	public String toString() {
 		return "Review [itemCode=" + itemCode + ", rnum=" + rnum + ", name=" + name + ", content=" + content
-				+ ", cdate=" + cdate + ", status=" + status + "]";
+				+ ", cdate=" + cdate + ", status=" + status + ", star=" + star + "]";
 	}
 	
 }
