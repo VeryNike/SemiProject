@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page
-	import="user.model.vo.User, java.util.List, java.util.ArrayList"%>
+<%@ page import="user.model.vo.User, java.util.List, java.util.ArrayList"%>
 <%@ page import="shopping.model.vo.Item, shopping.model.vo.ItemImage"%>
 <%@ page import="shopping.model.vo.Review"%>
 <%
@@ -214,7 +213,7 @@ button:hover:before,button:hover:after {
 	background: #ffffff;
 	color: #333;
 }
-.sbtn{
+.reviewMod, .reviewDel, .reviewUp{
   background: gray;
   color: white;
   border: 1 solid gray;
@@ -223,7 +222,8 @@ button:hover:before,button:hover:after {
   cursor: pointer;
   font-weight: bold;
 }
-#reviewR{
+
+#reviewInsert{
   background: black;
   color: white;
   border: 1px solid gray;
@@ -241,6 +241,14 @@ button:hover:before,button:hover:after {
 }
 #form76{
  	resize: none;
+}
+.update{
+	display: none;
+}
+.cbmod{
+	width: 83%;
+	margin: 0 0 0 10px;
+}
 </style>
     </head>
     <body>
@@ -294,8 +302,8 @@ button:hover:before,button:hover:after {
 						style="width: 500px; height: 600px;" alt="<%=ii.getImgDesc() %>" />
 				</div>
 				<br>
-				<%   }    %>
-			</div>
+				<% } %>
+	</div>
     <!-- 제품 디테일 끝 -->
 
 
@@ -363,23 +371,27 @@ button:hover:before,button:hover:after {
                     <div class="media-body">
                     <% if(reviews.isEmpty()){ %>
                         <div style="color:gray";>
-                          작성된 리뷰가 없습니다.
+                          	작성된 리뷰가 없습니다.
                         </div>
                     <% } else{ %>
                           <% for(int i=0; i<reviews.size(); i++){ %>
-                              <div class="d-sm-flex justify-content-between">
-                              <p class="mt-1 mb-2">
-                                  <strong id="nblank"><%=reviews.get(i).getName() %></strong>님의 Review (
-                                  <strong id="dblank"><%=reviews.get(i).getCdate()%></strong>&nbsp;written)
-                              </p>
-                              </div>
-                              <div class="mb-0" id="cblank">&nbsp;&nbsp;<%=reviews.get(i).getContent() %></div>
-                              <% if((loginUser.getUserName()).equals(reviews.get(i).getName())){ %>
-                                <span id="model">	
-                                    <button class="sbtn" id="reviewMod">Modify</button> 
-                                    <button class="sbtn" id="reviewDel">Delete</button>
-                                </span>
-                              <% } %>
+                              <div >
+                                    <strong id="nblank"><%=reviews.get(i).getName() %></strong>님의 Review (
+                                    <strong id="dblank" value="<%=reviews.get(i).getCdate()%>"><%=reviews.get(i).getCdate()%></strong>&nbsp;written)
+	                              	<div class="mb-0" id="cblank">&nbsp;<%=reviews.get(i).getContent() %></div><br>
+                             
+                               <% if((reviews.get(i).getName()).equals(loginUser.getUserName())){ %>
+                               		<span class ="update" id="update_<%=reviews.get(i).getRnum()%>">
+	                              		<input type="text" class="cbmod" id="cblankmod_<%=reviews.get(i).getRnum()%>" name="content" value="<%=reviews.get(i).getContent() %>">
+	                              		<button class="reviewUp" id="reviewUp_<%=reviews.get(i).getRnum()%>">Save</button> 
+	                              	</span>
+	                                <span id="model">	
+	                                    <button class="reviewMod" id="reviewMod_<%=reviews.get(i).getRnum()%>">Modify</button> 
+	                                    <button class="reviewDel" id="reviewDel_<%=reviews.get(i).getRnum() %>">Delete</button>
+	                                </span>
+                               <% }else{ %>
+                               <% } %>
+                             </div><hr>
                           <% } %>
                     <% } %>
                     </div>
@@ -387,12 +399,15 @@ button:hover:before,button:hover:after {
                 </div>
                 <hr>
                 <!-- 리뷰 작성 탭 -->
-                <p>Please your Review.</p>
-                <div class="md-form md-outline">
-                      <textarea id="form76" name="content" class="md-textarea form-control pr-6" rows="4"></textarea><br>
-                      <button type="submit" id="reviewR" >Write </button>
-                </div>
-
+                  <% if(reviews.contains("loginUser.getUserName()")) { %>
+                  		
+                  <% } else{ %>
+	                <p>Please your Review.</p>
+	                <div class="md-form md-outline">
+	                      <textarea id="form76" name="content" class="md-textarea form-control pr-6" rows="4" placeholder="★★★★☆ 상품에 대한 평점 또는 후기를 남겨주세요. "></textarea><br>
+	                      <button type="submit" id="reviewInsert" >Write </button>
+	                </div>
+				  <% }%>
                 </div>
             </div>
       </div><br><br>      
@@ -432,7 +447,7 @@ button:hover:before,button:hover:after {
      <%@ include file="../common/footer.jsp"%>
 
     
-    <script>
+<script>
    $('#main').on('click' , function(){
       location.href="<%= request.getContextPath() %>/main.me";
    });
@@ -453,7 +468,7 @@ button:hover:before,button:hover:after {
 	   $('#popup').hide();
 	});
  
-   $('#reviewR').on('click',function(){
+   $('#reviewInsert').on('click',function(){
 		
 		var Icode = '<%=item.getItemCode() %>';
 		var name = '<%=loginUser.getUserName()%>';
@@ -477,21 +492,75 @@ button:hover:before,button:hover:after {
 					location.reload();
 			},
 			error: function(data){
-				console.log("reviewR ajax error");
-				console.log("data:",data);
+				console.log("reviewInsert ajax error");
 			}
 		}); 
 	});
    
-   $('#reviewMod').on('click',function(){
-	   
+   
+   $('.reviewMod').on('click',function(){
+	    var rn = $(this).attr('id');
+	    var rnum = rn.substring(rn.indexOf('_')+1);
+		    console.log(rn.substring(rn.indexOf('_')+1));
+	   	
+	    var up = $('.update').attr('id');
+		var upnum = up.substring(up.indexOf('_')+1);
+			console.log("upnum:"+upnum);
+			console.log("rnum:"+rnum);
+			
+	    $('#update_'+rnum).show();
+		console.log("++rnum:", $('#update_'+rnum));
+		
    });
-   $('#reviewDel').on('click',function(){
-	   
+   
+   $('.reviewUp').on('click',function(){
+		var Icode = '<%=item.getItemCode() %>';
+		var rn = $(this).attr('id');
+		var rnum = rn.substring(rn.indexOf('_')+1);
+		var name = '<%=loginUser.getUserName()%>';
+		var content = $('#cblankmod_'+rnum).val();			
+			console.log("cbm(val):"+ $('#cblankmod_'+rnum).val());
+		
+		$.ajax({
+			url: 'review.update',
+			data: {'Icode':Icode, 'rnum':rnum, 'name':name, 'content':content},
+			success: function(data){
+					var $cb = $('#cblank');
+					for(var i in data){
+						$cb.text(data[i].content);
+					}
+					location.reload();
+			},
+			error: function(data){
+				console.log("reviewUpdate ajax error");
+			}
+		}); 
+   });
+   
+   $('.reviewDel').on('click',function(){
+	   var bool = confirm("해당 리뷰를 삭제하시겠습니까?");
+	   if(bool){
+			var Icode = '<%=item.getItemCode() %>';
+		    var rn = $(this).attr('id');
+			var rnum = rn.substring(rn.indexOf('_')+1);
+		    var name = '<%=loginUser.getUserName()%>';
+		   $.ajax({
+			    url:'review.delete',
+		   	    data: {'Icode':Icode, 'rnum':rnum, 'name':name},
+		   		success: function(result){
+					console.log("d result:"+result)
+					location.reload();
+		},
+		error: function(data){
+			console.log("reviewDel ajax error");
+			console.log("result:"+result);
+		}
+		   })
+	   }
    });
 
 
-   </script>
+</script>
         
     
 </body>

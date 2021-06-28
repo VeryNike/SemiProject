@@ -1,6 +1,7 @@
 package shopping.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -19,14 +20,14 @@ import shopping.model.vo.Review;
 /**
  * Servlet implementation class ReviewInsertServlet
  */
-@WebServlet("/review.insert")
-public class ReviewInsertServlet extends HttpServlet {
+@WebServlet("/review.delete")
+public class ReviewDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ReviewInsertServlet() {
+    public ReviewDeleteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,18 +37,25 @@ public class ReviewInsertServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String Icode = request.getParameter("Icode");
+		int rnum = Integer.parseInt(request.getParameter("rnum"));
 		String name = request.getParameter("name");
-		String content = request.getParameter("content");
+		String cdate = request.getParameter("cdate");
 		
 		Review r = new Review();
 		r.setItemCode(Icode);
+		r.setRnum(rnum);
 		r.setName(name);
-		r.setContent(content);
-
-		ArrayList<Review> reviews = new ItemService().insertReview(r);
+		r.setCdate(cdate);
 		
-		response.setContentType("charset=UTF-8");
-		response.getWriter().println(reviews);
+		int result = new ItemService().deleteReview(r);
+		
+		PrintWriter out = response.getWriter();
+		if(result>0) {
+			out.print("review delete.success");
+		}else {
+			out.print("review d.false");
+		}
+		
 	}
 
 	/**

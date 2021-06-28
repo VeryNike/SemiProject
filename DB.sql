@@ -996,3 +996,20 @@ ADD CONSTRAINT CATE_NO foreign key (CATE_NO) references CATEGORY(CATE_NO);
 COMMIT;
 
 --------------데이터를 포함한 CATEGORY 테이블 추가 쿼리 끝-----------------
+
+--------------Shopping-Review DB 테이블 추가, 시퀀스 추가 ----------------
+CREATE TABLE REVIEW (
+    "ITEM_CODE"   VARCHAR2(20)      NULL,
+    "RNUM"   NUMBER      NULL,
+    "NAME"   VARCHAR2(30)      NULL,
+    "CONTENT"   VARCHAR2(1000)      NOT NULL,
+    "CDATE"     VARCHAR2(30)    NULL,
+    "STATUS"    VARCHAR2(10) DEFAULT 'Y' 
+);
+commit;
+
+CREATE SEQUENCE SEQ_RNUM
+START WITH 1
+INCREMENT BY 1
+MAXVALUE 99999;
+commit;

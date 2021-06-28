@@ -1,5 +1,7 @@
 package shopping.model.dao;
 
+import static common.JDBCTemplate.close;
+
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -14,6 +16,7 @@ import java.util.Properties;
 import common.JDBCTemplate;
 import shopping.model.vo.Item;
 import shopping.model.vo.ItemImage;
+import shopping.model.vo.Review;
 
 public class ItemDAO {
 	private Properties prop = new Properties();
@@ -65,7 +68,7 @@ public class ItemDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			JDBCTemplate.close(conn, pstmt, rs);
+//			JDBCTemplate.close(conn, pstmt, rs);
 		}
 
 		return list;
@@ -103,7 +106,7 @@ public class ItemDAO {
 				images.add(image);
 			}
 			
-			JDBCTemplate.close(pstmt, rs);
+//			JDBCTemplate.close(pstmt, rs);
 			
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, itemCode);
@@ -195,7 +198,8 @@ public class ItemDAO {
 		return item;
 	
 	}
-public ArrayList<Review> listReview(Connection conn, String Icode) {
+
+	public ArrayList<Review> listReview(Connection conn, String Icode) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		ArrayList<Review> reviews = new ArrayList<Review>();
@@ -207,10 +211,11 @@ public ArrayList<Review> listReview(Connection conn, String Icode) {
 			rs= pstmt.executeQuery();
 			while(rs.next()) {
 				reviews.add(new Review(rs.getString("item_code"),
-						rs.getString("name"),
-						rs.getString("content"),
-						rs.getDate("cdate"),
-						rs.getString("status")));
+										rs.getInt("rnum"),
+										rs.getString("name"),
+										rs.getString("content"),
+										rs.getString("cdate"),
+										rs.getString("status")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -241,4 +246,39 @@ public ArrayList<Review> listReview(Connection conn, String Icode) {
 		}
 		return result;
 	}
+
+	public int updateReview(Connection conn, Review r) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = prop.getProperty("updateReview");
+		try {
+			pstmt=conn.prepareStatement(query);
+			pstmt.setString(1, r.getContent());
+			pstmt.setString(2, r.getItemCode());
+			pstmt.setInt(3, r.getRnum());
+			pstmt.setString(4, r.getName());
+			result=pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	public int deleteReview(Connection conn, Review r) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = prop.getProperty("deleteReview");
+		try {
+			pstmt=conn.prepareStatement(query);
+			pstmt.setString(1, r.getItemCode());
+			pstmt.setInt(2, r.getRnum());
+			pstmt.setString(3, r.getName());
+			result=pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+
 }

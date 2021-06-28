@@ -1,24 +1,25 @@
 package shopping.model.vo;
 
-import java.sql.Date;
-
 public class Review {
 	private String itemCode;
+	private int rnum;
 	private String name;
 	private String content;
-	private Date cdate;
+	private String cdate;
 	private String status;
 	
 	public Review() {}
 	
-	public Review(String itemCode, String name, String content, Date cdate, String status) {
+	public Review(String itemCode, int rnum, String name, String content, String cdate, String status) {
 		super();
 		this.itemCode = itemCode;
+		this.rnum = rnum;
 		this.name = name;
 		this.content = content;
 		this.cdate = cdate;
 		this.status = status;
 	}
+
 
 	public String getItemCode() {
 		return itemCode;
@@ -26,6 +27,15 @@ public class Review {
 	public void setItemCode(String itemCode) {
 		this.itemCode = itemCode;
 	}
+	
+	public int getRnum() {
+		return rnum;
+	}
+
+	public void setRnum(int rnum) {
+		this.rnum = rnum;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -38,10 +48,10 @@ public class Review {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public Date getCdate() {
+	public String getCdate() {
 		return cdate;
 	}
-	public void setCdate(Date cdate) {
+	public void setCdate(String cdate) {
 		this.cdate = cdate;
 	}
 	public String getStatus() {
@@ -53,9 +63,8 @@ public class Review {
 
 	@Override
 	public String toString() {
-		return "Review [itemCode=" + itemCode + ", name=" + name + ", content=" + content + ", cdate=" + cdate
-				+ ", status=" + status + "]";
+		return "Review [itemCode=" + itemCode + ", rnum=" + rnum + ", name=" + name + ", content=" + content
+				+ ", cdate=" + cdate + ", status=" + status + "]";
 	}
-
 	
 }
