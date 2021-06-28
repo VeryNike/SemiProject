@@ -42,16 +42,12 @@
         <div class="about wow fadeInUp" data-wow-delay="0.1s">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-lg-3 col-md-6">
-                        <div class="about-img">
-                            <img src="images/logo_19.png" alt="Image">
-                        </div>
-                    </div>
-                    <div class="col-lg-9 col-md-6">
+
+                    <div class="col-lg-8 col-md-6">
                         <div class="section-header text-left">
                             <p>About MyPT</p>
-                            <h2>Welcome to your Personal Training</h2>
                         </div>
+                            <h1>Welcome to your Personal Trainer</h1><br>
                         <div class="about-text">
                             <p>
                               	  요즘은 특히 라이프 스타일이 무엇보다 중요한 우선순위가 되어지면서, 건강 및 개인의 몸 관리를 위해 시간과 투자를 아끼지 않게 되는것 같습니다. 
@@ -73,9 +69,14 @@
                             <a class="btn" href="<%= request.getContextPath()%>/signUpForm.me">회원가입  Go!</a>
                         </div>
                     </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="about-img">
+                            <img src="images/logo_19.png" alt="Image">
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+        </div><br><br><br>
         <!-- About End -->
 
 
@@ -83,11 +84,11 @@
         <div class="team">
             <div class="container">
                 <div class="section-header text-center wow zoomIn" data-wow-delay="0.1s">
-                    <p>Our Team Members</p>
-                    <h2>are Very Nice</h2>
+                    <p>Very Nice</p>
+                    <h2>Our Team Members</h2>
                 </div>
                 <div class="row">
-                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.0s">
+                    <div class="col-lg-2 col-md-6 wow fadeInUp" data-wow-delay="0.0s">
                         <div class="team-item">
                             <div class="team-img">
                                 <img src="images/kettlebell.png" alt="Image">
@@ -104,7 +105,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+                    <div class="col-lg-2 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
                         <div class="team-item">
                             <div class="team-img">
                                 <img src="images/dumbbell.png" alt="Image">
@@ -121,7 +122,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
+                    <div class="col-lg-2 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
                         <div class="team-item">
                             <div class="team-img">
                                 <img src="images/workout-machine.png" alt="Image">
@@ -138,7 +139,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
+                    <div class="col-lg-2 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
                         <div class="team-item">
                             <div class="team-img">
                                 <img src="images/bench-press.png" alt="Image">
@@ -155,7 +156,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
+                    <div class="col-lg-2 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
                         <div class="team-item">
                             <div class="team-img">
                                 <img src="images/jumping-rope.png" alt="Image">
