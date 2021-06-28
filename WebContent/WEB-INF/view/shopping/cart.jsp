@@ -20,15 +20,12 @@ if (item != null) {
 }
 
 String deleteItem = (String)request.getAttribute("deleteItem");
-System.out.println("delete : "+deleteItem);
 if (deleteItem != null) {
 	list.remove(Integer.parseInt(deleteItem));
 }
 
 session.setAttribute("list", list);
 
-/* 	System.out.println("itemss : " + item);
-	System.out.println("listss : " + list); */
 %>
 
 <!DOCTYPE html>
@@ -41,26 +38,6 @@ session.setAttribute("list", list);
 <meta content="Free Website Template" name="description">
 
 
-<!-- Google Font -->
-<link
-	href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap"
-	rel="stylesheet">
-
-<!-- CSS Libraries -->
-<link
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/shoppingcss/bootstrap.min.css"
-	rel="stylesheet">
-<link
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
-	rel="stylesheet">
-<link href="lib/animate/animate.min.css" rel="stylesheet">
-<link href="lib/flaticon/font/flaticon.css" rel="stylesheet">
-<link href="lib/owlcarousel/assets/owl.carousel.min.css"
-	rel="stylesheet">
-<link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
-
-<!-- Template Stylesheet -->
-<!-- <link href="css/shoppingcss/style.css" rel="stylesheet"> -->
 <script src="lib/jquery-3.6.0.min.js"></script>
 
 <style>
