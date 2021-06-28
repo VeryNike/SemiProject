@@ -26,7 +26,7 @@
 - 비회원 들어가기 -> Team 탭으로 연결
 
 # WEB-INF > view > board
-- boardList.jsp : 운동멤버 게시판 상세보기 화면
+- boardList.jsp : 운동멤버 게시판 상세보기 화면 업데이트
 - boardAdd.jsp : 운동멤버 게시판 글쓰기 화면
 
 # index.jsp
