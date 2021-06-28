@@ -474,7 +474,16 @@ button:hover:before,button:hover:after {
 	});
  
    $('#reviewInsert').on('click',function(){
-		
+    if($('#form76').val().trim().length== 0){
+			alert("후기를 작성해주세요");
+			$('#form76').focus();
+			return false;
+		}
+		if($('#stars').val()==null){
+			alert("평점을 선택해주세요");
+			$('#stars').focus();
+			return false;
+		}
 		var Icode = '<%=item.getItemCode() %>';
 		var name = '<%=loginUser.getUserName()%>';
 		var content = $('#form76').val();	
