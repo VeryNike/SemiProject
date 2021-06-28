@@ -465,8 +465,32 @@ label {
 		</div>
 		<%
 			}
-		else{
 		%>
+		<div class="totals">
+			<div class="totals-item">
+				<label>Subtotal</label>
+				<div class="totals-value" id="cart-subtotal">00.00</div>
+			</div>
+			<div class="totals-item">
+				<label>Tax (5%)</label>
+				<div class="totals-value" id="cart-tax">00.00</div>
+			</div>
+			<div class="totals-item">
+				<label>Shipping</label>
+				<div class="totals-value" id="cart-shipping">00.00</div>
+			</div>
+			<div class="totals-item totals-item-total">
+				<label>Grand Total</label>
+				<div class="totals-value" id="cart-total"></div>
+				<a href="<%=request.getContextPath()%>/checkout.me">00.00<button
+						class="checkout">Checkout</button></a>
+			</div>
+		</div>
+		
+		<%	
+		}else{
+		%>
+
 		<div class="card-body cart">
 			<div class="col-sm-12 empty-cart-cls text-center">
 				<h3>
@@ -478,28 +502,6 @@ label {
 			</div>
 		</div>
 		<% } %>
-
-
-		<div class="totals">
-			<div class="totals-item">
-				<label>Subtotal</label>
-				<div class="totals-value" id="cart-subtotal">71.97</div>
-			</div>
-			<div class="totals-item">
-				<label>Tax (5%)</label>
-				<div class="totals-value" id="cart-tax">3.60</div>
-			</div>
-			<div class="totals-item">
-				<label>Shipping</label>
-				<div class="totals-value" id="cart-shipping">15.00</div>
-			</div>
-			<div class="totals-item totals-item-total">
-				<label>Grand Total</label>
-				<div class="totals-value" id="cart-total">90.57</div>
-				<a href="<%=request.getContextPath()%>/checkout.me"><button
-						class="checkout">Checkout</button></a>
-			</div>
-		</div>
 
 
 
