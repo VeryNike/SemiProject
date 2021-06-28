@@ -298,16 +298,9 @@ $(document).on('click', function () {
     $('#' + day).show();
     $('#chk > ul').not('#' + day).hide();
     
-    $('td').each(function(){
-    	var tdClass = $(this).attr("class");
-    	if($('#' + tdClass).length > 0){
-    		statusStamp(tdClass);
-    	}
-    	
-    });
-    
     statusStamp(day);
     statusBar(day);
+    
 });
 
 
@@ -320,6 +313,13 @@ $(document).on('click', '.isCheck', function () {
 		$(this).parent().parent().prepend($(this).parent());
 		$(this).attr("value", "N");
 	}
+	
+	/*$('td').each(function(){
+		var tdClass = $(this).attr("class");
+		if($('#' + tdClass).length > 0){
+			statusStamp(tdClass);
+		}
+	});*/
 	
 	
 });
@@ -335,25 +335,38 @@ function statusBar(days){
 }
 
 function statusStamp(days){
-	
 	var a = $('#' + days).find('.isCheck').length;
 	var c = $('#' + days).find('.isCheck:checked').length;
-	var ac = c/a;
-	console.log(days);
-	console.log(ac);
+		
+	var ac = Math.round(c / a * 100);
 	
-	if(a != 0){
-		if (ac > 0.9) {
-	    	$('.' + days).removeClass('rr').addClass('awsome');
-	    } else if (ac > 0.7) {
-	    	$('.' + days).removeClass('rr').addClass('perfect');
-	    } else if (ac > 0.5) {
-	    	$('.' + days).removeClass('rr').addClass('good');
-	    } else if (ac > 0.3) {
-	    	$('.' + days).removeClass('rr').addClass('cheerup');
-	    } else if(c == 0) {
-	    	$('.' + days).removeClass('rr');
+	var bar = '';
+	
+	$('.' + days).removeClass('awsome perfect great good cheerup');
+	
+	if(a > 0){
+		
+		if (ac >= 90) {
+			bar = 'awsome';
 	    }
+		else if (ac >= 70) {
+			bar = 'perfect';
+	    } 
+		else if (ac >= 50) {
+			bar = 'great';
+		}
+		else if (ac >= 30) {
+			bar = 'good';
+	    }
+		else if (ac >= 10) {
+			bar = 'cheerup';
+	    }
+		
+		$('.' + days).addClass(bar);
+		if(c == 0) {
+			
+			$('.' + days).removeClass('rr');
+		} 
 	}
 }
 
