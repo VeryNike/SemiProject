@@ -5,7 +5,10 @@
   - src/query/shopping.properties 업로드
   - WEB-INF/view/shopping 폴더 업로드
   - WebContent/img 폴더 업로드
-
+  - WebContent/overlays 폴더 및 파일 업로드 (vegas plugin)
+  - WebContent/css/vegas 폴더 및 파일 업로드 (vegas plugin)
+  - WebContent/js/vegas 폴더 및 파일 업로드 (vegas plugin)
+  
 # menu.jsp
 - 상단 로그인 정보 보이기
 - 로그아웃 기능
@@ -80,3 +83,9 @@
 # shopping 장바구니 추가 삭제 기능 구현
 - WebContent/view/shopping/cart.jsp
 - src/shopping/controller/CartPageServlet
+
+# WebContent/js/main.js
+  vegas plugin 코드 추가
+
+# WEB-INF/views/shopping/checkout.jsp
+  리디자인 및 코드정리 vegas plugin 추가
