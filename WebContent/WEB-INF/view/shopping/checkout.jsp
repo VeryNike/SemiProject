@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
     <head>
-        <meta charset="utf-8">
+    	<meta charset="UTF-8">
         <title>MyPT</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="Free Website Template" name="keywords">
@@ -18,16 +18,149 @@
         <link href="lib/flaticon/font/flaticon.css" rel="stylesheet"> 
         <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
         <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
-
-         <!-- 스타일시트 -->
-        <link href="css/shoppingcss/style.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/vegas/vegas.min.css">
+        
+        
+         <!-- JQuery¸ -->
         <script src="lib/jquery-3.6.0.min.js"></script>
-        <style>
         
-          .wlsgod{
-        
-        margin-left: 50px;
-        }
+       <style>
+
+ */.shop {
+    font-size: 10px
+}
+
+.space {
+    letter-spacing: 0.8px !important
+}
+
+.second a:hover {
+    color: rgb(92, 92, 92)
+}
+
+.active-2 {
+    color: rgb(92, 92, 92)
+}
+
+.breadcrumb>li+li:before {
+    content: "" !important
+}
+
+.breadcrumb {
+    padding: 0px;
+    font-size: 10px;
+    color: #aaa !important
+}
+
+.first {
+    background-color: white
+}
+
+a {
+    text-decoration: none !important;
+    color: #aaa
+}
+
+.btn-lg,
+.form-control-sm:focus,
+.form-control-sm:active,
+a:focus,
+a:active {
+    outline: none !important;
+    box-shadow: none !important
+}
+
+.form-control-sm:focus {
+    border: 1.5px solid #4bb8a9
+}
+
+.btn-group-lg>.btn,
+.btn-lg {
+    padding: .5rem 0.1rem;
+    font-size: 1rem;
+    border-radius: 0;
+    color: white !important;
+    background-color: #4bb8a9;
+    height: 2.8rem !important;
+    border-radius: 0.2rem !important;
+    
+   
+}
+
+.btn-group-lg>.btn:hover,
+.btn-lg:hover {
+    background-color: #FAE100;
+}
+
+.btn-outline-primary {
+    background-color: #FAE100  !important;
+    color: #FFFFFF  !important;
+    border-radius: 0.2rem !important;
+    border: 1px solid #FAE100;
+    border-color:FAE100;
+}
+
+.btn-outline-primary:hover {
+    background-color: #FAE100 !important;
+    color: #3A1D1D !important;
+    border: 1px solid #FAE100;
+    border-color:FAE100;
+}
+
+.card-2 {
+    margin-top: 40px !important
+}
+
+.card-header {
+    background-color: #fff;
+    border-bottom: 0px solid #aaaa !important
+}
+
+p {
+    font-size: 13px
+}
+
+.small {
+    font-size: 9px !important
+}
+
+.form-control-sm {
+    height: calc(2.2em + .5rem + 2px);
+    font-size: .875rem;
+    line-height: 1.5;
+    border-radius: 0
+}
+
+.cursor-pointer {
+    cursor: pointer
+}
+
+.boxed {
+    padding: 0px 8px 0 8px;
+    background-color: #4bb8a9;
+    color: white
+}
+
+.boxed-1 {
+    padding: 0px 8px 0 8px;
+    color: black !important;
+    border: 1px solid #aaaa
+}
+
+.bell {
+    opacity: 0.5;
+    cursor: pointer
+}
+
+@media (max-width: 767px) {
+    .breadcrumb-item+.breadcrumb-item {
+        padding-left: 0
+    }
+}
+       
+.wlsgod{
+  margin-left: 50px;
+}
 ul {
   width: 1000px;
   margin: 50px auto;
@@ -125,209 +258,178 @@ header .active .fa-check {
 .customer-purchase{
     margin-left:34px;
 }
-        </style>
+</style>
     </head>
 
-    <body>
-         <%@ include file="../common/menu.jsp"%>
-
-
-        <!-- Page Header Start -->
-        <div class="page-header">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        
-                        <h2>CART<i class="fab fb-cart"></i></h2>
-                        <br>
-                    </div>
-                    <div class="col-12">
-                        
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Page Header End -->
-        <!--진행상황시작-->
-           
-           <div class = "wlsgod">
- 				<ul>
- 					 <li class="current">SHOPPING</li>
-  					 <li class="current">ADD TO CART</li>
-					 <li class="current">ORDER </li>
+      <body id = "checkbg">
+        <%@ include file="../common/menu.jsp"%>
+         
+         
+			<!-- 헤더공백시작 -->
+      		<br>
+       		 <br>
+			  <br>
+       		   <br>
+        	    <br>
+        	     <br>
+         	 <!-- 헤더공백끝 -->
+         	
+         	
+         		
+               <!--진행 상황 시작  -->
+                <div class = "wlsgod">
+                   <ul>
+ 				     <li class="current">SHOPPING</li>
+  				     <li class="current">ADD TO CART</li>
+				     <li class="current">ORDER </li>
  				     <li>FINISH </li>
-				</ul>  
-		   <div class="steps">
-  			 	<div class="active">SHOPPING</div>
-  				<div class="active">ADD TO CART</div>
- 				<div class="active">ORDER</div>
-  				<div>FINISH </div>
-		   </div>
-		   </div>
+				   </ul>  
+		            
+		            <div class="steps">
+  			 	      <div class="active">SHOPPING</div>
+  				      <div class="active">ADD TO CART</div>
+ 			       	  <div class="active">ORDER</div>
+  				      <div>FINISH </div>
+		   	       </div>
+		   	    </div>
+			  <br>
+		   <!--진행 상황 끝  -->
 		   
-  <!--진행상황끝-->
-  <section class="order-form my-4 mx-4">
-      
-    <div class="container pt-4">
-
-      <div class="row"><div class="customer-order">
-        <h2><span>1.</span> TOTAL</h2>
-        <hr class="mt-1">
-
-        
-        <br>
-
-
-        <p><span>Sample Item 1</span>
-        </p>
-
-
-        <p>$99.99</p>
-        <br>
-
-
-        <p><span>Sample Item</span>
-        </p>
-
-
-        <p>$20.00</p>
-
-        <hr>
-
-
-        <p><b>TOTAL:</b> $119.99</p>
-        <hr class="mt-1">
-
-        
-    </div>
-    
-        <div class="col-12">
-            <div class = "customer-information">
-                <br>
-                <br>
-            <h2><span>2.</span> INFORMATION</h2>
-          </div>
-          <hr class="mt-1">
-        </div>
-        <div class="col-12">
-
-          <div class="row mx-4">
-            <div class="col-12 mb-2">
-              <label class="order-form-label">Name</label>
-            </div>
-            <div class="col-12 col-sm-6">
-              <input class="order-form-input" placeholder="First">
-            </div>
-            <div class="col-12 col-sm-6 mt-2 mt-sm-0">
-              <input class="order-form-input" placeholder="Last">
-            </div>
-          </div>
-
-          <div class="row mt-3 mx-4">
-            <div class="col-12">
-              <label class="order-form-label">Type of thing you want to order</label>
-            </div>
-            <div class="col-12">
-              <input class="order-form-input" placeholder=" ">
-            </div>
-          </div>
-
-          <div class="row mt-3 mx-4">
-            <div class="col-12">
-              <label class="order-form-label">Another type of thing you want to order</label>
-            </div>
-            <div class="col-12">
-              <input class="order-form-input" placeholder=" ">
-            </div>
-          </div>
-
-          <div class="row mt-3 mx-4">
-            <div class="col-12">
-              <label class="order-form-label" for="date-picker-example">Date</label>
-            </div>
-            <div class="col-12">
-              <input class="order-form-input datepicker" placeholder="Selected date" type="text"
-                id="date-picker-example">
-            </div>
-          </div>
-
-          <div class="row mt-3 mx-4">
-            <div class="col-12">
-              <label class="order-form-label">Adress</label>
-            </div>
-            <div class="col-12">
-              <input class="order-form-input" placeholder="Street Address">
-            </div>
-            <div class="col-12 mt-2">
-              <input class="order-form-input" placeholder="Street Address Line 2">
-            </div>
-            <div class="col-12 col-sm-6 mt-2 pr-sm-2">
-              <input class="order-form-input" placeholder="City">
-            </div>
-            <div class="col-12 col-sm-6 mt-2 pl-sm-0">
-              <input class="order-form-input" placeholder="Region">
-            </div>
-            <div class="col-12 col-sm-6 mt-2 pr-sm-2">
-              <input class="order-form-input" placeholder="Postal / Zip Code">
-            </div>
-            <div class="col-12 col-sm-6 mt-2 pl-sm-0">
-              <input class="order-form-input" placeholder="Country">
-            </div>
-          </div>
-
-          <div class="row mt-3 mx-4">
-            <div class="col-12">
-              
-            </div>
-          </div>
-
- <!-- 오더폼 끝-->
- <br>
- <br>
- <h2 class="customer-purchase"><span>3.</span> PURCHASE</h2>
- <br>
- <hr class="mt-1">
-        <div class="row justify-content-center">
-            <div class="col-lg-12">
-                <div class="card">
-                    <div class="row">
-                        <div class="col-lg-3 radio-group">
-                            <div class="row d-flex px-3 radio"> <img class="pay" src="img/master.jpg">
-                                <p class="my-auto">Credit Card</p>
+		   
+		   
+		   <!-- 결제폼 시작 -->
+		   <div class=" container-fluid my-5 ">
+    <div class="row justify-content-center ">
+        <div class="col-xl-10">
+            <div class="card shadow-lg ">
+                <div class="row p-2 mt-3 justify-content-between mx-sm-2">
+                    <div class="col">
+                        <p class="text-muted space mb-0 shop"> Shop No.78618K</p>
+                        <p class="text-muted space mb-0 shop"> Store Locator</p>
+                    </div>
+                    <div class="col">
+                        <div class="row justify-content-start ">
+                            <div class="col"> <img class="irc_mi img-fluid cursor-pointer " src="images/logo_19.png" width="70" height="70"> </div>
+                        </div>
+                    </div>
+                    <div class="col-auto"> <img class="irc_mi img-fluid bell" src="https://i.imgur.com/uSHMClk.jpg" width="30" height="30"> </div>
+                </div>
+                
+                <div class="row justify-content-around">
+                    <div class="col-md-5">
+                        <div class="card border-0">
+                            <div class="card-header pb-0">
+                                <h2 class="card-title space ">Checkout</h2>
+                                <hr class="my-0">
                             </div>
-                            <div class="row d-flex px-3 radio gray"> <img class="pay" src="img/kakaopay.jpg">
-                                <p class="my-auto">KaKao Pay</p>
-                            </div>
-                            <div class="row d-flex px-3 radio gray mb-3"> <img class="pay" src="img/paypal.jpg">
-                                <p class="my-auto">PayPal</p>
+                            <div class="card-body">
+                                <div class="row justify-content-between">
+                                    <div class="col-auto mt-0">
+                                        <p><b>6, Teheran-ro 14-gil, Gangnam-gu, Seoul, Republic of Korea</b></p>
+                                    </div>
+                                    <div class="col-auto">
+                                        <p><b>Very Nike , MyPT</b> </p>
+                                    </div>
+                                </div>
+                                <div class="row mt-4">
+                                    <div class="col">
+                                        <p class="text-muted mb-2">ORDER DETAILS</p>
+                                        <hr class="mt-0">
+                                    </div>
+                                </div>
+                                
+                                <!-- 구매자 정보 입력 폼 시작  -->
+                                <div class="form-group"> <label for="NAME" class="small text-muted mb-1">FULL NAME</label> <input type="text" class="form-control form-control-sm" name="NAME" id="NAME" aria-describedby="helpId" placeholder="kim ahmu gae"> </div>
+                                 <div class="form-group"> <label for="NAME" class="small text-muted mb-1">ADDRESS</label> <input type="text" class="form-control form-control-sm" name="NAME" id="NAME" aria-describedby="helpId" placeholder="Republic of korea , seoul , yeoksam"> </div>
+                                  <div class="row no-gutters">
+                                  
+                                    <div class="col-sm-6 pr-sm-2">
+                                        <div class="form-group"> <label for="NAME" class="small text-muted mb-1">PHONE</label> <input type="text" class="form-control form-control-sm" name="NAME" id="NAME" aria-describedby="helpId" placeholder="010-1234-5678"> </div>
+                                    </div>
+                                    
+                                    <div class="col-sm-6">
+                                        <div class="form-group"> <label for="NAME" class="small text-muted mb-1">COMMENT</label> <input type="text" class="form-control form-control-sm" name="NAME" id="NAME" aria-describedby="helpId" placeholder="commnet"> </div>
+                                    </div>
+                                    
+                                 </div>
+                                <!-- 구매자 정보 입력 폼 끝  -->
+                                <br>
+                                <br>
                             </div>
                         </div>
-                        <div class="col-lg-5">
-                            <div class="row px-2">
-                                <div class="form-group col-md-6"> <label class="form-control-label">Name on Card</label> <input type="text" id="cname" name="cname" placeholder="Name"> </div>
-                                <div class="form-group col-md-6"> <label class="form-control-label">Card Number</label> <input type="text" id="cnum" name="cnum" placeholder="1111 2222 3333 4444"> </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="card border-0 ">
+                            <div class="card-header card-2">
+                                <p class="card-text text-muted mt-md-4 mb-2 space">YOUR ORDER <span class=" small text-muted ml-2 cursor-pointer"> SHOPPING BAG</span> </p>
+                                <hr class="my-2">
                             </div>
-                            <div class="row px-2">
-                                <div class="form-group col-md-6"> <label class="form-control-label">Expiration Date</label> <input type="text" id="exp" name="exp" placeholder="MM/YYYY"> </div>
-                                <div class="form-group col-md-6"> <label class="form-control-label">CVV</label> <input type="text" id="cvv" name="cvv" placeholder="***"> </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 mt-2">
-                            <div class="row d-flex justify-content-between px-4">
-                                <p class="mb-1 text-left">Subtotal</p>
-                                <h6 class="mb-1 text-right">$23.49</h6>
-                            </div>
-                            <div class="row d-flex justify-content-between px-4">
-                                <p class="mb-1 text-left">Shipping</p>
-                                <h6 class="mb-1 text-right">$2.99</h6>
-                            </div>
-                            <div class="row d-flex justify-content-between px-4" id="tax">
-                                <p class="mb-1 text-left">Total (tax included)</p>
-                                <h6 class="mb-1 text-right">$26.48</h6>
-        <a href="<%=request.getContextPath()%>/success.me"><button class="btn-block btn-blue"><span><span id="checkout">Checkout</span><span id="check-amt">    $ 26.48</span> </span></button></a>               
+                            <div class="card-body pt-0">
                             
-                            </div> 
+                            <!-- 담긴제품시작 -->
+                                <div class="row justify-content-between">
+                                    <div class="col-auto col-md-7">
+                                        <div class="media flex-column flex-sm-row"> <img class=" img-fluid" src="https://i.imgur.com/6oHix28.jpg" width="62" height="62">
+                                            <div class="media-body my-auto">
+                                                <div class="row ">
+                                                    <div class="col-auto">
+                                                        <p class="mb-0"><b>EC-GO Bag Standard</b></p><small class="text-muted">1 Week Subscription</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class=" pl-0 flex-sm-col col-auto my-auto">
+                                        <p class="boxed-1">1</p>
+                                    </div>
+                                    <div class=" pl-0 flex-sm-col col-auto my-auto ">
+                                        <p><b>50000 won</b></p>
+                                    </div>
+                                </div>
+                                <!-- 담긴제품끝 -->
+                                
+                              
+                                <hr class="my-2">
+                                
+                                <!-- 토탈가격시작 -->
+                                <div class="row ">
+                                    <div class="col">
+                                        <div class="row justify-content-between">
+                                            <div class="col-4">
+                                                <p class="mb-1"><b>Subtotal</b></p>
+                                            </div>
+                                            <div class="flex-sm-col col-auto">
+                                                <p class="mb-1"><b>won</b></p>
+                                            </div>
+                                        </div>
+                                        <div class="row justify-content-between">
+                                            <div class="col">
+                                                <p class="mb-1"><b>Shipping</b></p>
+                                            </div>
+                                            <div class="flex-sm-col col-auto">
+                                                <p class="mb-1"><b>won</b></p>
+                                            </div>
+                                        </div>
+                                        <div class="row justify-content-between">
+                                            <div class="col-4">
+                                                <p><b>Total</b></p>
+                                            </div>
+                                            <div class="flex-sm-col col-auto">
+                                                <p class="mb-1"><b>won</b></p>
+                                            </div>
+                                        </div>
+                                        <hr class="my-0">
+                                    </div>
+                                </div>
+                                <!-- 토탈가격끝 -->
+                                
+                                <!-- 카카오페이결제버튼시작 -->
+                                <div class="row mb-5 mt-4 ">
+                                    <div class="col-md-7 col-lg-6 mx-auto"><button type="button" class="btn btn-block btn-outline-primary btn-lg">KAKAOPAY</button></div>
+                                </div>
+                                <!-- 카카오페이결제버튼끝 --> <!-- 너무 복잡하면 DB로 넘겨서 끝내는게 좋을것같습니다. -->
+                                
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -335,12 +437,9 @@ header .active .fa-check {
         </div>
     </div>
 </div>
-<!--카트 끝-->
-
-        </div>
-      </div>
-    </div>
-  </section>
+		   <!-- 결제폼 끝 -->
+		   
+  		   <!-- 우리 팀 너무 고생많았습니다 ! -->
     <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
     <!-- JavaScript Libraries -->
@@ -358,28 +457,8 @@ header .active .fa-check {
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
-
-    <!--카트 시작-->
-    <script>
-        $(document).ready(function(){
-
-$('.radio-group .radio').click(function(){
-$('.radio').addClass('gray');
-$(this).removeClass('gray');
-});
-
-$('.plus-minus .plus').click(function(){
-var count = $(this).parent().prev().text();
-$(this).parent().prev().html(Number(count) + 1);
-});
-
-$('.plus-minus .minus').click(function(){
-var count = $(this).parent().prev().text();
-$(this).parent().prev().html(Number(count) - 1);
-});
-
-});
-    </script>
-    <!--카트 끝-->
+	
+	<!-- Vegas js -->
+	<script src="js/vegas/vegas.min.js"></script>
 </body>
 </html>
