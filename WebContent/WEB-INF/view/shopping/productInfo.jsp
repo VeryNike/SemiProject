@@ -143,6 +143,7 @@
 .bcbutton {
   margin-top: 24px;
   margin-left: -1px;
+  pointer-events: click;
 }
 button {
   background: #ffffff;
@@ -458,6 +459,7 @@ button:hover:before,button:hover:after {
    });
    $('.bcbutton').on('click', function(){
 	   $('#popup').show();
+	   $(this).css('pointer-events', 'none');
 	   $.ajax({
 		   url:'cart.me',
 		   data:{item:<%= item.getItemCode()%>}
@@ -470,6 +472,7 @@ button:hover:before,button:hover:after {
 	});
    
    $('#closeBtn').on('click', function(){
+	   $(this).css('pointer-events', 'click');
 	   $('#popup').hide();
 	});
  
