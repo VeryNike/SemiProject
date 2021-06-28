@@ -23,8 +23,7 @@ public class ProductInfoPageServlet extends HttpServlet {
 		Item item = new ItemService().selectProductInfo(itemCode);
 		String page = null;
 
-		String Icode = request.getParameter("itemCode");
-		ArrayList<Review> reviews = new ItemService().listReview(Icode);
+		ArrayList<Review> reviews = new ItemService().listReview(itemCode);
 		
 		if (item != null) {
 			page = "WEB-INF/view/shopping/productInfo.jsp";
