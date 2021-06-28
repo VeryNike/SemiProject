@@ -408,11 +408,11 @@ button:hover:before,button:hover:after {
 	                	<option id="s2" name="star" value="★★☆☆☆ 2.0">★★☆☆☆</option>
 	                	<option id="s3" name="star" value="★★★☆☆ 3.0">★★★☆☆</option>
 	                	<option id="s4" name="star" value="★★★★☆ 4.0">★★★★☆</option>
-	                	<option id="s5" name="star" value="★★★★★5.0">★★★★★</option>
+	                	<option id="s5" name="star" value="★★★★★ 5.0">★★★★★</option>
 	                </select>
 	                <div class="md-form md-outline">
-	                      <textarea id="form76" name="content" class="md-textarea form-control pr-6" rows="4" placeholder="★★★★☆ 상품에 대한 평점 또는 후기를 남겨주세요. "></textarea><br>
-	                      <button type="submit" id="reviewInsert" >Write </button>
+	                      <textarea id="form76" name="content" class="md-textarea form-control pr-6" rows="4" placeholder="★★★★☆ 상품에 대한 평점 선택하시고 후기를 작성해주세요. "></textarea><br>
+	                      <button type="submit" id="reviewInsert">Write </button>
 	                </div>
                 </div>
             </div>
@@ -468,7 +468,6 @@ button:hover:before,button:hover:after {
    
    $('#goBtn').on('click', function(){
 	   location.href="<%=request.getContextPath()%>/cart.me";
-
 	});
    
    $('#closeBtn').on('click', function(){
@@ -476,7 +475,7 @@ button:hover:before,button:hover:after {
 	   $('#popup').hide();
 	});
  
-   $('#reviewInsert').on('click',function(){
+  $('#reviewInsert').on('click',function(){
     if($('#form76').val().trim().length== 0){
 			alert("후기를 작성해주세요");
 			$('#form76').focus();
@@ -525,12 +524,12 @@ button:hover:before,button:hover:after {
 		    console.log(rn.substring(rn.indexOf('_')+1));
 	   	
 	    var up = $('.update').attr('id');
-		var upnum = up.substring(up.indexOf('_')+1);
+		  var upnum = up.substring(up.indexOf('_')+1);
 			console.log("upnum:"+upnum);
 			console.log("rnum:"+rnum);
 			
 	    $('#update_'+rnum).show();
-		console.log("++rnum:", $('#update_'+rnum));
+		  console.log("++rnum:", $('#update_'+rnum));
 		
    });
    
@@ -561,13 +560,13 @@ button:hover:before,button:hover:after {
    $('.reviewDel').on('click',function(){
 	   var bool = confirm("해당 리뷰를 삭제하시겠습니까?");
 	   if(bool){
-			var Icode = '<%=item.getItemCode() %>';
+			  var Icode = '<%=item.getItemCode() %>';
 		    var rn = $(this).attr('id');
-			var rnum = rn.substring(rn.indexOf('_')+1);
+			  var rnum = rn.substring(rn.indexOf('_')+1);
 		    var name = '<%=loginUser.getUserName()%>';
 		   $.ajax({
 			    url:'review.delete',
-		   	    data: {'Icode':Icode, 'rnum':rnum, 'name':name},
+		   	  data: {'Icode':Icode, 'rnum':rnum, 'name':name},
 		   		success: function(result){
 					console.log("d result:"+result)
 					location.reload();
