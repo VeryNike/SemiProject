@@ -465,8 +465,19 @@ label {
 		</div>
 		<%
 			}
-		}
+		else{
 		%>
+		<div class="card-body cart">
+			<div class="col-sm-12 empty-cart-cls text-center">
+				<h3>
+					<strong>Your Cart is Empty</strong>
+				</h3>
+				<h4>Add something to make me happy :)</h4>
+				<a href="shopping.me" class="btn btn-primary cart-btn-transform m-3"
+					data-abc="true">continue shopping</a>
+			</div>
+		</div>
+		<% } %>
 
 
 		<div class="totals">
