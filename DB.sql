@@ -998,6 +998,8 @@ COMMIT;
 --------------데이터를 포함한 CATEGORY 테이블 추가 쿼리 끝-----------------
 
 --------------Shopping-Review DB 테이블 추가, 시퀀스 추가 ----------------
+DROP TABLE REVIEW CASCADE CONSTRAINTS;
+
 CREATE TABLE REVIEW (
     "ITEM_CODE"   VARCHAR2(20)      NULL,
     "RNUM"   NUMBER      NULL,
