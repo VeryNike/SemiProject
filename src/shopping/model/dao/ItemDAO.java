@@ -281,6 +281,68 @@ public class ItemDAO {
 		}
 		return result;
 	}
+	public Item selectCheckoutForm(String itemCode) {
+	
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		List<ItemImage> images = null;
+		Item item = null;
 
+		String query = prop.getProperty("selectItem");
+		String query2 = prop.getProperty("selectImageList");
+		System.out.println(query);
+
+		try {
+			images = new ArrayList<>();
+			item = new Item();
+
+			conn = JDBCTemplate.getConnection();
+			pstmt = conn.prepareStatement(query2);
+			pstmt.setString(1, itemCode);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				ItemImage image = new ItemImage();
+				image.setItemCode(itemCode);
+				image.setImageNum(rs.getInt("IMAGE_NUM"));
+				image.setOrgImgNm(rs.getString("ORG_IMG_NM"));
+				image.setSaveImgNm(rs.getString("SAVE_IMG_NM"));
+				image.setImgPath(rs.getString("IMG_PATH"));
+				image.setImgDesc(rs.getString("IMG_DESC"));
+				image.setImgSize(rs.getInt("IMG_SIZE"));
+				images.add(image);
+			}
+			
+			JDBCTemplate.close(pstmt, rs);
+			
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, itemCode);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				item.setImages(images);
+				item.setItemCode(itemCode);
+				item.setItemName(rs.getString("ITEM_NAME"));
+				item.setItemPrice(rs.getString("ITEM_PRICE"));
+				item.setItemDesc(rs.getString("ITEM_DESC"));
+				item.setItemIfm(rs.getString("ITEM_IFM"));
+				item.setItemCategory(rs.getString("ITEM_CATEGORY"));
+				item.setItemDetail2(rs.getString("ITEM_DETAIL2"));
+				item.setItemSize(rs.getString("ITEM_SIZE"));
+				item.setItemUrl(rs.getString("ITEM_URL"));
+				item.setItemLogo(rs.getString("ITEM_LOGO"));
+				item.setItemStock(rs.getString("ITEM_STOCK"));
+				item.setThumbnail(images.get(0));
+				images.remove(0);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn, pstmt, rs);
+		}
+
+		return item;
+	
+	}
 
 }
