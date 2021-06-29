@@ -14,7 +14,7 @@
 
         <!-- Google Font -->
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&amp;display=swap" rel="stylesheet">
-
+        <link href="https://fonts.googleapis.com/css?family=Lato:700&display=swap" rel="stylesheet">
         <!-- CSS Libraries -->
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -23,143 +23,433 @@
         <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
         <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
 
-        <!-- 스타일시트 -->
-        <link href="css/shoppingcss/style.css" rel="stylesheet">
-        <script src="lib/jquery-3.6.0.min.js"></script>
+        <!-- ì¤íì¼ìí¸ -->
+<!--         <link href="css/shoppingcss/style.css" rel="stylesheet">
+ -->        <script src="lib/jquery-3.6.0.min.js"></script>
+        <script src="js/vide/jquery.vide.js"></script>
+        
         <style type="text/css">
             @import url("../lib/css/style.css");
         </style>
         <style>
         
         
-.wlsgod{
         
-   margin-left: 50px;
-    }
-ul {
-  width: 1000px;
-  margin: 50px auto;
-  display: table;
-}
-li {
-  display: inline-block;
-  width: 25%;
-  position: relative;
-  padding-top: 50px;
-  text-align: center;
-  font-family: sans-serif;
-  text-transform: uppercase;
-  color: #157ea5;
-  letter-spacing: 0.2em;
-}
-li:before {
-  /*  circle/dot*/
-  content: '';
-  width: 30px;
-  height: 30px;
-  background: #157ea5;
-  position: absolute;
-  top: 0;
-  left: calc(50% - 15px);
-  border-radius: 100%;
-}
-li:after {
-  /*line*/
-  content: '';
-  width: 100%;
-  height: 1px;
-  background: #157ea5;
-  position: absolute;
-  right: calc(50% - 15px);
-  top: 15px;
-  z-index: -1;
-}
-li:first-child:after {
-  content: none;
-}
-li.current {
-  color: #ec5d4a;
-}
-li.current:before {
-  background: #ec5d4a;
-}
-.steps > div {
-  display: none;
-}
-.steps.active {
-  display: block;
-}
-        
-            header {
-  padding: 20px 0px;
+         html,
+      body {
+        width: 100%;
+        height: 100%;
+      }@import url(https://fonts.googleapis.com/css?family=Exo+2:300,400,500,600);
+body {
+  font-family: 'Varela', sans-serif;
+  overflow: hidden;
 }
 
-header .active {
-  font-weight: 700;
-  position: relative;
-}
-
-header .active .fa-check {
-  position: absolute;
-  left:40%;
-  bottom: -27px;
-  background-color: #fff;
-  font-size: 0.7rem;
-  padding: 5px;
-  border: 1px solid #008000;
-  border-radius: 50%;
-  color: #008000;
-}
-.progress {
-  height: 2px;
-  background-color: #ccc;
-}
-
-.progress div {
+.wrap {
+  background-size: contain;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.progress .progress-bar {
-  width: 100%;
+.glitch {
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 600;
+  color: RED;
+  font-size: 100px;
+  position: relative;
+  margin: 0 auto;
+  text-shadow: 0px -5px 10px white, 0px 0px 5px rgba(255, 255, 255, 0), 0px 0px 10px rgba(255, 255, 255, 0), 0px 0px 15px rgba(255, 255, 255, 0), 0px 0px 20px rgba(255, 255, 255, 0);
+  -webkit-animation: noise-anim-2 3s infinite linear alternate-reverse, shift 4s ease-in-out infinite alternate, blur 8s ease-in-out infinite alternate;
+          animation: noise-anim-2 3s infinite linear alternate-reverse, shift 4s ease-in-out infinite alternate, blur 8s ease-in-out infinite alternate;
+  transform: skewX(0deg);
 }
-.purchase{
-    padding: 20px 0px;
+@-webkit-keyframes blur {
+  0%,40%, 50%, 60%, 90%, 95%, 100% {
+    text-shadow: 0px -5px 10px white, 0px 0px 5px rgba(255, 255, 255, 0), 0px 0px 10px rgba(255, 255, 255, 0), 2px 1px 15px rgba(100, 240, 255, 0), 0px 0px 20px rgba(255, 255, 255, 0);
+  }
+  45%, 75% {
+    text-shadow: 0px -5px 10px white, 0px 0px 5px white, 0px 0px 10px white, 2px 1px 15px #64f0ff, 0px 0px 20px white;
+  }
+  97.5% {
+    text-shadow: 0px -5px 10px rgba(255, 255, 255, 0), 0px 0px 5px rgba(255, 255, 255, 0), 0px 0px 10px rgba(255, 255, 255, 0), 2px 1px 4px #ff6464, 0px 0px 20px rgba(255, 255, 255, 0);
+  }
 }
-.totalprice{
-    width: 300px;
-    margin-left:1150px
+@keyframes blur {
+  0%,40%, 50%, 60%, 90%, 95%, 100% {
+    text-shadow: 0px -5px 10px white, 0px 0px 5px rgba(255, 255, 255, 0), 0px 0px 10px rgba(255, 255, 255, 0), 2px 1px 15px rgba(100, 240, 255, 0), 0px 0px 20px rgba(255, 255, 255, 0);
+  }
+  45%, 75% {
+    text-shadow: 0px -5px 10px white, 0px 0px 5px white, 0px 0px 10px white, 2px 1px 15px #64f0ff, 0px 0px 20px white;
+  }
+  97.5% {
+    text-shadow: 0px -5px 10px rgba(255, 255, 255, 0), 0px 0px 5px rgba(255, 255, 255, 0), 0px 0px 10px rgba(255, 255, 255, 0), 2px 1px 4px #ff6464, 0px 0px 20px rgba(255, 255, 255, 0);
+  }
 }
-.next{
-    margin-left:1280px
+.glitch:after {
+  content: attr(data-text);
+  position: absolute;
+  left: 3px;
+  text-shadow: -1px 0 ;
+  top: 0;
+  color: RED;
+  background: transparent;
+  overflow: hidden;
+  clip: rect(0, 900px, 0, 0);
+  -webkit-animation: noise-anim-2 3s infinite linear alternate-reverse, shift 4s ease-in-out infinite alternate;
+          animation: noise-anim-2 3s infinite linear alternate-reverse, shift 4s ease-in-out infinite alternate;
+  transform: skewX(0deg);
+  z-index: 9;
+  opacity: .4;
 }
-        </style>
+
+.glitch:before {
+  content: attr(data-text);
+  position: absolute;
+  left: 1px;
+  text-shadow: -3px 0 ;
+  top: 0;
+  color: transparent;
+  background: transparent;
+  overflow: hidden;
+  clip: rect(0, 900px, 0, 0);
+  -webkit-animation: noise-anim-2 3s infinite linear alternate-reverse, shift 4s ease-in-out infinite alternate;
+          animation: noise-anim-2 3s infinite linear alternate-reverse, shift 4s ease-in-out infinite alternate;
+  transform: skewX(0deg);
+  z-index: -5;
+  opacity: .4;
+}
+
+@-webkit-keyframes noise-anim {
+  0% {
+    clip: rect(79px, 9999px, 35px, 0);
+  }
+  5% {
+    clip: rect(56px, 9999px, 43px, 0);
+  }
+  10% {
+    clip: rect(93px, 9999px, 29px, 0);
+  }
+  15% {
+    clip: rect(6px, 9999px, 21px, 0);
+  }
+  20% {
+    clip: rect(16px, 9999px, 61px, 0);
+  }
+  25% {
+    clip: rect(27px, 9999px, 28px, 0);
+  }
+  30% {
+    clip: rect(60px, 9999px, 50px, 0);
+  }
+  35% {
+    clip: rect(33px, 9999px, 66px, 0);
+  }
+  40% {
+    clip: rect(88px, 9999px, 11px, 0);
+  }
+  45% {
+    clip: rect(38px, 9999px, 10px, 0);
+  }
+  50% {
+    clip: rect(53px, 9999px, 42px, 0);
+  }
+  55% {
+    clip: rect(98px, 9999px, 69px, 0);
+  }
+  60% {
+    clip: rect(82px, 9999px, 14px, 0);
+  }
+  65% {
+    clip: rect(52px, 9999px, 31px, 0);
+  }
+  70% {
+    clip: rect(26px, 9999px, 92px, 0);
+  }
+  75% {
+    clip: rect(54px, 9999px, 82px, 0);
+  }
+  80% {
+    clip: rect(52px, 9999px, 24px, 0);
+  }
+  85% {
+    clip: rect(61px, 9999px, 60px, 0);
+  }
+  90% {
+    clip: rect(28px, 9999px, 72px, 0);
+  }
+  95% {
+    clip: rect(99px, 9999px, 31px, 0);
+  }
+  100% {
+    clip: rect(76px, 9999px, 99px, 0);
+  }
+}
+
+@keyframes noise-anim {
+  0% {
+    clip: rect(79px, 9999px, 35px, 0);
+  }
+  5% {
+    clip: rect(56px, 9999px, 43px, 0);
+  }
+  10% {
+    clip: rect(93px, 9999px, 29px, 0);
+  }
+  15% {
+    clip: rect(6px, 9999px, 21px, 0);
+  }
+  20% {
+    clip: rect(16px, 9999px, 61px, 0);
+  }
+  25% {
+    clip: rect(27px, 9999px, 28px, 0);
+  }
+  30% {
+    clip: rect(60px, 9999px, 50px, 0);
+  }
+  35% {
+    clip: rect(33px, 9999px, 66px, 0);
+  }
+  40% {
+    clip: rect(88px, 9999px, 11px, 0);
+  }
+  45% {
+    clip: rect(38px, 9999px, 10px, 0);
+  }
+  50% {
+    clip: rect(53px, 9999px, 42px, 0);
+  }
+  55% {
+    clip: rect(98px, 9999px, 69px, 0);
+  }
+  60% {
+    clip: rect(82px, 9999px, 14px, 0);
+  }
+  65% {
+    clip: rect(52px, 9999px, 31px, 0);
+  }
+  70% {
+    clip: rect(26px, 9999px, 92px, 0);
+  }
+  75% {
+    clip: rect(54px, 9999px, 82px, 0);
+  }
+  80% {
+    clip: rect(52px, 9999px, 24px, 0);
+  }
+  85% {
+    clip: rect(61px, 9999px, 60px, 0);
+  }
+  90% {
+    clip: rect(28px, 9999px, 72px, 0);
+  }
+  95% {
+    clip: rect(99px, 9999px, 31px, 0);
+  }
+  100% {
+    clip: rect(76px, 9999px, 99px, 0);
+  }
+}
+@-webkit-keyframes noise-anim-2 {
+  0% {
+    clip: rect(98px, 9999px, 78px, 0);
+  }
+  5% {
+    clip: rect(4px, 9999px, 24px, 0);
+  }
+  10% {
+    clip: rect(55px, 9999px, 55px, 0);
+  }
+  15% {
+    clip: rect(28px, 9999px, 44px, 0);
+  }
+  20% {
+    clip: rect(44px, 9999px, 32px, 0);
+  }
+  25% {
+    clip: rect(8px, 9999px, 56px, 0);
+  }
+  30% {
+    clip: rect(70px, 9999px, 46px, 0);
+  }
+  35% {
+    clip: rect(40px, 9999px, 46px, 0);
+  }
+  40% {
+    clip: rect(66px, 9999px, 8px, 0);
+  }
+  45% {
+    clip: rect(43px, 9999px, 27px, 0);
+  }
+  50% {
+    clip: rect(63px, 9999px, 38px, 0);
+  }
+  55% {
+    clip: rect(78px, 9999px, 68px, 0);
+  }
+  60% {
+    clip: rect(74px, 9999px, 75px, 0);
+  }
+  65% {
+    clip: rect(34px, 9999px, 80px, 0);
+  }
+  70% {
+    clip: rect(17px, 9999px, 24px, 0);
+  }
+  75% {
+    clip: rect(21px, 9999px, 88px, 0);
+  }
+  80% {
+    clip: rect(82px, 9999px, 58px, 0);
+  }
+  85% {
+    clip: rect(1px, 9999px, 37px, 0);
+  }
+  90% {
+    clip: rect(3px, 9999px, 22px, 0);
+  }
+  95% {
+    clip: rect(86px, 9999px, 64px, 0);
+  }
+  100% {
+    clip: rect(27px, 9999px, 96px, 0);
+  }
+}
+@keyframes noise-anim-2 {
+  0% {
+    clip: rect(98px, 9999px, 78px, 0);
+  }
+  5% {
+    clip: rect(4px, 9999px, 24px, 0);
+  }
+  10% {
+    clip: rect(55px, 9999px, 55px, 0);
+  }
+  15% {
+    clip: rect(28px, 9999px, 44px, 0);
+  }
+  20% {
+    clip: rect(44px, 9999px, 32px, 0);
+  }
+  25% {
+    clip: rect(8px, 9999px, 56px, 0);
+  }
+  30% {
+    clip: rect(70px, 9999px, 46px, 0);
+  }
+  35% {
+    clip: rect(40px, 9999px, 46px, 0);
+  }
+  40% {
+    clip: rect(66px, 9999px, 8px, 0);
+  }
+  45% {
+    clip: rect(43px, 9999px, 27px, 0);
+  }
+  50% {
+    clip: rect(63px, 9999px, 38px, 0);
+  }
+  55% {
+    clip: rect(78px, 9999px, 68px, 0);
+  }
+  60% {
+    clip: rect(74px, 9999px, 75px, 0);
+  }
+  65% {
+    clip: rect(34px, 9999px, 80px, 0);
+  }
+  70% {
+    clip: rect(17px, 9999px, 24px, 0);
+  }
+  75% {
+    clip: rect(21px, 9999px, 88px, 0);
+  }
+  80% {
+    clip: rect(82px, 9999px, 58px, 0);
+  }
+  85% {
+    clip: rect(1px, 9999px, 37px, 0);
+  }
+  90% {
+    clip: rect(3px, 9999px, 22px, 0);
+  }
+  95% {
+    clip: rect(86px, 9999px, 64px, 0);
+  }
+  100% {
+    clip: rect(27px, 9999px, 96px, 0);
+  }
+}
+@-webkit-keyframes shift {
+  0%,40%, 44%, 58%, 61%, 65%,69%,73%,100% {
+    transform: skewX(0deg);
+  }
+  41% {
+    transform: skewX(10deg);
+  }
+  42% {
+    transform: skewX(-10deg);
+  }
+  59% {
+    transform: skewX(40deg) skewY(10deg);
+  }
+  60% {
+    transform: skewX(-40deg) skewY(-10deg);
+  }
+  63% {
+    transform: skewX(10deg) skewY(-5deg);
+  }
+  70% {
+    transform: skewX(-50deg) skewY(-20deg);
+  }
+  71% {
+    transform: skewX(10deg) skewY(-10deg);
+  }
+}
+@keyframes shift {
+  0%,40%, 44%, 58%, 61%, 65%,69%,73%,100% {
+    transform: skewX(0deg);
+  }
+  41% {
+    transform: skewX(10deg);
+  }
+  42% {
+    transform: skewX(-10deg);
+  }
+  59% {
+    transform: skewX(40deg) skewY(10deg);
+  }
+  60% {
+    transform: skewX(-40deg) skewY(-10deg);
+  }
+  63% {
+    transform: skewX(10deg) skewY(-5deg);
+  }
+  70% {
+    transform: skewX(-50deg) skewY(-20deg);
+  }
+  71% {
+    transform: skewX(10deg) skewY(-10deg);
+  }
+}
+      
+
+</style>
     </head>
 
-    <body>
-  	 <%@ include file="../common/menu.jsp"%>
+    <body data-vide-bg = "img/1.mp4"> 
+    
+    <%@ include file="../common/menu.jsp"%>
+	
+			
 
-
-
-        <!-- Page Header Start -->
-        <div class="page-header">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        
-                        <h2>CART</h2>
-                        <br>
-                    </div>
-                    <div class="col-12">
-                        
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Page Header End -->
-       <!--진행상황시작-->
+		<div class="wrap">
+    		<div class="glitch" data-text="GLITCH" id="t1">ORDER SUCCESS!</div>    		 
+    		   </div>
+   			
+<!--        ì§íìí©ìì
            
            <div class = "wlsgod">
  				<ul>
@@ -175,16 +465,21 @@ header .active .fa-check {
   				<div class="active">FINISH </div>
 		   </div>
 		   </div>
-		   
-  <!--진행상황끝-->
+		  
+  ì§íìí©ë -->
         <br clear = "all">
+        
+        
+        
     <script>
 	$('#main').on('click' , function(){
 		location.href="<%= request.getContextPath() %>/main.me";
 		
 	});
 	</script>
-        <div class="container-fluid mt-100">
+	
+	
+        <%-- <div class="container-fluid mt-100">
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
@@ -198,7 +493,7 @@ header .active .fa-check {
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --%>
         <!-- Footer End -->
 
         <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
