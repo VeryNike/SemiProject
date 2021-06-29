@@ -1,3 +1,28 @@
+<%@page import="java.io.Console"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ page
+	import="user.model.vo.User, java.util.List, java.util.ArrayList"%>
+
+<%@ page import="shopping.model.vo.Item, shopping.model.vo.ItemImage"%>
+<%
+String contextPath = request.getServletContext().getContextPath();
+Item item = (Item) request.getAttribute("item");
+ArrayList<Item> list = (ArrayList) session.getAttribute("list");
+
+if (list == null) {
+	list = new ArrayList<Item>();
+}
+
+if (item != null) {
+	list.add(item);
+}
+
+session.setAttribute("list", list);
+
+
+%>
+
 <!DOCTYPE html>
 <html lang="ko">
     <head>
@@ -258,6 +283,22 @@ header .active .fa-check {
 .customer-purchase{
     margin-left:34px;
 }
+.itembox {
+  width: 50px;
+  height: 50px;
+  border: solid;
+  border-color: whitesmoke;
+  margin-right : 10px;
+}
+.img-fluid2 {
+  margin-right : 20px;
+  width: 100%;
+  height: 100%;
+}
+
+.mb-0 {
+display:inline;
+}
 </style>
     </head>
 
@@ -268,9 +309,9 @@ header .active .fa-check {
 			<!-- 헤더공백시작 -->
       		<br>
        		 <br>
-	          <br>
-       		   <br>
-        	    <br>
+			  <br>
+			  	<br>
+        	     <br>
         	     <br>
          	 <!-- 헤더공백끝 -->
          	
@@ -366,14 +407,23 @@ header .active .fa-check {
                             </div>
                             <div class="card-body pt-0">
                             
-                            <!-- 담긴제품시작 -->
+                            <%
+							if (!list.isEmpty()) {
+			
+							for (Item i : list) {
+							ItemImage img = i.getThumbnail();
+							%>
                                 <div class="row justify-content-between">
                                     <div class="col-auto col-md-7">
-                                        <div class="media flex-column flex-sm-row"> <img class=" img-fluid" src="https://i.imgur.com/6oHix28.jpg" width="62" height="62">
+                                       <div class="media flex-column flex-sm-row">
+                                    <div class = "itembox">
+                                         <img class="img-fluid2"src="<%=contextPath%>/<%=img.getImgPath()%>/<%=img.getSaveImgNm()%>"alt="">
+                                         </div>
+ 											
                                             <div class="media-body my-auto">
-                                                <div class="row ">
+                                                <div class="row">
                                                     <div class="col-auto">
-                                                        <p class="mb-0"><b>EC-GO Bag Standard</b></p><small class="text-muted">1 Week Subscription</small>
+                                                        <p class="mb-0"><b><%=i.getItemName()%></b></p><small class="text-muted"><%=i.getItemDetail2()%>/<%=i.getItemSize()%></small>
                                                     </div>
                                                 </div>
                                             </div>
@@ -382,10 +432,14 @@ header .active .fa-check {
                                     <div class=" pl-0 flex-sm-col col-auto my-auto">
                                         <p class="boxed-1">1</p>
                                     </div>
-                                    <div class=" pl-0 flex-sm-col col-auto my-auto ">
-                                        <p><b>50000 won</b></p>
+                                    <div class=" pl-0 flex-sm-col col-auto my-auto " id="product-price">
+                                        <p><b><%=i.getItemPrice()%>won</b></p>
                                     </div>
                                 </div>
+                                                <%
+			}
+		}
+		%>
                                 <!-- 담긴제품끝 -->
                                 
                               
@@ -421,11 +475,12 @@ header .active .fa-check {
                                         <hr class="my-0">
                                     </div>
                                 </div>
+                
                                 <!-- 토탈가격끝 -->
                                 
                                 <!-- 카카오페이결제버튼시작 -->
                                 <div class="row mb-5 mt-4 ">
-                                    <div class="col-md-7 col-lg-6 mx-auto"><button type="button" class="btn btn-block btn-outline-primary btn-lg">KAKAOPAY</button></div>
+                                    <div class="col-md-7 col-lg-6 mx-auto"><a href="<%=request.getContextPath()%>/success.me"><button type="button" class="btn btn-block btn-outline-primary btn-lg">KAKAOPAY</button></a></div>
                                 </div>
                                 <!-- 카카오페이결제버튼끝 --> <!-- 너무 복잡하면 DB로 넘겨서 끝내는게 좋을것같습니다. -->
                                 
@@ -443,12 +498,6 @@ header .active .fa-check {
     <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
     <!-- JavaScript Libraries -->
-    <script>
-	$(function(){
-		$('#shopping').addClass('active');
-		$('.menus').not('#shopping').removeClass('active');
-	});
-    </script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
     <script src="lib/easing/easing.min.js"></script>
@@ -466,5 +515,22 @@ header .active .fa-check {
 	
 	<!-- Vegas js -->
 	<script src="js/vegas/vegas.min.js"></script>
+	
+	<!-- <script>
+	$(function() {
+		var subTotal = 0;
+		$(".product").each(function(i, elem) {
+			let price = $(elem).find(".product-price").text();
+			price = Number(price.trim());
+			subTotal += price;
+		});
+		$(".mb-1").text(subTotal * 0.05)
+		$("#cart-tax").text(subTotal * 0.05);
+		let shipping = Number($("#cart-shipping").text());
+		let cartTotal = subTotal + (subTotal * 0.05) + shipping;
+		$("#cart-total").text(cartTotal);
+	});
+	
+	</script> -->
 </body>
 </html>
