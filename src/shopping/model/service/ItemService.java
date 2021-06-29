@@ -77,5 +77,10 @@ public class ItemService {
 		
 		return result;
 	}
+	
+	public Item selectCheckoutForm(String itemCode) {
+		return new ItemDAO().selectCheckoutForm(itemCode);
 
+
+	}
 }
