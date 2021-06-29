@@ -131,6 +131,10 @@ User loginUser2 = (User) session.getAttribute("loginUser");
 	<%@ include file="../common/footer.jsp"%>
 
 	<script>
+		$(function(){
+			$('#board').addClass('active');
+			$('.menus').not('#board').removeClass('active');
+		});	
 		function deleteBoard() {
 			// 정말 게시글을 삭제할 것인지 물어본 후 삭제한다고 하면 delete.bo로 넘기기
 			var bool = confirm("정말 삭제하시겠습니까?");
