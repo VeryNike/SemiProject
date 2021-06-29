@@ -56,6 +56,7 @@
  - boardList.jsp에 있는 게시판 css 수정 
  - WEB-INF/shopping/shopping.jsp 와 productdetail css 경로 주석처리 <head>태그에 <style>태그로 수정
  - img/bg1.jpg , bg2.jpg , bg3.jpg , checkbg.jpg 추가
+ - img/1.mp4 (vide plug in 구동 영상파일 추가)
 
 # footer.jsp
 - 하단 footer부분
@@ -87,6 +88,22 @@
 
 # WebContent/js/main.js
   vegas plugin 코드 추가
+  vide plugin 폴더 추가
 
 # WEB-INF/views/shopping/checkout.jsp
   리디자인 및 코드정리 vegas plugin 추가
+  
+# WEB-INF/views/shopping/cart.jsp
+  checkout.jsp 로 데이터넘기기위해 checkout 버튼에 checkout.me 서블릿 연결 코드 추가
+  
+# WEB-INF/views/shopping/ordersuccess.jsp
+  리디자인 및 코드정리 vide plugin 추가 
+
+#src/shopping/controller/OrderFormPageServlet.java 
+  checkout.jsp 로 데이터넘기기위한 코드 추가
+  
+#src/shopping/model/service/ItemService.java	
+  checkout.jsp 로 데이터넘기기위한 코드 추가
+  
+#src/shopping/model/dao/ItemDAO.java	
+  checkout.jsp 로 데이터넘기기위한 코드 추가
