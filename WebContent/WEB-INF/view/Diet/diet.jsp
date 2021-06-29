@@ -237,6 +237,10 @@ label:hover {
    <%@ include file="../common/footer.jsp"%>
    
    <script>
+      $(function(){
+	$('#diet').addClass('active');
+	$('.menus').not('#diet').removeClass('active');
+	});
       $('#selectDiet ul>li>label').on('click', function(){
          $(this).next().slideToggle();
          $('#selectDiet ul li ul').not($(this).next()).slideUp();
