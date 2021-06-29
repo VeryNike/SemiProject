@@ -1,6 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"
-	import="board.model.vo.Board, java.util.ArrayList, user.model.vo.User"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="board.model.vo.Board, java.util.ArrayList, user.model.vo.User"%>
 
 <%
 	Board b = (Board) request.getAttribute("board");
@@ -20,9 +18,11 @@ User loginUser2 = (User) session.getAttribute("loginUser");
 	height: 200px;
 	resize: none;
 }
-#infoArea{
-	font-size:20px;
+
+#infoArea {
+	font-size: 20px;
 }
+
 #infoArea span {
 	display: inline-block;
 	font-weight: bold;
@@ -59,20 +59,17 @@ User loginUser2 = (User) session.getAttribute("loginUser");
 	<div class="container">
 		<div class="col-8" style="float: none; margin: 0 auto;">
 			<div class="tableArea">
-				<form action="<%=request.getContextPath()%>/boardUpdateForm.bo"
-					class="detailForm" id=<%=b.getbNo()%> method="post">
+				<form action="<%=request.getContextPath()%>/boardUpdateForm.bo" class="detailForm" id=<%=b.getbNo()%> method="post">
 					<div>
 						<div id="infoArea" class="row col-lg-12 col-md-12 col-sm-12">
 							<div class="col-lg-6 col-md-6 col-sm-6">
 								<span>카테고리</span>
 								<%=b.getCategory()%>
-								<input type="hidden" name="category"
-									value="<%=b.getCategory()%>">
+								<input type="hidden" name="category" value="<%=b.getCategory()%>">
 							</div>
 							<div class="col-lg-6 col-md-6 col-sm-6">
 								<span>제목</span>
-								<%=b.getPsTitle()%><input type="hidden" name="title"
-									value="<%=b.getPsTitle()%>">
+								<%=b.getPsTitle()%><input type="hidden" name="title" value="<%=b.getPsTitle()%>">
 							</div>
 
 							<div class="col-lg-6 col-md-6 col-sm-6">
@@ -87,7 +84,7 @@ User loginUser2 = (User) session.getAttribute("loginUser");
 					</div>
 					<%-- <input type="hidden" name="bId" value="<%=b.getPsContent()%>"> --%>
 
-					<div class="control-group col-lg-12 col-md-12 col-sm-12">
+					<div class="col-lg-12 col-md-12 col-sm-12">
 						<textarea class="form-control" id="content" name="content" readonly><%=b.getPsContent()%></textarea>
 					</div>
 
@@ -96,13 +93,13 @@ User loginUser2 = (User) session.getAttribute("loginUser");
 						<%
 							if (loginUser2 != null && b.getPsWriter().equals(loginUser2.getUserId())) {
 						%>
-						<input type="submit" class="btn btn-outline-primary" id="updateBtn" value="수정"> 
+						<input type="submit" class="btn btn-outline-primary" id="updateBtn" value="수정">
 						<input type="button" class="btn btn-outline-primary" onclick="deleteBoard();" id="deleteBtn" value="삭제">
+						<input type="hidden" name="no" value="<%= b.getbNo() %>">
 						<%
 							}
 						%>
-						<input type="button" class="btn btn-outline-primary" id="cancelBtn" onclick="location.href='<%=request.getContextPath()%>/boardList.me'"
-							value="취소">
+						<input type="button" class="btn btn-outline-primary" id="cancelBtn" onclick="location.href='<%=request.getContextPath()%>/boardList.me'" value="취소">
 					</div>
 
 				</form>
@@ -112,14 +109,11 @@ User loginUser2 = (User) session.getAttribute("loginUser");
 				<div class="replyWriteArea row">
 
 					<div class="col-lg-10 col-md-8 col-sm-12">
-						<textarea class="form-control" id="replyContent"
-							name="replyContent" placeholder="Content" required="required"
-							data-validation-required-message="Please enter your Content"></textarea>
+						<textarea class="form-control" id="replyContent" name="replyContent" placeholder="Content" required="required" data-validation-required-message="Please enter your Content"></textarea>
 					</div>
 
 					<div class="col-lg-2 col-md-4 col-sm-12 align-self-center">
-						<input type="button" class="btn btn-outline-dark" id="addReply"
-							value="댓글 등록">
+						<input type="button" class="btn btn-outline-dark" id="addReply" value="댓글 등록">
 					</div>
 
 				</div>
@@ -131,10 +125,10 @@ User loginUser2 = (User) session.getAttribute("loginUser");
 	<%@ include file="../common/footer.jsp"%>
 
 	<script>
-		$(function(){
-			$('#board').addClass('active');
-			$('.menus').not('#board').removeClass('active');
-		});	
+	$(function(){
+		$('#board').addClass('active');
+		$('.menus').not('#board').removeClass('active');
+	});
 		function deleteBoard() {
 			// 정말 게시글을 삭제할 것인지 물어본 후 삭제한다고 하면 delete.bo로 넘기기
 			var bool = confirm("정말 삭제하시겠습니까?");
