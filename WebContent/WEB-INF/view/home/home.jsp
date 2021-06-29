@@ -214,6 +214,12 @@
 
 
 	<%@ include file="../common/footer.jsp"%>
+	<script>
+	$(function(){
+		$('#home').addClass('active');
+		$('.menus').not('#home').removeClass('active');
+	});
+	</script>
 
 
 	<script src="js/script_home.js"></script>
