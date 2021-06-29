@@ -7,6 +7,12 @@
 <meta charset="UTF-8">
 <title>운동 멤버 게시판</title>
 <link href="css/style.css" rel="stylesheet">
+<style>
+#content{
+	height: 200px;
+	resize: none;
+}
+</style>
 </head>
 <body>
 	<%@ include file="../common/menu.jsp"%>
@@ -16,7 +22,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-12">
-					<h2>Board</h2>
+					<h2>게시판 작성</h2>
 				</div>
 				<div class="col-12">
 					<a href="">Home</a> 
@@ -27,14 +33,14 @@
 	</div>
 	<!-- Page Header End -->
 
-	<div class="outer">
-		<br><br><br><br>
-		<h4 align="center">게시판 작성</h4>
+	<div class="container">
+	<div class="col-10" style="float: none; margin:0 auto;">
 		<div class="tableArea">
 			<form action="<%= request.getContextPath() %>/insert.bo" method="post">
 				<div class="contact-form">
 					<div id="success"></div>
-					<div class="control-group col-lg-10 col-md-6 col-sm-12">
+					
+					<div class="control-group col-lg-12 col-md-12 col-sm-12">
 						<select name="category" class="form-control" required="required">
 							<option>----선택----</option>
 							<option value="10">모두보기</option>
@@ -47,25 +53,33 @@
 						</select>
 						<p class="help-block text-danger"></p>
 					</div>
-					<div class="control-group col-lg-10 col-md-6 col-sm-12">
+					
+					<div class="control-group col-lg-12 col-md-12 col-sm-12">
 						<input type="text" class="form-control" id="title" name="title" placeholder="Title" required="required" data-validation-required-message="Please enter a title" />
 						<p class="help-block text-danger"></p>
 					</div>
-					<div class="control-group col-lg-10 col-md-6 col-sm-12">
+					
+					<div class="control-group col-lg-12 col-md-12 col-sm-12">
 						<textarea class="form-control" id="content" name="content" placeholder="Content" required="required" data-validation-required-message="Please enter your Content"></textarea>
 						<p class="help-block text-danger"></p>
 					</div>
+					
 					<div class="col-lg-4 col-md-6 col-sm-12">
-						<input type="submit" class="btn btn-outline-primary" id="insertBtn" value="등록"> <input type="button" class="btn btn-outline-primary" id="cancelBtn" onclick="location.href='<%= request.getContextPath() %>/boardList.me'" value="취소">
+						<input type="submit" class="btn btn-outline-primary" id="insertBtn" value="등록"> 
+						<input type="button" class="btn btn-outline-primary" id="cancelBtn" onclick="location.href='<%= request.getContextPath() %>/boardList.me'" value="취소">
 					</div>
+					
 				</div>
 			</form>
 		</div>
+		</div>
 	</div>
-
-	<script src="mail/contact.js"></script>
 
 
 	<%@ include file="../common/footer.jsp"%>
+	
+	<script src="mail/contact.js"></script>
+
+
 </body>
 </html>
