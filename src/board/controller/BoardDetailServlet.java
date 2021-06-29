@@ -39,7 +39,7 @@ public class BoardDetailServlet extends HttpServlet {
 		String page = null;
 		
 		if(board != null) {
-			page = "WEB-INF/view/board/boardDetail.jsp";
+			page = "WEB-INF/view/board/boardDetail.jsp?no="+no;
 			request.setAttribute("board", board);
 		} else {
 			page= "WEB-INF/view/common/errorPage.jsp";
