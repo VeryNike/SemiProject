@@ -45,6 +45,13 @@
 			</form>
 		</div>
 	</div>
+	
+	<script>
+	$(function(){
+		$('#board').addClass('active');
+		$('.menus').not('#board').removeClass('active');
+	});	
+	</script>
 
 </body>
 </html>
