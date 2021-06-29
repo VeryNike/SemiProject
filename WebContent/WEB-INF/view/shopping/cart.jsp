@@ -512,6 +512,10 @@ label {
 	<%@ include file="../common/footer.jsp"%>
 
 	<script>
+		$(function(){
+			$('#shopping').addClass('active');
+			$('.menus').not('#shopping').removeClass('active');
+		});
 		$(document).ready(function() {
 			$('.radio-group .radio').click(function() {
 				$('.radio').addClass('gray');
