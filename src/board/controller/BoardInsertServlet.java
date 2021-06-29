@@ -60,7 +60,6 @@ public class BoardInsertServlet extends HttpServlet {
 			request.getRequestDispatcher("WEB-INF/view/common/errorPage.jsp").forward(request, response);
 		}
 	
-			
 	}
 
 	/**

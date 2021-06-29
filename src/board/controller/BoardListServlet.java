@@ -17,7 +17,7 @@ import board.model.vo.PageInfo;
 /**
  * Servlet implementation class BoardListServlet
  */
-@WebServlet("/list.me")
+@WebServlet("/boardList.me")
 public class BoardListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -61,11 +61,11 @@ public class BoardListServlet extends HttpServlet {
 		
 		PageInfo pi = new PageInfo(currentPage,listCount,pageLimit,maxPage,startPage,endPage,boardLimit);
 		
-		ArrayList<Board> list = service.selectList(pi);
+		ArrayList<Board> list = service.selectList();
 		
 		String page = null;
 		if(list != null) {
-			page = "WEB-INF/view/board/BoardList.jsp";
+			page = "WEB-INF/view/board/boardList.jsp";
 			request.setAttribute("list", list);
 			request.setAttribute("pi", pi);
 		}else {
