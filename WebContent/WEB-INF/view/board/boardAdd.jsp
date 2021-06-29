@@ -77,6 +77,12 @@
 
 
 	<%@ include file="../common/footer.jsp"%>
+	<script>
+	$(function(){
+		$('#board').addClass('active');
+		$('.menus').not('#board').removeClass('active');
+	});	
+	</script>
 	
 	<script src="mail/contact.js"></script>
 
