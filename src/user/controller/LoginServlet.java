@@ -15,7 +15,7 @@ import user.model.service.userService;
 import user.model.vo.User;
 
 
-@WebServlet("/login.me")
+@WebServlet(urlPatterns="/login.me", name="LoginServlet")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

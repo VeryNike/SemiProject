@@ -12,7 +12,7 @@ import user.model.vo.User;
 /**
  * Servlet implementation class MyUpdateFormServelet
  */
-@WebServlet("/MyUpdateForm.me")
+@WebServlet(urlPatterns="/MyUpdateForm.me", name="MyUpdateFormServelet")
 public class MyUpdateFormServelet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

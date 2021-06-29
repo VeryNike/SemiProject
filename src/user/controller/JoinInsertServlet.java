@@ -16,7 +16,7 @@ import user.model.vo.User;
 /**
  * Servlet implementation class JoinInsertServlet
  */
-@WebServlet("/insert.me")
+@WebServlet(urlPatterns="/insert.me", name="JoinInsertServlet")
 public class JoinInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

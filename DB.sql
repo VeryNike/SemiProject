@@ -977,3 +977,7 @@ MAXVALUE 99999;
 
 ALTER TABLE REVIEW ADD (STAR VARCHAR2(100) NULL);
 COMMIT;
+
+----------------------------비밀번호 암호화 위한 비밀번호 길이 수정 ----------
+ALTER TABLE USER_INFORMATION MODIFY (PASSWORD VARCHAR2(200));
+commit;
