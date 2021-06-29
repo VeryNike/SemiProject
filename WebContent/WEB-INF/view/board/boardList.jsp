@@ -124,6 +124,10 @@
 	<%@ include file="../common/footer.jsp"%>
 
 	<script>
+		$(function(){
+			$('#board').addClass('active');
+			$('.menus').not('#board').removeClass('active');
+		});	
 		$(".detailBtn").on('click', function() { 
 			var num = $(this).attr('id');
 			location.href="<%=request.getContextPath()%>/boardDetail.no?no="+num;
