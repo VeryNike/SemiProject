@@ -517,6 +517,11 @@ button:hover:before, button:hover:after {
 	
 
 	<script>
+	$(function(){
+		$('#shopping').addClass('active');
+		$('.menus').not('#shopping').removeClass('active');
+	});
+		
    $('#main').on('click' , function(){
       location.href="<%= request.getContextPath() %>/main.me";
       
