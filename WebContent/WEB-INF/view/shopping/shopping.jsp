@@ -280,6 +280,12 @@
 		<br clear = "all">
     
         <%@ include file="../common/footer.jsp"%>
+		<script>
+		$(function(){
+		$('#shopping').addClass('active');
+		$('.menus').not('#shopping').removeClass('active');
+		});
+		</script>
 
         
     
