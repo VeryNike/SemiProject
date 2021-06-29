@@ -46,7 +46,6 @@ public class BoardDAO {
 				result = rset.getInt(1);
 			}
 		} catch (SQLException e) {
-			
 			e.printStackTrace();
 		}finally {
 			close(stmt);
@@ -57,44 +56,148 @@ public class BoardDAO {
 	}
 
 
-	public ArrayList<Board> slectList(Connection conn, PageInfo pi) {
-		PreparedStatement pstmt = null;
+	public ArrayList<Board> selectList(Connection conn) {
+		Statement stmt = null;
 		ResultSet rset = null;
+		
 		
 		ArrayList<Board> list = new ArrayList<Board>();
 		
 		String query = prop.getProperty("selectList");
 		
-		int startRow = (pi.getCurrentPage()-1) * pi.getBoardLimit();
-		int endRow = startRow + pi.getBoardLimit() -1 ;
 		try {
-			pstmt = conn.prepareStatement(query);
-			pstmt.setInt(1, startRow);
-			pstmt.setInt(2, endRow);
+			stmt = conn.createStatement();
+
+			rset = stmt.executeQuery(query);
 			
-			rset = pstmt.executeQuery();
 			while(rset.next()) {
-				Board b = new Board(rset.getInt("boardNo"),
-									rset.getString("postTitle"),
-									rset.getString("postContent"),
-									rset.getInt("numofViews"),
-									rset.getString("id"),
-									rset.getDate("createDate"),
-									rset.getInt("CommentNum"),
-									rset.getString("status"));
+				Board b = new Board(rset.getInt("B_NO"),
+									rset.getInt("B_TYPE"),
+									rset.getString("CATE_NM"),
+									rset.getString("PS_TITLE"),
+									rset.getString("PS_CONTENT"),
+									rset.getString("PS_WRITER"),
+									rset.getDate("PS_DATE"),
+									rset.getInt("COMMENT_NO"),
+									rset.getString("STATUS"));
 				list.add(b);
 			}
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
 		}finally {
+			close(stmt);
+			close(rset);
+		}
+		return list;
+	}
+
+
+	public int insertBoard(Connection conn, Board b) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+
+		String query = prop.getProperty("insertBoard");
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			
+			pstmt.setInt(1, b.getbType());
+			pstmt.setInt(2, Integer.parseInt(b.getCategory()));
+			pstmt.setString(3, b.getPsTitle());
+			pstmt.setString(4, b.getPsContent());
+			pstmt.setString(5, b.getPsWriter());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	
+	public Board selectBoard(Connection conn, int no) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Board board = null;
+		
+		String query = prop.getProperty("boardDetail");
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, no);
+			rset =pstmt.executeQuery();
+			
+			if(rset.next()) {
+				board = new Board (rset.getInt("B_NO"),
+								   rset.getString("CATE_NO"),
+								   rset.getString("PS_TITLE"),
+								   rset.getString("PS_CONTENT"),
+								   rset.getString("PS_WRITER"),
+								   rset.getDate("PS_DATE"));
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
 			close(pstmt);
 			close(rset);
 		}
 		
-		return list;
+		return board;
 	}
 
-	
+
+	public int updateBoard(Connection conn, Board board) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = prop.getProperty("updateBoard");
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, Integer.parseInt(board.getCategory()));
+			pstmt.setString(2, board.getPsTitle());
+			pstmt.setString(3, board.getPsContent());
+			pstmt.setInt(4, board.getbNo());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+
+	public int deleteBoard(Connection conn, int no) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = prop.getProperty("deleteBoard");
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, no);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+
+
+
 	
 }
