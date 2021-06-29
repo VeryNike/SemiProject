@@ -1,15 +1,16 @@
 <%@page import="java.io.Console"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page
-	import="user.model.vo.User, java.util.List, java.util.ArrayList"%>
-
+<%@ page import="user.model.vo.User, java.util.List, java.util.ArrayList"%>
 <%@ page import="shopping.model.vo.Item, shopping.model.vo.ItemImage"%>
 
-<%
-	String contextPath = request.getServletContext().getContextPath();
+<%	
+
+String contextPath = request.getServletContext().getContextPath();
 Item item = (Item) request.getAttribute("item");
+
 ArrayList<Item> list = (ArrayList) session.getAttribute("list");
+
 
 if (list == null) {
 	list = new ArrayList<Item>();
@@ -19,13 +20,10 @@ if (item != null) {
 	list.add(item);
 }
 
-String deleteItem = (String)request.getAttribute("deleteItem");
-if (deleteItem != null) {
-	list.remove(Integer.parseInt(deleteItem));
-}
-
 session.setAttribute("list", list);
 
+/* 	System.out.println("itemss : " + item);
+	System.out.println("listss : " + list); */
 %>
 
 <!DOCTYPE html>
@@ -38,9 +36,30 @@ session.setAttribute("list", list);
 <meta content="Free Website Template" name="description">
 
 
+<!-- Google Font -->
+<link
+	href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap"
+	rel="stylesheet">
+
+<!-- CSS Libraries -->
+<link
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/shoppingcss/bootstrap.min.css"
+	rel="stylesheet">
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+	rel="stylesheet">
+<link href="lib/animate/animate.min.css" rel="stylesheet">
+<link href="lib/flaticon/font/flaticon.css" rel="stylesheet">
+<link href="lib/owlcarousel/assets/owl.carousel.min.css"
+	rel="stylesheet">
+<link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+<!-- Template Stylesheet -->
+<!-- <link href="css/shoppingcss/style.css" rel="stylesheet"> -->
 <script src="lib/jquery-3.6.0.min.js"></script>
 
 <style>
+
 button {
 	background: #ffffff;
 	color: rgb(0, 0, 0);
@@ -465,43 +484,28 @@ label {
 		</div>
 		<%
 			}
+		}
 		%>
+
+
 		<div class="totals">
 			<div class="totals-item">
 				<label>Subtotal</label>
-				<div class="totals-value" id="cart-subtotal">00.00</div>
+				<div class="totals-value" id="cart-subtotal">71.97</div>
 			</div>
 			<div class="totals-item">
 				<label>Tax (5%)</label>
-				<div class="totals-value" id="cart-tax">00.00</div>
+				<div class="totals-value" id="cart-tax">3.60</div>
 			</div>
 			<div class="totals-item">
 				<label>Shipping</label>
-				<div class="totals-value" id="cart-shipping">00.00</div>
+				<div class="totals-value" id="cart-shipping">15.00</div>
 			</div>
 			<div class="totals-item totals-item-total">
 				<label>Grand Total</label>
-				<div class="totals-value" id="cart-total"></div>
-				<a href="<%=request.getContextPath()%>/checkout.me">00.00<button
-						class="checkout">Checkout</button></a>
-			</div>
+				<div class="totals-value" id="cart-total">90.57</div>
+				<a href="<%=request.getContextPath()%>/checkout.me"><button class="checkout">Checkout</button></a></div>
 		</div>
-		
-		<%	
-		}else{
-		%>
-
-		<div class="card-body cart">
-			<div class="col-sm-12 empty-cart-cls text-center">
-				<h3>
-					<strong>Your Cart is Empty</strong>
-				</h3>
-				<h4>Add something to make me happy :)</h4>
-				<a href="shopping.me" class="btn btn-primary cart-btn-transform m-3"
-					data-abc="true">continue shopping</a>
-			</div>
-		</div>
-		<% } %>
 
 
 
@@ -512,10 +516,6 @@ label {
 	<%@ include file="../common/footer.jsp"%>
 
 	<script>
-		$(function(){
-			$('#shopping').addClass('active');
-			$('.menus').not('#shopping').removeClass('active');
-		});
 		$(document).ready(function() {
 			$('.radio-group .radio').click(function() {
 				$('.radio').addClass('gray');
@@ -626,6 +626,8 @@ label {
 			$("#cart-total").text(cartTotal);
 		});
 	</script>
+	
 
+	
 </body>
 </html>
