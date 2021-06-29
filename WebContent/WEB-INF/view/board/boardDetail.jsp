@@ -88,9 +88,7 @@ User loginUser2 = (User) session.getAttribute("loginUser");
 					<%-- <input type="hidden" name="bId" value="<%=b.getPsContent()%>"> --%>
 
 					<div class="control-group col-lg-12 col-md-12 col-sm-12">
-						<textarea class="form-control" id="content" name="content" readonly>
-							<%=b.getPsContent()%>
-							</textarea>
+						<textarea class="form-control" id="content" name="content" readonly><%=b.getPsContent()%></textarea>
 					</div>
 
 
