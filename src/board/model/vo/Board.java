@@ -4,86 +4,107 @@ import java.sql.Date;
 
 public class Board {
 
-	private int boardNo;
-	private String postTitle;
-	private String postContent;
-	private int numOfViews;
-	private String id;
-	private Date createDate;
-	private int CommentNum;
+	private int bNo;
+	private int bType;
+	private String category;
+	private String psTitle;
+	private String psContent;
+	private String psWriter;
+	private Date psDate;
+	private int commentNo;
 	private String status;
 	
 	public Board() {}
 
-	public Board(int boardNo, String postTitle, String postContent, int numOfViews, String id, Date createDate,
-			int commentNum, String status) {
+	public Board(int bNo, int bType, String category, String psTitle, String psContent, String psWriter, Date psDate,
+			int commentNo, String status) {
 		super();
-		this.boardNo = boardNo;
-		this.postTitle = postTitle;
-		this.postContent = postContent;
-		this.numOfViews = numOfViews;
-		this.id = id;
-		this.createDate = createDate;
-		this.CommentNum = commentNum;
+		this.bNo = bNo;
+		this.bType = bType;
+		this.category = category;
+		this.psTitle = psTitle;
+		this.psContent = psContent;
+		this.psWriter = psWriter;
+		this.psDate = psDate;
+		this.commentNo = commentNo;
 		this.status = status;
 	}
-
-	public int getBoardNo() {
-		return boardNo;
+	
+	public Board(int bNo, String category, String psTitle, String psContent, String psWriter, Date psDate) {
+		super();
+		this.bNo = bNo;
+		this.category = category;
+		this.psTitle = psTitle;
+		this.psContent = psContent;
+		this.psWriter = psWriter;
+		this.psDate = psDate;
 	}
 
-	public void setBoardNo(int boardNo) {
-		this.boardNo = boardNo;
+	public int getbNo() {
+		return bNo;
 	}
 
-	public String getPostTitle() {
-		return postTitle;
+	public void setbNo(int bNo) {
+		this.bNo = bNo;
 	}
 
-	public void setPostTitle(String postTitle) {
-		this.postTitle = postTitle;
+	public int getbType() {
+		return bType;
 	}
 
-	public String getPostContent() {
-		return postContent;
+	public void setbType(int bType) {
+		this.bType = bType;
 	}
 
-	public void setPostContent(String postContent) {
-		this.postContent = postContent;
+	public String getCategory() {
+		return category;
 	}
 
-	public int getNumOfViews() {
-		return numOfViews;
+	public void setCategory(String category) {
+		this.category = category;
 	}
 
-	public void setNumOfViews(int numOfViews) {
-		this.numOfViews = numOfViews;
+	public String getPsTitle() {
+		return psTitle;
 	}
 
-	public String getId() {
-		return id;
+	public void setPsTitle(String psTitle) {
+		this.psTitle = psTitle;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public String getPsContent() {
+		return psContent;
 	}
 
-	public Date getCreateDate() {
-		return createDate;
+	public void setPsContent(String psContent) {
+		this.psContent = psContent;
 	}
 
-	public void setCreateDate(Date createDate) {
-		this.createDate = createDate;
+	public String getPsWriter() {
+		return psWriter;
 	}
 
-	public int getCommentNum() {
-		return CommentNum;
+	public void setPsWriter(String psWriter) {
+		this.psWriter = psWriter;
 	}
 
-	public void setCommentNum(int commentNum) {
-		CommentNum = commentNum;
+	public Date getPsDate() {
+		return psDate;
 	}
 
+	public void setPsDate(Date psDate) {
+		this.psDate = psDate;
+	}
+
+	public int getCommentNo() {
+		return commentNo;
+	}
+
+	public void setCommentTo(int commentNo) {
+		this.commentNo = commentNo;
+	}
+
+	
 	public String getStatus() {
 		return status;
 	}
@@ -94,10 +115,12 @@ public class Board {
 
 	@Override
 	public String toString() {
-		return "Board [boardNo=" + boardNo + ", postTitle=" + postTitle + ", postContent=" + postContent
-				+ ", numOfViews=" + numOfViews + ", id=" + id + ", createDate=" + createDate + ", CommentNum="
-				+ CommentNum + ", status=" + status + "]";
+		return "Board [bNo=" + bNo + ", bType=" + bType + ", category=" + category + ", psTitle=" + psTitle
+				+ ", psContent=" + psContent + ", psWriter=" + psWriter + ", psDate=" + psDate + ", commentNo="
+				+ commentNo + ", status=" + status + "]";
 	}
+	
+	
 	
 		
 }
