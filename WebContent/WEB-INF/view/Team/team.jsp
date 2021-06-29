@@ -178,6 +178,12 @@
    
 
    <%@ include file="../common/footer.jsp"%>
+   <script>
+   $(function(){
+		$('#team').addClass('active');
+		$('.menus').not('#team').removeClass('active');
+	});
+   </script>
  
 </body>
 </html>
