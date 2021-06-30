@@ -60,7 +60,7 @@
 			</div>
 			<div class="row">
 				<div class="col-12">
-					<ul id="class-filter" name="category">
+					<ul id="class-filter">
 						<li data-filter="*" class="filter-active" value="10">모두 보기</li>
 						<li data-filter=".filter-1">수영</li>
 						<li data-filter=".filter-2">산책</li>
@@ -88,20 +88,22 @@
 								<p><i class="far fa-comments"></i></p>
 							</div>
 							<p><%=b.getPsContent()%></p>
-							<a id="<%=b.getbNo()%>" class="detailBtn" name="boardNo">Read More<i class="fa fa-angle-right"></i>
+							<a id="<%=b.getbNo()%>" class="detailBtn">Read More<i class="fa fa-angle-right"></i>
 							</a>
 						</div>
 					</div>
 				</div>
+			</div>
 				<% } %>
 				<% } else { %>
-					<h3>조회할 게시물이 없습니다.</h3>
+					<div class="col-12 text-center"> 
+						<h3>조회할 게시물이 없습니다.</h3>
+					</div>
 				<% } %>
 				<!-- 게시판 끝 -->
-			</div>
 
 			<% if (loginUser2 != null) { %>
-				<a><input type="button" onclick="location.href='writeNoticeForm.me'" class="btn btn-outline-primary" value="글쓰기"></a>
+				<input type="button" onclick="location.href='<%=request.getContextPath()%>/writeNoticeForm.me'" class="btn btn-outline-primary" value="글쓰기">
 			<% } %>
 
 			<!-- 페이징 시작 -->
@@ -124,13 +126,14 @@
 	<%@ include file="../common/footer.jsp"%>
 
 	<script>
-		$(function(){
-			$('#board').addClass('active');
-			$('.menus').not('#board').removeClass('active');
-		});	
 		$(".detailBtn").on('click', function() { 
 			var num = $(this).attr('id');
 			location.href="<%=request.getContextPath()%>/boardDetail.no?no="+num;
+		});
+		
+		$(function(){
+			$('#board').addClass('active');
+			$('.menus').not('#board').removeClass('active');
 		});
 	</script>
 
