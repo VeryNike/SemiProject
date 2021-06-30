@@ -477,7 +477,7 @@ label {
 			<div class="totals-item totals-item-total">
 				<label>Grand Total</label>
 				<div class="totals-value" id="cart-total"></div>
-				<a href="<%=request.getContextPath()%>/checkout.me">00.00
+				<a href="<%=request.getContextPath()%>/checkout.me">
 					<button class="checkout">Checkout</button>
 				</a>
 			</div>
