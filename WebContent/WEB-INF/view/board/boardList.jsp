@@ -5,7 +5,6 @@
 <%
 	User loginUser2 = (User) session.getAttribute("loginUser");
 	ArrayList<Board> list = (ArrayList<Board>) request.getAttribute("list");
-	PageInfo pi = (PageInfo) request.getAttribute("pi");
 %>
 
 <!DOCTYPE html>
@@ -23,7 +22,6 @@
 	padding: 20px;
 	border-radius: 20px;
 }
-
 .bNum {
 	display: none;
 }
@@ -107,19 +105,7 @@
 				<input type="button" onclick="location.href='<%=request.getContextPath()%>/writeNoticeForm.me'" class="btn btn-outline-primary" value="글쓰기">
 			<% } %>
 
-			<!-- 페이징 시작 -->
-			<div class="row">
-				<div class="col-12">
-					<ul class="pagination justify-content-center">
-						<li class="page-item"><a class="page-link" href="#">Previous</a></li>
-						<li class="page-item"><a class="page-link" href="#">1</a></li>
-						<li class="page-item active"><a class="page-link" href="#">2</a></li>
-						<li class="page-item"><a class="page-link" href="#">3</a></li>
-						<li class="page-item"><a class="page-link" href="#">Next</a></li>
-					</ul>
-				</div>
-			</div>
-			<!-- 페이징 끝 -->
+			
 		</div>
 	</div>
 	<!-- Class End -->
