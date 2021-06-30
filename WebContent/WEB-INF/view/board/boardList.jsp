@@ -93,8 +93,9 @@
 						</div>
 					</div>
 				</div>
-			</div>
+			
 				<% } %>
+				</div>
 				<% } else { %>
 					<div class="col-12 text-center"> 
 						<h3>조회할 게시물이 없습니다.</h3>
