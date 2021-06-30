@@ -29,8 +29,10 @@
 - 비회원 들어가기 -> Team 탭으로 연결
 
 # WEB-INF > view > board
-- boardList.jsp : 운동멤버 게시판 상세보기 화면 업데이트
-- boardAdd.jsp : 운동멤버 게시판 글쓰기 화면
+- boardList.jsp : 운동멤버 게시판 상세보기 화면 완료 (카드형 게시판 크기 수정 완료!!!!!)
+- boardAdd.jsp : 운동멤버 게시판 글쓰기 화면 완료
+- boardDetail.jsp : 운동멤버 게시판 상세보기 화면 완료
+- boardUpdateForm.jsp : 운동멤버 게시판 수정 화면 완료
 
 # index.jsp
   - UTF-8 인코딩 코드 최상단 추가 완료
