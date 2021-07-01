@@ -41,7 +41,6 @@ public class userService {
 		return result;
 	}
 
-<<<<<<< HEAD
 	public User selectUser(String userId) {
 		Connection conn =getConnection();
 		User user = new userDAO().selectUser(conn,userId);
@@ -80,8 +79,4 @@ public class userService {
 		
 		return result;
 	}
-
-
-=======
->>>>>>> HY
 }
