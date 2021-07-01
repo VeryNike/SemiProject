@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"
-	import="user.model.vo.User, java.util.ArrayList, board.model.vo.Board"%>
+	import="user.model.vo.User, java.util.ArrayList, board.model.vo.Board" %>
 
 <%
 	User loginUser2 = (User) session.getAttribute("loginUser");
@@ -22,10 +22,13 @@
 	padding: 20px;
 	border-radius: 20px;
 }
-.bNum {
-	display: none;
+
+.class-text > p{
+   display:block;
+   height:75px;
 }
 </style>
+<!-- <link rel="stylesheet" href="css/vegas/vegas.min.css"> -->
 <link href="css/style.css" rel="stylesheet">
 <script src="lib/jquery-3.6.0.min.js"></script>
 </head>
@@ -124,6 +127,11 @@
 		});
 	</script>
 
+
+	<script src="js/vegas.js"></script>
+
+	<!-- Vegas js -->
+	<script src="js/vegas/vegas.min.js"></script>
 
 </body>
 </html>
