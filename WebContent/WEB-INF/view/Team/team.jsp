@@ -14,7 +14,10 @@
 <title>About our Team</title>
 
 <style>
-
+.teams{
+	width: calc((100%/ 5) - 10px);
+	margin : 5px;
+}
 </style>
 </head>
 <body>
@@ -85,8 +88,10 @@
                     <p>Very Nice</p>
                     <h2>Our Team Members</h2>
                 </div>
-                <div class="row">
-                    <div class="col-lg-2 col-md-6 wow fadeInUp" data-wow-delay="0.0s">
+                
+                <div class="row" style="float: none; margin: 0 auto;">
+                
+                    <div class="teams wow fadeInUp" data-wow-delay="0.0s">
                         <div class="team-item">
                             <div class="team-img">
                                 <img src="images/kettlebell.png" alt="Image">
@@ -103,7 +108,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-2 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+                    
+                    <div class="teams wow fadeInUp" data-wow-delay="0.2s">
                         <div class="team-item">
                             <div class="team-img">
                                 <img src="images/dumbbell.png" alt="Image">
@@ -120,7 +126,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-2 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
+                    
+                    <div class="teams wow fadeInUp" data-wow-delay="0.4s">
                         <div class="team-item">
                             <div class="team-img">
                                 <img src="images/workout-machine.png" alt="Image">
@@ -137,7 +144,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-2 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
+                    
+                    <div class="teams wow fadeInUp" data-wow-delay="0.4s">
                         <div class="team-item">
                             <div class="team-img">
                                 <img src="images/bench-press.png" alt="Image">
@@ -154,7 +162,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-2 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
+                    
+                    <div class="teams wow fadeInUp" data-wow-delay="0.6s">
                         <div class="team-item">
                             <div class="team-img">
                                 <img src="images/jumping-rope.png" alt="Image">
@@ -171,7 +180,8 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                    
+               </div>
             </div>
         </div>
         <!-- Team End -->
