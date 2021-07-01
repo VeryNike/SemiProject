@@ -86,7 +86,7 @@
 							<div class="class-meta">
 								<p><i class="far fa-user"></i><%=b.getPsWriter()%></p>
 								<p><i class="far fa-calendar-alt"></i><%=b.getPsDate()%></p>
-								<p><i class="far fa-comments"></i></p>
+								<p><i class="far fa-comments"></i><span class="cnt"></span></p>
 							</div>
 							<p><%=b.getPsContent()%></p>
 							<a id="<%=b.getbNo()%>" class="detailBtn">Read More<i class="fa fa-angle-right"></i>
