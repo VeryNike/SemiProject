@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import board.model.vo.Board;
-import board.model.vo.PageInfo;
+import board.model.vo.Reply;
 
 public class BoardDAO {
 	
@@ -195,9 +195,102 @@ public class BoardDAO {
 		}
 		return result;
 	}
-
-
-
-
 	
+	public int insertReply(Connection conn, Reply r) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = prop.getProperty("insertReply");
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1,r.getCommentContent());
+			pstmt.setString(2,r.getID());
+			pstmt.setInt(3, r.getB_no());
+			
+			result =pstmt.executeUpdate();
+			System.out.println("DAO에서의 result" +result);
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+			
+		}
+		
+		
+		return result;
+	}
+
+	public ArrayList<Reply> listReply(Connection conn, int no) {
+		PreparedStatement pstmt = null;
+		ResultSet result =null;
+		ArrayList<Reply> replys = new ArrayList<Reply>();
+		
+		String query = prop.getProperty("listReply");
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, no);
+			result = pstmt.executeQuery();
+			while(result.next()) {
+				replys.add(new Reply(result.getInt("COMMENT_NM"),
+									result.getString("COMMENT_CONTENT"),
+									result.getDate("WRITE_DATE"),
+									result.getString("ID"),
+									result.getInt("B_NO"),
+									result.getString("STATUS")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(result);
+			close(pstmt);
+		}
+		
+		
+		return replys;
+	}
+
+
+	public int updateReply(Connection conn, Reply r) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = prop.getProperty("updateReply");
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, r.getCommentContent());
+			pstmt.setInt(2, r.getB_no());
+			pstmt.setInt(3, r.getCNum());
+			pstmt.setString(4, r.getID());
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+
+	public int deleteReply(Connection conn, Reply r) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = prop.getProperty("deleteReply");
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, r.getB_no());
+			pstmt.setInt(2, r.getCNum());
+			pstmt.setString(3, r.getID());
+			result = pstmt.executeUpdate();
+			System.out.println("r:"+r);
+			System.out.println("result:"+result);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		System.out.println(result);
+		return result;
+	}
+
+
 }
