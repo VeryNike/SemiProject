@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"
-	import="user.model.vo.User, java.util.ArrayList, board.model.vo.Board" %>
+	import="user.model.vo.User, java.util.ArrayList, board.model.vo.Board, board.model.vo.PageInfo"%>
 
 <%
 	User loginUser2 = (User) session.getAttribute("loginUser");
 	ArrayList<Board> list = (ArrayList<Board>) request.getAttribute("list");
+
+
 %>
 
 <!DOCTYPE html>
@@ -12,6 +14,10 @@
 <head>
 <meta charset="utf-8">
 <title>MyPT</title>
+
+<link href="css/style.css" rel="stylesheet">
+<script src="lib/jquery-3.6.0.min.js"></script>
+
 <style>
 #content {
 	display: none;
@@ -22,15 +28,14 @@
 	padding: 20px;
 	border-radius: 20px;
 }
-
+.bNum {
+	display: none;
+}
 .class-text > p{
-   display:block;
-   height:75px;
+	display:block;
+	height:75px;
 }
 </style>
-<!-- <link rel="stylesheet" href="css/vegas/vegas.min.css"> -->
-<link href="css/style.css" rel="stylesheet">
-<script src="lib/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 	<%@ include file="../common/menu.jsp"%>
@@ -77,7 +82,7 @@
 			<!--  게시판 시작 -->
 			<% if (!list.isEmpty()) { %>
 			<div class="row class-container">
-				<% for (Board b : list) { %>
+				<% for (Board b :list) { %>
 				<div
 					class="col-lg-4 col-md-6 col-sm-12 class-item <%=b.getCategory()%> wow fadeInUp" data-wow-delay="0.0s">
 					<div class="class-wrap">
@@ -158,13 +163,9 @@
 			});
 			
 		});
+		
 	</script>
 
-
-	<script src="js/vegas.js"></script>
-
-	<!-- Vegas js -->
-	<script src="js/vegas/vegas.min.js"></script>
 
 </body>
 </html>
