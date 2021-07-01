@@ -158,6 +158,18 @@ public class BoardService {
 				
 		return result;
 	}
+	
+	public int ReplyCount(int bno) {
+		
+		Connection conn = getConnection();
+		
+		int result = new BoardDAO().ReplyCount(conn, bno);
+		
+		
+		close(conn);
+		
+		return result;
+	}
 
 	
 
