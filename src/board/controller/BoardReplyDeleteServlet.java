@@ -1,7 +1,8 @@
 package board.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.io.PrintWriter;
+import java.sql.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,48 +11,46 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import board.model.service.BoardService;
-import board.model.vo.Board;
 import board.model.vo.Reply;
 
 /**
- * Servlet implementation class BoardDetailServlet
+ * Servlet implementation class BoardReplyDeleteServlet
  */
-@WebServlet("/boardDetail.no")
-public class BoardDetailServlet extends HttpServlet {
+@WebServlet("/reply.delete")
+public class BoardReplyDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BoardDetailServlet() {
-        super();
-        // TODO Auto-generated constructor stub
+    public BoardReplyDeleteServlet() {
+        
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int no = Integer.parseInt(request.getParameter("no"));
-
-		Board board = new BoardService().selectBoard(no);
+		int bno = Integer.parseInt(request.getParameter("bno"));
+		int rnum = Integer.parseInt(request.getParameter("rnum"));
+		String name = request.getParameter("name");
 		
-		String page = null;
 		
-		ArrayList<Reply> replys = new BoardService().listReply(no);
+		Reply r = new Reply();
+		r.setB_no(bno);
+		r.setCNum(rnum);
+		r.setID(name);
 		
-		if(board != null) {
-			page = "WEB-INF/view/board/boardDetail.jsp?no="+no;
-			request.setAttribute("board", board);
-			request.setAttribute("replys", replys);
-		} else {
-			page= "WEB-INF/view/common/errorPage.jsp";
-			request.setAttribute("msg", "공지사항 조회에 실패했습니다.");
-		}
+		System.out.println("reply: " +r);
+		int result = new BoardService().deleteReply(r);
 		
-		request.getRequestDispatcher(page).forward(request, response);
-		
+		PrintWriter out = response.getWriter();
+		if(result>0) {
+			out.println("reply delete success");
+		}else {
+		out.print("reply delete false");
 	}
+}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

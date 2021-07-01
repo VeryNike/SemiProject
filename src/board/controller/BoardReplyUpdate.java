@@ -10,20 +10,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import board.model.service.BoardService;
-import board.model.vo.Board;
 import board.model.vo.Reply;
 
 /**
- * Servlet implementation class BoardDetailServlet
+ * Servlet implementation class BoardReplyUpdate
  */
-@WebServlet("/boardDetail.no")
-public class BoardDetailServlet extends HttpServlet {
+@WebServlet("/reply.update")
+public class BoardReplyUpdate extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BoardDetailServlet() {
+    public BoardReplyUpdate() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,25 +31,20 @@ public class BoardDetailServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int no = Integer.parseInt(request.getParameter("no"));
-
-		Board board = new BoardService().selectBoard(no);
+		int bno = Integer.parseInt(request.getParameter("bno"));
+		int rnum = Integer.parseInt(request.getParameter("rnum"));
+		String name = request.getParameter("name");
+		String content = request.getParameter("content");
 		
-		String page = null;
+		Reply r = new Reply();
+		r.setB_no(bno);
+		r.setCNum(rnum);
+		r.setID(name);
+		r.setCommentContent(content);
 		
-		ArrayList<Reply> replys = new BoardService().listReply(no);
-		
-		if(board != null) {
-			page = "WEB-INF/view/board/boardDetail.jsp?no="+no;
-			request.setAttribute("board", board);
-			request.setAttribute("replys", replys);
-		} else {
-			page= "WEB-INF/view/common/errorPage.jsp";
-			request.setAttribute("msg", "공지사항 조회에 실패했습니다.");
-		}
-		
-		request.getRequestDispatcher(page).forward(request, response);
-		
+		ArrayList<Reply> replys = new BoardService().updateReply(r);
+		response.setContentType("charset=UTF-8");
+		response.getWriter().println(replys);
 	}
 
 	/**
