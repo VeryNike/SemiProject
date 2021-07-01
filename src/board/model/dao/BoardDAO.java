@@ -291,6 +291,33 @@ public class BoardDAO {
 		System.out.println(result);
 		return result;
 	}
+	
+	public int ReplyCount(Connection conn, int bno) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int result = 0;
+		
+		String query = prop.getProperty("replyCount");
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, bno);
+			rset = pstmt.executeQuery();
+
+			if(rset.next()) {
+				result = rset.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+			close(rset);
+		}
+
+		return result;
+	}
 
 
 }
