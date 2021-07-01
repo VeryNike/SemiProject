@@ -125,6 +125,39 @@
 			$('#board').addClass('active');
 			$('.menus').not('#board').removeClass('active');
 		});
+		
+		$(function(){
+			var bno = new Array();
+			$('.detailBtn').each(function(i){
+				bno[i] = $(this).attr('id');
+			});
+			
+			console.log(bno);
+			
+			$.ajax({
+				url:'countReply.count',
+	            traditional :true, 
+	            dataType:"JSON",
+				data:{'bno':bno}, 
+				success:function(data){
+					var d = new Array();
+					for(var i in data){
+						d[i] = data[i];
+						console.log(i +  " = "+data[i]);
+				
+					}
+			
+					
+					$('.detailBtn').each(function(i){
+						$(this).siblings('div').children().find('.cnt').text(d[i]);
+					});
+				},error : function(data) {
+					console.log('실패');
+				}
+				
+			});
+			
+		});
 	</script>
 
 
