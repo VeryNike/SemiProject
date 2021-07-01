@@ -138,7 +138,7 @@
 					<% } else{ %>
 					<% for(int i=0; i<replys.size(); i++){ %>
 					<div>
-						<strong id="nblank"><%=replys.get(i).getID()%></strong>님의 Review (
+						<strong id="nblank"><%=replys.get(i).getID()%></strong>님의 댓글 (
 						<strong id="dblank" value="<%=replys.get(i).getWriteDate()%>"><%=replys.get(i).getWriteDate()%></strong>
 						&nbsp;written) <strong id="cblank">&nbsp;<%=replys.get(i).getCommentContent() %></strong>
 
