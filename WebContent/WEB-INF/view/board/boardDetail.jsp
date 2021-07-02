@@ -1,11 +1,12 @@
+<%@page import="board.model.vo.Reply"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"
 	import="board.model.vo.Board, java.util.ArrayList, user.model.vo.User"%>
 
-<%@ page import="board.model.vo.*"%>
-<% Board b = (Board) request.getAttribute("board");
-   ArrayList<Reply> replys = (ArrayList)request.getAttribute("replys");
-   User loginUser2 = (User) session.getAttribute("loginUser");
+<%
+	Board b = (Board) request.getAttribute("board");
+ArrayList<Reply> replys = (ArrayList) request.getAttribute("replys");
+User loginUser2 = (User) session.getAttribute("loginUser");
 %>
 <%-- <% ArrayList<Reply> list = (ArrayList)request.getAttribute("list"); %> --%>
 <!DOCTYPE html>
@@ -35,12 +36,39 @@
 	line-height: 50px;
 }
 
-#btnArea, .replyArea {
+#btnArea, .replyArea, .replybox {
 	margin: 20px 0;
 }
 
 .update {
 	display: none;
+	padding-top: 10px;
+}
+
+.cbmod, .replyUp {
+	float: left;
+}
+
+.replyMod, .replyDel, .replyUp {
+	width: 53px; font-size : 13px;
+	line-height: 29px;
+	border: none;
+	background: inherit;
+	font-size: 13px;
+}
+
+.replyMod:hover, .replyDel:hover, .replyUp:hover {
+	border: none;
+	background: #333;
+	color: #ffffff;
+}
+
+.boardWriter {
+	border: 1px solid #c0392b;
+	color: #c0392b;
+	padding: 3px;
+	font-weight: bold;
+	border-radius: 30px
 }
 </style>
 </head>
@@ -55,7 +83,7 @@
 					<h2>게시판 상세보기</h2>
 				</div>
 				<div class="col-12">
-					<a href="">Home</a> 
+					<a href="">Home</a>
 					<a href="">Board</a>
 				</div>
 			</div>
@@ -67,27 +95,42 @@
 	<div class="container">
 		<div class="col-8" style="float: none; margin: 0 auto;">
 			<div class="tableArea">
-				<form action="<%=request.getContextPath()%>/boardUpdateForm.bo" class="detailForm" id=<%=b.getbNo()%> method="post">
+				<form action="<%=request.getContextPath()%>/boardUpdateForm.bo"
+					class="detailForm" id=<%=b.getbNo()%> method="post">
 					<div>
 						<div id="infoArea" class="row col-lg-12 col-md-12 col-sm-12">
 							<div class="col-lg-6 col-md-6 col-sm-6">
 								<span>카테고리</span>
-								<%-- <%=b.getCategory()%> --%>
-								<% if(b.getCategory().equals("20")) { %>
-									수영
-								<% } else if(b.getCategory().equals("30")) { %>
-									산책
-								<% } else if(b.getCategory().equals("40")) { %>
-									자전거
-								<% } else if(b.getCategory().equals("50")) { %>
-									헬스장
-								<% } else if(b.getCategory().equals("60")) { %>
-									테니스
-								<% } else if(b.getCategory().equals("70")) { %>
-									배드민턴
-								<% } %>
+								<%
+									if (b.getCategory().equals("20")) {
+								%>
+								수영
+								<%
+									} else if (b.getCategory().equals("30")) {
+								%>
+								산책
+								<%
+									} else if (b.getCategory().equals("40")) {
+								%>
+								자전거
+								<%
+									} else if (b.getCategory().equals("50")) {
+								%>
+								헬스장
+								<%
+									} else if (b.getCategory().equals("60")) {
+								%>
+								테니스
+								<%
+									} else if (b.getCategory().equals("70")) {
+								%>
+								배드민턴
+								<%
+									}
+								%>
 								<input type="hidden" name="category" value="<%=b.getCategory()%>">
 							</div>
+							
 							<div class="col-lg-6 col-md-6 col-sm-6">
 								<span>제목</span>
 								<%=b.getPsTitle()%>
@@ -104,61 +147,96 @@
 							</div>
 						</div>
 					</div>
+					<%-- <input type="hidden" name="bId" value="<%=b.getPsContent()%>"> --%>
 
 					<div class="col-lg-12 col-md-12 col-sm-12">
-						<textarea class="form-control" id="content" name="content"
-							readonly><%=b.getPsContent()%></textarea>
+						<textarea class="form-control" id="content" name="content" readonly><%=b.getPsContent()%></textarea>
 					</div>
 
 
 					<div id="btnArea" class="col-lg-12 col-md-6 col-sm-12 text-center">
-						<% if (loginUser2 != null && b.getPsWriter().equals(loginUser2.getUserId())) { %>
-							<input type="submit" class="btn btn-outline-primary" id="updateBtn" value="수정"> 
-							<input type="button" class="btn btn-outline-primary" onclick="deleteBoard();" id="deleteBtn" value="삭제"> 
-							<input type="hidden" name="no" value="<%=b.getbNo()%>">
-						<% } %>
-						<input type="button" class="btn btn-outline-primary" id="cancelBtn" onclick="location.href='<%=request.getContextPath()%>/boardList.me'" value="취소">
+						<%
+							if (loginUser2 != null && b.getPsWriter().equals(loginUser2.getUserId())) {
+						%>
+						<input type="submit" class="btn btn-outline-primary" id="updateBtn" value="수정">
+						<input type="button" class="btn btn-outline-primary" onclick="deleteBoard();" id="deleteBtn" value="삭제">
+						<input type="hidden" name="no" value="<%=b.getbNo()%>">
+						<%
+							}
+						%>
+						<input type="button" class="btn btn-outline-primary"
+							id="cancelBtn"
+							onclick="location.href='<%=request.getContextPath()%>/boardList.me'"
+							value="목록으로">
 					</div>
 
 				</form>
 			</div>
 
-			<div class="replyArea col-lg-12 col-md-6 col-sm-12 text-center">
-				<div class="replyWriteArea row">
-					<div class="col-lg-10 col-md-8 col-sm-12">
-						<textarea class="form-control" id="replyContent" name="replyContent" placeholder="Content" required="required" data-validation-required-message="Please enter your Content"></textarea>
-					</div>
+			<div class="replyWriteArea row">
 
-					<div class="col-lg-2 col-md-4 col-sm-12 align-self-center">
-						<input type="button" class="btn btn-outline-dark" id="addReply" value="댓글 등록">
-					</div>
-					
-					<% if(replys.isEmpty()){ %>
-					<div style="color: gray">작성된 리뷰가 없습니다.</div>
-					<% } else{ %>
-					<% for(int i=0; i<replys.size(); i++){ %>
-					<div>
-						<strong id="nblank"><%=replys.get(i).getID()%></strong>님의 댓글 (
-						<strong id="dblank" value="<%=replys.get(i).getWriteDate()%>"><%=replys.get(i).getWriteDate()%></strong>
-						&nbsp;written) <strong id="cblank">&nbsp;<%=replys.get(i).getCommentContent() %></strong>
+				<div class="col-lg-10 col-md-8 col-sm-12">
+					<textarea class="form-control" id="replyContent" name="replyContent" placeholder="Content" required="required"
+						data-validation-required-message="Please enter your Content"></textarea>
+				</div>
 
-						<% if(replys.get(i).getID().equals(loginUser2.getUserName())){ %>
-						<span class="update" id="update_<%=replys.get(i).getCNum()%>">
-							<input type="text" class="cbmod" id="cblankmod_<%=replys.get(i).getCNum()%>" name="content" value="<%=replys.get(i).getCommentContent() %>">
+				<div class="col-lg-2 col-md-4 col-sm-12 align-self-center">
+					<input type="button" class="btn btn-outline-dark" id="addReply" value="댓글 등록">
+				</div>
+
+
+				<div class="replybox col-12 row">
+					<%
+						if (replys.isEmpty()) {
+					%>
+					<div class="col-12 text-center" style="color: gray">
+					작성된 리뷰가 없습니다.
+					</div>
+					<%
+						} else {
+					%>
+
+					<%
+						for (int i = 0; i < replys.size(); i++) {
+					%>
+					<div class="replybox col-8">
+						<strong id="nblank"><%=replys.get(i).getNick()%></strong>님의 댓글
+						
+						(<span id="dblank" value="<%=replys.get(i).getWriteDate()%>"><%=replys.get(i).getWriteDate()%></span>&nbsp;written)
+						<br> <strong id="cblank"><%=replys.get(i).getCommentContent()%></strong>
+						<br>
+
+						<div class="update" id="update_<%=replys.get(i).getCNum()%>">
+							<input type="text" class="cbmod col-10"
+								id="cblankmod_<%=replys.get(i).getCNum()%>" name="content"
+								value="<%=replys.get(i).getCommentContent()%>">
 							<button class="replyUp" id="replyUp_<%=replys.get(i).getCNum()%>">Save</button>
-						</span> <span id="model">
+						</div>
+
+
+					</div>
+					<%
+						if (loginUser2 != null && replys.get(i).getID().equals(loginUser2.getUserName())) {
+					%>
+					<div class="replybox col-4 text-right">
+
+						<span id="model">
 							<button class="replyMod" id="replywMod_<%=replys.get(i).getCNum()%>">Modify</button>
 							<button class="replyDel" id="replyDel_<%=replys.get(i).getCNum()%>">Delete</button>
 						</span>
-						<% } %>
 					</div>
+					<%
+						}
+					%>
+					<%
+						}
+					%>
 
-					<% }%>
-
-					<%} %>
-
-
+					<%
+						}
+					%>
 				</div>
+
 			</div>
 
 		</div>
@@ -166,19 +244,22 @@
 
 	<%@ include file="../common/footer.jsp"%>
 
-
 	<script>
+	$(function(){
+		$('#board').addClass('active');
+		$('.menus').not('#board').removeClass('active');
+	});
 		function deleteBoard() {
-				// 정말 게시글을 삭제할 것인지 물어본 후 삭제한다고 하면 delete.bo로 넘기기
-				var bool = confirm("정말 삭제하시겠습니까?");
-				
-				if(bool) {
-					var no = $(this).attr('id');
-					$('.detailForm').attr('action', 'delete.bo');
-					$('.detailForm').submit();
-				}
+			// 정말 게시글을 삭제할 것인지 물어본 후 삭제한다고 하면 delete.bo로 넘기기
+			var bool = confirm("정말 삭제하시겠습니까?");
+
+			if (bool) {
+				var no = $(this).attr('id');
+				$('.detailForm').attr('action', 'delete.bo');
+				$('.detailForm').submit();
+			}
 		}
-		
+
 		$('#addReply').on('click',function(){
 		    if($('#replyContent').val().trim().length== 0){
 					alert("댓글을 작성해주세요");
@@ -187,7 +268,7 @@
 				}
 		
 				var bNo = '<%=b.getbNo()%>';
-				var name = '<%=loginUser2.getUserName()%>';
+				var name = '<%=loginUser2.getUserId()%>';
 				var content = $('#replyContent').val();
 				
 				$.ajax({
@@ -214,6 +295,7 @@
 						console.log("reviewInsert ajax error");
 					}
 				}); 
+				
 			});
 		   
 			$('.replyMod').on('click',function(){
@@ -269,26 +351,29 @@
 					var rn = $(this).attr('id');
 					var rnum = rn.substring(rn.indexOf('_')+1);
 					var name ='<%=loginUser2.getUserName()%>';
-					
-					$.ajax({
-						url : 'reply.delete',
-						data : {'bno' : bno, 'rnum' : rnum, 'name' :name },
-						success : function(result){
-							console.log("d.result:"+result);
-							location.reload();
-							
-						},
-						
-						error : function(result){
-							console.log("reply ajax erro");
-							console.log("result:"+result);
-						}
-						
-					});
-				
-				}
-			});
-		
+
+				$.ajax({
+					url : 'reply.delete',
+					data : {
+						'bno' : bno,
+						'rnum' : rnum,
+						'name' : name
+					},
+					success : function(result) {
+						console.log("d.result:" + result);
+						location.reload();
+
+					},
+
+					error : function(result) {
+						console.log("reply ajax erro");
+						console.log("result:" + result);
+					}
+
+				});
+
+			}
+		});
 	</script>
 </body>
 </html>
