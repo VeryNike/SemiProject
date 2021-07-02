@@ -200,7 +200,7 @@ User loginUser2 = (User) session.getAttribute("loginUser");
 						for (int i = 0; i < replys.size(); i++) {
 					%>
 					<div class="replybox col-8">
-						<strong id="nblank"><%=replys.get(i).getNick()%></strong>님의 댓글
+						<strong id="nblank"><%=replys.get(i).getID()%></strong>님의 댓글
 						
 						(<span id="dblank" value="<%=replys.get(i).getWriteDate()%>"><%=replys.get(i).getWriteDate()%></span>&nbsp;written)
 						<br> <strong id="cblank"><%=replys.get(i).getCommentContent()%></strong>
