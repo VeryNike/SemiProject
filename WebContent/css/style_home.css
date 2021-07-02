@@ -176,12 +176,18 @@ ul {
 	display: block;
 }
 
-.pt ul li input[type=button], #chk ul li input[type=checkBox] {
+.pt ul li input[type=button], #chk ul li input[type=checkBox], #etc {
 	width: 20px;
 	height: 20px;
 	text-align: center;
 	line-height: 100%;
 	margin: 3px 0;
+}
+#etc{
+	margin-right: 5px;
+}
+#etcon:focus{
+	outline:none;
 }
 
 #ptList>ul {
