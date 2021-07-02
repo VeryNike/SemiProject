@@ -45,6 +45,7 @@
 			<div class="row">
 				<div class="col-lg-7 col-md-6 h-50">
 					<div class="about-img">
+					
 						<div id="calendarArea">
 							<div id="calendarTop" class="clearfix">
 								<div id="prev"></div>
@@ -68,6 +69,7 @@
 								</table>
 							</div>
 						</div>
+						
 					</div>
 				</div>
 
@@ -204,6 +206,9 @@
 							<%
 								}
 							%>
+						<div>
+							<input type="button" id="etc" value="+"><input type="text" id="etcon" class="col-10" >
+						</div>
 						</div>
 					</div>
 
@@ -214,16 +219,15 @@
 
 
 	<%@ include file="../common/footer.jsp"%>
+
+
+	<script src="js/script_home.js"></script>
 	<script>
 	$(function(){
 		$('#home').addClass('active');
 		$('.menus').not('#home').removeClass('active');
 	});
 	</script>
-
-
-	<script src="js/script_home.js"></script>
-	
 
 </body>
 
