@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"
-	import="user.model.vo.User, java.util.ArrayList, board.model.vo.Board, board.model.vo.PageInfo"%>
+	import="user.model.vo.User, java.util.ArrayList, board.model.vo.Board"%>
 
 <%
 	User loginUser2 = (User) session.getAttribute("loginUser");
