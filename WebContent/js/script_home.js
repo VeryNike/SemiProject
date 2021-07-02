@@ -137,6 +137,12 @@ function prev() {
     clickedDate1 = document.getElementById(today.getDate());
     clickedDate1.classList.add('activeDate');
     clickStart();
+    $('td').each(function(){
+		var tdClass = $(this).attr("class");
+		if($('#' + tdClass).length > 0){
+			statusStamp(tdClass);
+		}
+	});
 }
 
 // 다음달
@@ -166,6 +172,12 @@ function next() {
     clickedDate1 = document.getElementById(today.getDate());
     clickedDate1.classList.add('activeDate');
     clickStart();
+    $('td').each(function(){
+		var tdClass = $(this).attr("class");
+		if($('#' + tdClass).length > 0){
+			statusStamp(tdClass);
+		}
+	});
 }
 
 var clickedDate1 = document.getElementById(today.getDate());
@@ -231,8 +243,8 @@ function ptMenu() {
 
 
 // 운동 추가
-$('.pt ul li').click(function () {
-	
+$(document).on('click', '.pt ul li',function () {
+	console.log('클릭');
 	if($('#'+clickday()).length <= 0){
 		var ul = document.createElement('ul');
 		ul.setAttribute('id', clickday());
@@ -268,6 +280,31 @@ $('.pt ul li').click(function () {
     }
 
 });
+
+$(document).on('click', '#etc', function () {
+	console.log('클릭');
+	if($(this).siblings().val().trim() == ''){
+		alert('내용을 입력해주세요!');
+		
+	}else {
+		console.log($(this).siblings().val());
+		if($('#'+clickday()).length <= 0){
+			var ul = document.createElement('ul');
+			ul.setAttribute('id', clickday());
+			ul.setAttribute('class', 'checks');
+			$('#chk').append(ul);		
+		}
+		var dBtn = '<button type="button" class="del">×</button>';
+		var cnt = '<input type="number" class="count" min="1" max="9" value="1">';
+		var li = document.createElement('li');
+		li.innerHTML = '<input type="checkBox" class="isCheck" value="N">' + '<span class="pl"> ' + $(this).siblings().val() + '</span> ' + cnt +  dBtn;
+		$('#' + clickday()).append(li);		
+	}
+	
+
+
+});
+
 
 $('.count').on('click', function(){
 	$(this).attr("value", $(this).val());
@@ -314,14 +351,6 @@ $(document).on('click', '.isCheck', function () {
 		$(this).attr("value", "N");
 	}
 	
-	/*$('td').each(function(){
-		var tdClass = $(this).attr("class");
-		if($('#' + tdClass).length > 0){
-			statusStamp(tdClass);
-		}
-	});*/
-	
-	
 });
 
 function statusBar(days){
@@ -342,6 +371,7 @@ function statusStamp(days){
 	
 	var bar = '';
 	
+	// 지워야 체크 해제했을 때 바뀜
 	$('.' + days).removeClass('awsome perfect great good cheerup');
 	
 	if(a > 0){
