@@ -200,7 +200,7 @@ li.current:before {
 
 .product .product-price:before, .product .product-line-price:before,
 	.totals-value:before {
-	content: "$";
+	content: "₩";
 }
 /* Body/Header stuff */
 body {
