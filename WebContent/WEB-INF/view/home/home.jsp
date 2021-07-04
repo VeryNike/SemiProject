@@ -48,9 +48,9 @@
 					
 						<div id="calendarArea">
 							<div id="calendarTop" class="clearfix">
-								<div id="prev"></div>
+								<div id="prev"><i class="fas fa-angle-left fa-3x"></i></div>
 								<div id="todayis">TodayIs</div>
-								<div id="next"></div>
+								<div id="next"><i class="fas fa-angle-right fa-3x"></i></div>
 							</div>
 							<div id="calendarbox">
 								<table id="calendar">
