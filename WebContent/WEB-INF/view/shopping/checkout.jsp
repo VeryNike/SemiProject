@@ -27,7 +27,8 @@ session.setAttribute("list", list);
 <meta content="Free Website Template" name="keywords">
 <meta content="Free Website Template" name="description">
 
-
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <script src="lib/jquery-3.6.0.min.js"></script>
 
 
@@ -547,10 +548,10 @@ header .active .fa-check {
 									<!-- 카카오페이결제버튼시작 -->
 									<div class="row mb-5 mt-4 ">
 										<div class="col-md-7 col-lg-6 mx-auto">
-											<a href="<%=request.getContextPath()%>/success.me">
+											
 												<button type="button"
-													class="btn btn-block btn-outline-primary btn-lg">KAKAOPAY</button>
-											</a>
+													class="btn btn-block btn-outline-primary btn-lg" id = "kakaopay">KAKAOPAY</button>
+											
 										</div>
 									</div>
 									<!-- 카카오페이결제버튼끝 -->
@@ -585,14 +586,83 @@ header .active .fa-check {
 		});
 		var tax = price * 0.05;
 		var ship = 15000;
+
+		
 		$('.subPrice').text(price);
 		$('.taxPrice').text(tax);
 		$('.totalPrice').text(price + tax + ship);
 		console.log(price);
 		
+		
+		
 	});
 	
 	
+	
+	
+	
+    </script>
+    
+      <script>
+    
+    $('#kakaopay').on('click',function(){
+        var IMP = window.IMP; 
+        IMP.init('imp83028356'); 
+        var msg;
+        var totalPrice = $('.totalPrice').text();
+
+
+        
+        IMP.request_pay({
+            pg : 'kakaopay',
+            pay_method : 'card',
+            merchant_uid : 'merchant_' + new Date().getTime(),
+            name : 'MyPT',
+            amount : totalPrice,
+            buyer_email : '123@co.kr',
+            buyer_name : '아무개',
+            buyer_tel : '010-9276-3107',
+            buyer_addr : '서울시 성동구 사근동',
+            buyer_postcode : '123-456',
+            
+        }, function(rsp) {
+            if ( rsp.success ) {
+              
+                jQuery.ajax({
+                    url: "view/shopping/ordersuccess.jsp", 
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {
+                        imp_uid : rsp.imp_uid
+                      
+                    }
+                }).done(function(data) {
+                 
+                    if ( everythings_fine ) {
+                        msg = '결제가 완료되었습니다.';
+                        msg += '\nimp83028356 : ' + rsp.imp_uid;
+                        msg += '\n상점 거래ID : ' + rsp.merchant_uid;
+                        msg += '\결제 금액 : ' + rsp.paid_amount;
+                        msg += '카드 승인번호 : ' + rsp.apply_num;
+                        
+                        alert(msg);
+                    } else {
+                       
+                    }
+                });
+               
+                window.location.href = 'http://localhost:9801/Semi/success.me'
+            } else {
+                msg = '결제에 실패하였습니다.';
+                msg += '에러내용 : ' + rsp.error_msg;
+                
+                window.location.href = 'http://localhost:9801/Semi/checkout.me'
+                alert(msg);
+            }
+        })
+        });
+        
+    ;
     </script>
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
@@ -600,6 +670,6 @@ header .active .fa-check {
 	<script src="js/vegas.js"></script>
 
 	<!-- Vegas js -->
-	<script src="lib/vegas/vegas.min.js"></script>
+	<script src="js/vegas/vegas.min.js"></script>
 </body>
 </html>
