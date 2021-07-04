@@ -88,8 +88,11 @@ ul {
 #prev, #next {
 	width: 10%;
 	height: 100%;
-	background-color: #ffffffc7;
+	color: #ffffffc7;
 	float: left;
+}
+#prev i, #next i {
+	line-height: 80px;
 }
 
 #todayis {
