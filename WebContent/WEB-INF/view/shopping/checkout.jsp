@@ -621,8 +621,8 @@ header .active .fa-check {
             amount : totalPrice,
             buyer_email : '123@co.kr',
             buyer_name : '아무개',
-            buyer_tel : '010-9276-3107',
-            buyer_addr : '서울시 성동구 사근동',
+            buyer_tel : '010-1234-5678',
+            buyer_addr : '서울시 성동구 ',
             buyer_postcode : '123-456',
             
         }, function(rsp) {
