@@ -17,6 +17,11 @@
 - Team 탭 연결
 - <%loginUser!=null%>때만 mypage,logout 보이게하기 (비회원은 가리기)
 
+# KakaoPay API 추가
+- totalPrice 변수 추가 호출
+- 구매 성공 , 취소 경로 window.location.href 태그로 서블릿 이동 코드 추가
+
+
 # WEB-INF > Diet > diet.jsp
 - 왼쪽 이미지탭 클릭시 중앙탭 textarea에 값 이동
 - textarea 글자수 동적검사 /100 ( 이미지내용+입력내용 )
