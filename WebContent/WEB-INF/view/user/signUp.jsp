@@ -1,21 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" %>
- 
 <!DOCTYPE html>
 <html>
 <head>
  
 <meta charset="UTF-8">
-   <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <title>JoinUs</title>
-    
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<title>JoinUs</title> 
 <style>
 body {
     background-color: #c1dff0;
     font-family: 'Do Hyeon', sans-serif;
 	overflow: scroll;
 }
-
 form {
     width: 280px;
     padding: 30px;
@@ -23,7 +20,6 @@ form {
     border-radius: 80px;
     font-weight: 800;
     color: #c1dff0;
-
 }
 #wrap{
 	width: 330px;
@@ -37,7 +33,6 @@ fieldset {
     border: 0;
     margin-bottom: 10px;
 }
-
 fieldset input:not([type="checkbox"]) {
     width: 10em; height: 1.5em;
     padding: 5px 15px 2px 2px;
@@ -53,8 +48,7 @@ fieldset label {
     margin: 5% 3% 1% 5% ;
     border:white;
 }
-
-#joinBtn {
+#joinBtn{
     background-color: #c1dff0;
     color: white;
     text-align: center;
@@ -63,13 +57,29 @@ fieldset label {
     border: 2px solid #c1dff0;
     border-radius: 10px;
 }
-
+ #emailbtn {
+    background-color: #c1dff0;
+    color: white;
+    height: 15px;
+    width: 130px; 
+    margin: 10px 0 0 50px;
+    padding: 0 10% 0 10%;
+    border-radius: 10px;
+ }
+ #eNum{
+     margin: 10px 0 0 50px;
+     padding: 0 10% 0 10%;
+     width: 80px; 
+     border-radius: 10px;
+ }
 select {
     -moz-appearance: none;
 	-webkit-appearance: none;
 	appearance: none;
-	width: 140px; height:25px;	
+	width: 140px; 
+	height:20px;	
 	font-size: 12px;
+	margin: 10px 0 0 5px;
 	padding: 1px 1px 1px 20%;
 	color: #a4a4a5;
 	border: 1px solid white;
@@ -122,13 +132,15 @@ a{ text-decoration:none;
                 <p id="message4"></p><br>
                 
                 <label >EMAIL</label>
-                <input type="text" name="email" id="email" placeholder="__@__.__"><br>
+                <input type="text" id="email" name="email" placeholder="__@__.__"><br>
+                <input type="button" id="emailbtn" value="이메일 인증">
+                <input type="text" id="eNum" name="emailNum" placeholder="인증번호 입력"><br>
                 <p id="message5"></p><br>
                 
                 <label >ADDRESS</label>
-                <input type="text" name="address" placeholder="주소 입력 (선택사항)"><br>
+                <input type="text" name="address" placeholder="주소 입력 (선택사항)"><br><br>
 
-                <label>V 선호하는 식단 체크(최대2개)</label><br>
+                <label>V 선호하는 식단 체크</label><br>
 	                <input type="checkbox" id="sal" name="ffood" value="샐러드">
 	                <label for="sal">샐러드</label>              
 	                <input type="checkbox" id="chiken" name="ffood" value="닭가슴살">
@@ -148,6 +160,7 @@ a{ text-decoration:none;
 
 <script>
 
+var emailCheck = false;
 
 function validate(){
 	var Id = $('#userId');
@@ -159,6 +172,7 @@ function validate(){
 	var ages = $('#age');
 	var phones = $('#phone');
 	var email = $('#email');
+	var en = $('#eNum');
 	
 	var Acheck = RegExp(/[0-9]{2,3}$/);
 	var Pcheck = RegExp(/01[0126789]-[0-9]{3,4}-[0-9]{3,4}$/);
@@ -240,7 +254,12 @@ function validate(){
 		email.focus();
 		return false;
 	}
-	
+	if(en.val().trim().length == 0 || emailCheck == false){
+		alert("이메일을 인증을 확인해주세요");
+		en.focus();
+		return false;
+	}
+
 	alert("회원가입성공! 로그인해주세요.");
 	return true;
 }
@@ -281,6 +300,47 @@ function validate(){
 			$('#message2').css('color','orangered');
 		}
 	});
-//});
+	
+	
+	$("#emailbtn").on('click',function(){
+		var receiver = $('#email').val();	
+		if($('#email').val().trim()!= 0){
+			alert("메일이 발송되었습니다. 인증번호를 확인해주세요!");		
+		}else{
+			$('#email').focus();
+		}
+		$.ajax({
+			url: '<%= request.getContextPath()%>/send.do',
+			data:{'receiver': receiver},
+			success: function(data){
+					console.log(" receiver:"+receiver);
+					console.log(" data:"+data);
+					
+					$("#eNum").blur(function(){
+						console.log("eNum"+$('#eNum').val());
+						console.log("data"+data);
+						var eNum = $('#eNum').val();
+						if(eNum.trim()==data.trim()){
+							$('#message5').text('인증 성공했습니다');
+							$('#message5').css('color','skyblue');
+							emailCheck = true;
+						}else{
+							$('#message5').text('인증 실패했습니다. 이메일을 확인하세요');
+							$('#message5').css('color','orangered');
+							emailCheck = false;
+							$('#email').focus();
+							
+						}
+					});
+			},
+			error:function(data){
+				
+				console.log(' email error');
+				console.log(" receiver:"+receiver);
+				console.log(" data:"+data);
+			}
+		}); //ajax
+	});
+	
 </script>
 </html>
