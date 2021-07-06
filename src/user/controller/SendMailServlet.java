@@ -40,6 +40,12 @@ public class SendMailServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		// 보내는 계정의 네이버 메일에 아래 환경 설정 -> POP3/IMAP설정 -> 사용함 설정하기
+		
+		// 1. 전달받은 값 인코딩
+		// - 전송할 값은 html이 아닌 다른 프로토콜로 전송할 것이기 때문에
+		// 현재는 별도 인코딩을 하지 않습니다.
+		
 		System.out.println("서블릿 in");
 		request.setCharacterEncoding("UTF-8");
 
@@ -66,11 +72,12 @@ public class SendMailServlet extends HttpServlet {
            }
         }
 
-		String contents =  "인증번호 : "+ temp;
-		String title =  "MyPT 에서 보낸 인증메일 입니다.";
+        String host = "smtp.naver.com"; // 사용하는 메일
+        String title =  "MyPT 에서 보낸 인증메일 입니다.";
+		String contents =  " 인증번호 : "+ temp;
+		String html = "<div style='border:1px solid rgb(66, 165, 204); width:30em;'>"+"<h2 style='text-align:center'>"+ contents + "</h2>"+"</div>";		
 		
 		String receiver = request.getParameter("receiver"); // 받는 사용자 (Ex: @naver.com 까지..)
-		String host = "smtp.naver.com"; // 사용하는 메일
 
 		System.out.println("---------recv Data Check--------");
 		System.out.println("recvID : " + receiver);
@@ -97,12 +104,18 @@ public class SendMailServlet extends HttpServlet {
 
 			// Subject
 			message.setSubject(title);
-			message.setText(contents,"UTF-8");
+		//	message.setText(contents,"UTF-8");
+
+			// Text
+			message.setText(contents, "UTF-8", "html");
+			message.setText(html, "UTF-8", "html");
 
 			// send the message
 			Transport.send(message);
 			System.out.println("전송 완료!");
+			
 			response.getWriter().println(temp);
+			// naver 로그인 2단계 인증 되어있으면 오류 뜸
 
 		} catch (MessagingException e) {
 			System.out.println("전송 실패..");
